@@ -549,7 +549,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
         overflow: 'hidden',
         background: '#FAF7F2',
         fontFamily: "'Plus Jakarta Sans', sans-serif",
-        color: '#102B22',
+        color: '#102B3F',
       }}
     >
       {/* ============================================================
@@ -558,7 +558,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
       <header
         style={{
           height: '56px',
-          background: '#102B22',
+          background: '#102B3F',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           display: 'flex',
           alignItems: 'center',
@@ -771,7 +771,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
             onClick={() => setIsPublishModalOpen(true)}
             style={{
               background: '#F4C744',
-              color: '#102B22',
+              color: '#102B3F',
               border: 'none',
               borderRadius: '8px',
               padding: '7px 16px',
@@ -798,7 +798,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
             top: '76px',
             right: '24px',
             zIndex: 1000,
-            background: '#102B22',
+            background: '#102B3F',
             color: '#FFFFFF',
             border: '1px solid #8BA77A',
             borderRadius: '10px',
@@ -839,8 +839,8 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
           <div style={{ padding: '16px', borderBottom: '1px solid #F1F5F9' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Layers size={17} color="#102B22" />
-                <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#102B22' }}>
+                <Layers size={17} color="#102B3F" />
+                <span style={{ fontWeight: 800, fontSize: '0.92rem', color: '#102B3F' }}>
                   Blok Konten
                 </span>
               </div>
@@ -881,7 +881,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                   background: 'transparent',
                   outline: 'none',
                   fontSize: '0.8rem',
-                  color: '#102B22',
+                  color: '#102B3F',
                   width: '100%',
                 }}
               />
@@ -915,7 +915,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     justifyContent: 'space-between',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#102B22';
+                    e.currentTarget.style.borderColor = '#102B3F';
                     e.currentTarget.style.background = '#FAF7F2';
                   }}
                   onMouseLeave={(e) => {
@@ -925,7 +925,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                 >
                   <div style={{ flex: 1, marginRight: '8px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                      <span style={{ fontWeight: 700, fontSize: '0.84rem', color: '#102B22' }}>
+                      <span style={{ fontWeight: 700, fontSize: '0.84rem', color: '#102B3F' }}>
                         {block.label}
                       </span>
                       <span
@@ -949,7 +949,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     type="button"
                     title="Tambah ke Canvas"
                     style={{
-                      background: '#102B22',
+                      background: '#102B3F',
                       color: '#FFFFFF',
                       border: 'none',
                       borderRadius: '6px',
@@ -985,7 +985,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                       padding: '8px 10px',
                       borderRadius: '8px',
                       background: selectedSectionId === sec.id ? '#FAF7F2' : '#F8FAFC',
-                      border: selectedSectionId === sec.id ? '1.5px solid #102B22' : '1px solid #E2E8F0',
+                      border: selectedSectionId === sec.id ? '1.5px solid #102B3F' : '1px solid #E2E8F0',
                       cursor: 'pointer',
                     }}
                   >
@@ -997,7 +997,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                         style={{
                           fontSize: '0.8rem',
                           fontWeight: selectedSectionId === sec.id ? 700 : 500,
-                          color: selectedSectionId === sec.id ? '#102B22' : '#334155',
+                          color: selectedSectionId === sec.id ? '#102B3F' : '#334155',
                         }}
                       >
                         {sec.label || sec.sectionType}
@@ -1142,7 +1142,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     onClick={() => setSelectedSectionId(sec.id)}
                     style={{
                       position: 'relative',
-                      border: isSelected ? '2.5px solid #102B22' : '2.5px solid transparent',
+                      border: isSelected ? '2.5px solid #102B3F' : '2.5px solid transparent',
                       outline: isDragTarget ? '2px dashed #F4C744' : 'none',
                       background: isDragTarget ? '#FEFCE8' : 'transparent',
                       transition: 'border 0.15s ease, background 0.15s ease',
@@ -1157,7 +1157,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                           top: '8px',
                           right: '12px',
                           zIndex: 30,
-                          background: '#102B22',
+                          background: '#102B3F',
                           color: '#FFFFFF',
                           borderRadius: '8px',
                           padding: '4px 8px',
@@ -1263,7 +1263,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                         <div
                           style={{
                             padding: '56px 32px',
-                            background: 'linear-gradient(135deg, #102B22 0%, #1E3A2F 60%, #152A22 100%)',
+                            background: 'linear-gradient(135deg, #102B3F 0%, #1E3A2F 60%, #152A22 100%)',
                             color: '#FFFFFF',
                             textAlign:
                               sec.contentJson?.alignment === 'left'
@@ -1330,7 +1330,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                               <span
                                 style={{
                                   background: '#F4C744',
-                                  color: '#102B22',
+                                  color: '#102B3F',
                                   padding: '10px 22px',
                                   borderRadius: '8px',
                                   fontWeight: 800,
@@ -1388,7 +1388,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                             style={{
                               fontSize: '1.5rem',
                               fontWeight: 800,
-                              color: '#102B22',
+                              color: '#102B3F',
                               margin: '0 0 12px',
                             }}
                           >
@@ -1443,7 +1443,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                         <div
                           style={{
                             padding: '44px 32px',
-                            background: '#102B22',
+                            background: '#102B3F',
                             color: '#FFFFFF',
                             textAlign: 'center',
                           }}
@@ -1458,7 +1458,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                             style={{
                               display: 'inline-block',
                               background: '#F4C744',
-                              color: '#102B22',
+                              color: '#102B3F',
                               padding: '11px 26px',
                               borderRadius: '8px',
                               fontWeight: 800,
@@ -1483,7 +1483,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                               {sec.contentJson.subtitle}
                             </div>
                           )}
-                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B22', margin: '0 0 28px' }}>
+                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B3F', margin: '0 0 28px' }}>
                             {sec.contentJson?.title || 'Keunggulan Kami'}
                           </h2>
                           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
@@ -1510,9 +1510,9 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                                     margin: '0 auto 10px',
                                   }}
                                 >
-                                  <Shield size={18} color="#102B22" />
+                                  <Shield size={18} color="#102B3F" />
                                 </div>
-                                <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+                                <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
                                   {it.title}
                                 </h4>
                                 <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: 1.45, margin: 0 }}>
@@ -1527,7 +1527,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                       {/* 6. CATALOG */}
                       {sec.sectionType === 'CATALOG' && (
                         <div style={{ padding: '48px 32px', background: '#FAF7F2', textAlign: 'center' }}>
-                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
                             {sec.contentJson?.title || 'Katalog Produk'}
                           </h2>
                           <p style={{ fontSize: '0.84rem', color: '#64748B', margin: '0 0 28px' }}>
@@ -1549,17 +1549,17 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                                 <div style={{ height: '120px', borderRadius: '8px', background: '#F1F5F9', marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                   <LayoutGrid size={28} color="#94A3B8" />
                                 </div>
-                                <div style={{ fontWeight: 800, fontSize: '0.92rem', color: '#102B22', marginBottom: '4px' }}>
+                                <div style={{ fontWeight: 800, fontSize: '0.92rem', color: '#102B3F', marginBottom: '4px' }}>
                                   {prod.name}
                                 </div>
                                 <div style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: 1.4, marginBottom: '12px' }}>
                                   {prod.description}
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid #F1F5F9', paddingTop: '10px' }}>
-                                  <span style={{ fontWeight: 800, color: '#102B22', fontSize: '0.92rem' }}>
+                                  <span style={{ fontWeight: 800, color: '#102B3F', fontSize: '0.92rem' }}>
                                     {prod.price}
                                   </span>
-                                  <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#102B22', background: '#F4C744', padding: '4px 10px', borderRadius: '6px' }}>
+                                  <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#102B3F', background: '#F4C744', padding: '4px 10px', borderRadius: '6px' }}>
                                     Pesan
                                   </span>
                                 </div>
@@ -1575,21 +1575,21 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                           style={{
                             padding: '36px 32px',
                             background: 'linear-gradient(135deg, #F4C744 0%, #EAB308 100%)',
-                            color: '#102B22',
+                            color: '#102B3F',
                             textAlign: 'center',
                           }}
                         >
-                          <span style={{ display: 'inline-block', background: '#102B22', color: '#FFFFFF', fontSize: '0.7rem', fontWeight: 800, padding: '3px 10px', borderRadius: '9999px', marginBottom: '8px' }}>
+                          <span style={{ display: 'inline-block', background: '#102B3F', color: '#FFFFFF', fontSize: '0.7rem', fontWeight: 800, padding: '3px 10px', borderRadius: '9999px', marginBottom: '8px' }}>
                             {sec.contentJson?.badgePromo || 'PROMO'}
                           </span>
-                          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, margin: '0 0 6px', color: '#102B22' }}>
+                          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, margin: '0 0 6px', color: '#102B3F' }}>
                             {sec.contentJson?.headline || 'Penawaran Diskon Khusus'}
                           </h3>
                           <p style={{ fontSize: '0.84rem', margin: '0 0 14px', color: '#1E293B' }}>
                             {sec.contentJson?.description}
                           </p>
                           {sec.contentJson?.promoCode && (
-                            <span style={{ display: 'inline-block', border: '1.5px dashed #102B22', padding: '5px 14px', borderRadius: '6px', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.05em' }}>
+                            <span style={{ display: 'inline-block', border: '1.5px dashed #102B3F', padding: '5px 14px', borderRadius: '6px', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '0.05em' }}>
                               KODE: {sec.contentJson.promoCode}
                             </span>
                           )}
@@ -1599,13 +1599,13 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                       {/* 8. CONTACT_WA */}
                       {sec.sectionType === 'CONTACT_WA' && (
                         <div style={{ padding: '44px 32px', background: '#FFFFFF', textAlign: 'center' }}>
-                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+                          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
                             {sec.contentJson?.title || 'Hubungi Kami'}
                           </h2>
                           <p style={{ fontSize: '0.84rem', color: '#64748B', margin: '0 0 20px' }}>
                             {sec.contentJson?.subtitle || 'Layanan konsultasi dan pemesanan cepat via WhatsApp'}
                           </p>
-                          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#102B22', color: '#FFFFFF', padding: '11px 24px', borderRadius: '8px', fontWeight: 700, fontSize: '0.88rem' }}>
+                          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#102B3F', color: '#FFFFFF', padding: '11px 24px', borderRadius: '8px', fontWeight: 700, fontSize: '0.88rem' }}>
                             <Zap size={16} color="#F4C744" />
                             <span>{sec.contentJson?.buttonText || 'Chat WhatsApp Sekarang'}</span>
                           </div>
@@ -1619,7 +1619,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
 
                       {/* 9. FOOTER */}
                       {sec.sectionType === 'FOOTER' && (
-                        <div style={{ padding: '32px 24px', background: '#102B22', color: '#FFFFFF', textAlign: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                        <div style={{ padding: '32px 24px', background: '#102B3F', color: '#FFFFFF', textAlign: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
                           <div style={{ fontWeight: 800, fontSize: '0.96rem', color: '#FFFFFF', marginBottom: '4px' }}>
                             {sec.contentJson?.businessName || page.businessName || 'Toko Resmi UMKM'}
                           </div>
@@ -1644,10 +1644,10 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                 onClick={() => setIsAddBlockModalOpen(true)}
                 style={{
                   background: '#FFFFFF',
-                  border: '1.5px dashed #102B22',
+                  border: '1.5px dashed #102B3F',
                   borderRadius: '10px',
                   padding: '10px 22px',
-                  color: '#102B22',
+                  color: '#102B3F',
                   fontWeight: 700,
                   fontSize: '0.84rem',
                   cursor: 'pointer',
@@ -1684,8 +1684,8 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
           {/* Header Panel Kanan */}
           <div style={{ padding: '16px 20px', borderBottom: '1px solid #F1F5F9' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Settings size={17} color="#102B22" />
-              <span style={{ fontWeight: 800, fontSize: '0.94rem', color: '#102B22' }}>
+              <Settings size={17} color="#102B3F" />
+              <span style={{ fontWeight: 800, fontSize: '0.94rem', color: '#102B3F' }}>
                 Properti Blok
               </span>
             </div>
@@ -1747,11 +1747,11 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     borderRadius: '8px',
                     border: '1.5px solid #E2E8F0',
                     fontSize: '0.84rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                     outline: 'none',
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = '#102B22')}
+                  onFocus={(e) => (e.target.style.borderColor = '#102B3F')}
                   onBlur={(e) => (e.target.style.borderColor = '#E2E8F0')}
                 />
               </div>
@@ -1789,13 +1789,13 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     borderRadius: '8px',
                     border: '1.5px solid #E2E8F0',
                     fontSize: '0.82rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                     outline: 'none',
                     resize: 'vertical',
                     lineHeight: 1.5,
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = '#102B22')}
+                  onFocus={(e) => (e.target.style.borderColor = '#102B3F')}
                   onBlur={(e) => (e.target.style.borderColor = '#E2E8F0')}
                 />
               </div>
@@ -1817,7 +1817,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     borderRadius: '8px',
                     border: '1.5px solid #E2E8F0',
                     fontSize: '0.84rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                     outline: 'none',
                   }}
@@ -1842,7 +1842,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     borderRadius: '8px',
                     border: '1.5px solid #E2E8F0',
                     fontSize: '0.82rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                     outline: 'none',
                   }}
@@ -1868,7 +1868,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                         borderRadius: '6px',
                         border:
                           selectedSection.contentJson.alignment === align
-                            ? '1.5px solid #102B22'
+                            ? '1.5px solid #102B3F'
                             : '1px solid #E2E8F0',
                         background:
                           selectedSection.contentJson.alignment === align
@@ -1879,7 +1879,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                         cursor: 'pointer',
                         color:
                           selectedSection.contentJson.alignment === align
-                            ? '#102B22'
+                            ? '#102B3F'
                             : '#64748B',
                       }}
                     >
@@ -1906,7 +1906,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     borderRadius: '8px',
                     border: '1.5px solid #E2E8F0',
                     fontSize: '0.82rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                     outline: 'none',
                   }}
@@ -1957,7 +1957,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                   borderRadius: '8px',
                   border: '1.5px solid #E2E8F0',
                   background: '#FFFFFF',
-                  color: '#102B22',
+                  color: '#102B3F',
                   fontWeight: 700,
                   fontSize: '0.82rem',
                   cursor: 'pointer',
@@ -2031,7 +2031,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
               <div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                   Pilih Blok Konten
                 </h3>
                 <p style={{ fontSize: '0.84rem', color: '#64748B', margin: '4px 0 0' }}>
@@ -2071,7 +2071,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                     transition: 'all 0.15s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#102B22';
+                    e.currentTarget.style.borderColor = '#102B3F';
                     e.currentTarget.style.background = '#FAF7F2';
                   }}
                   onMouseLeave={(e) => {
@@ -2080,7 +2080,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-                    <span style={{ fontWeight: 800, fontSize: '0.94rem', color: '#102B22' }}>
+                    <span style={{ fontWeight: 800, fontSize: '0.94rem', color: '#102B3F' }}>
                       {block.label}
                     </span>
                     <span
@@ -2150,7 +2150,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
             >
               <Trash2 size={24} color="#DC2626" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', margin: '0 0 8px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', margin: '0 0 8px' }}>
               Hapus Blok Konten?
             </h3>
             <p style={{ fontSize: '0.84rem', color: '#64748B', margin: '0 0 20px', lineHeight: 1.5 }}>
@@ -2241,7 +2241,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
               <Zap size={26} color="#854D0E" />
             </div>
 
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#102B22', margin: '0 0 8px' }}>
+            <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#102B3F', margin: '0 0 8px' }}>
               Publikasikan ke Versi Live?
             </h3>
             <p style={{ fontSize: '0.86rem', color: '#64748B', margin: '0 0 20px', lineHeight: 1.55 }}>
@@ -2261,7 +2261,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
               <div style={{ fontSize: '0.74rem', color: '#687A4D', fontWeight: 700, textTransform: 'uppercase' }}>
                 Ringkasan Rilis
               </div>
-              <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B22', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B3F', marginTop: '2px' }}>
                 {sections.length} Blok Konten Siap Live
               </div>
               <div style={{ fontSize: '0.76rem', color: '#64748B' }}>
@@ -2297,7 +2297,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                   borderRadius: '10px',
                   border: 'none',
                   background: '#F4C744',
-                  color: '#102B22',
+                  color: '#102B3F',
                   fontWeight: 800,
                   fontSize: '0.88rem',
                   cursor: isPublishing ? 'not-allowed' : 'pointer',
@@ -2353,7 +2353,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Sparkles size={20} color="#854D0E" />
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                   Asisten Tulis AI
                 </h3>
               </div>
@@ -2395,9 +2395,9 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                       flex: 1,
                       padding: '7px 0',
                       borderRadius: '8px',
-                      border: aiTone === t ? '1.5px solid #102B22' : '1px solid #E2E8F0',
+                      border: aiTone === t ? '1.5px solid #102B3F' : '1px solid #E2E8F0',
                       background: aiTone === t ? '#FAF7F2' : '#FFFFFF',
-                      color: aiTone === t ? '#102B22' : '#64748B',
+                      color: aiTone === t ? '#102B3F' : '#64748B',
                       fontWeight: 700,
                       fontSize: '0.78rem',
                       cursor: 'pointer',
@@ -2439,7 +2439,7 @@ export const CmsEditor: React.FC<CmsEditorProps> = ({
                 padding: '12px',
                 borderRadius: '10px',
                 border: 'none',
-                background: isAiLoading ? '#94A3B8' : '#102B22',
+                background: isAiLoading ? '#94A3B8' : '#102B3F',
                 color: '#FFFFFF',
                 fontWeight: 700,
                 fontSize: '0.88rem',

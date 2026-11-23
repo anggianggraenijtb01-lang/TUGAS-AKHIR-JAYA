@@ -95,7 +95,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
     <div style={{ maxWidth: '960px', margin: '0 auto', paddingBottom: '60px' }}>
       {/* Page Title */}
       <div style={{ marginBottom: '28px' }}>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+        <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
           Profil Akun &amp; Keamanan
         </h1>
         <p style={{ fontSize: '0.88rem', color: '#687A4D', margin: '4px 0 0' }}>
@@ -109,7 +109,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
           background: '#FFFFFF',
           borderRadius: '16px',
           padding: '24px',
-          border: '1px solid #D5CDB8',
+          border: '1px solid rgba(85, 113, 132, 0.2)',
           marginBottom: '28px',
           display: 'flex',
           alignItems: 'center',
@@ -126,7 +126,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: '#102B22',
+              background: '#102B3F',
               color: '#F4C744',
               display: 'flex',
               alignItems: 'center',
@@ -139,7 +139,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                 {name || currentUser.name}
               </h2>
               {/* Role badge (read only) */}
@@ -165,7 +165,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
         {/* Token Balance Pill */}
         <div
           style={{
-            background: '#F7F5EE',
+            background: '#F8FAF7',
             border: '1px solid #E5E0D0',
             borderRadius: '12px',
             padding: '10px 18px',
@@ -177,7 +177,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
           <Coins size={20} color="#D97706" />
           <div>
             <div style={{ fontSize: '0.7rem', color: '#687A4D', fontWeight: 600 }}>Saldo Token Aktif</div>
-            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B22' }}>
+            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B3F' }}>
               {currentUser.tokenBalance} Token
             </div>
           </div>
@@ -192,13 +192,13 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
             background: '#FFFFFF',
             borderRadius: '16px',
             padding: '28px',
-            border: '1px solid #D5CDB8',
+            border: '1px solid rgba(85, 113, 132, 0.2)',
             boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-            <UserIcon size={20} color="#102B22" />
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+            <UserIcon size={20} color="#102B3F" />
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
               Informasi Pengguna &amp; Bisnis
             </h3>
           </div>
@@ -226,7 +226,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
 
           <form onSubmit={handleSaveProfile} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                 Nama Lengkap
               </label>
               <input
@@ -238,9 +238,9 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   width: '100%',
                   padding: '10px 14px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   fontSize: '0.86rem',
-                  color: '#102B22',
+                  color: '#102B3F',
                   background: '#FFFFFF',
                   boxSizing: 'border-box',
                 }}
@@ -248,7 +248,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                 Email (Terdaftar)
               </label>
               <input
@@ -263,7 +263,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   border: '1px solid #E5E0D0',
                   fontSize: '0.86rem',
                   color: '#62685E',
-                  background: '#F7F5EE',
+                  background: '#F8FAF7',
                   boxSizing: 'border-box',
                   cursor: 'not-allowed',
                 }}
@@ -274,7 +274,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                 Nama Usaha / Toko
               </label>
               <input
@@ -286,9 +286,9 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   width: '100%',
                   padding: '10px 14px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   fontSize: '0.86rem',
-                  color: '#102B22',
+                  color: '#102B3F',
                   background: '#FFFFFF',
                   boxSizing: 'border-box',
                 }}
@@ -296,7 +296,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                 Nomor WhatsApp Toko
               </label>
               <input
@@ -308,9 +308,9 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   width: '100%',
                   padding: '10px 14px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   fontSize: '0.86rem',
-                  color: '#102B22',
+                  color: '#102B3F',
                   background: '#FFFFFF',
                   boxSizing: 'border-box',
                 }}
@@ -325,7 +325,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                 padding: '12px 20px',
                 borderRadius: '8px',
                 border: 'none',
-                background: '#102B22',
+                background: '#102B3F',
                 color: '#FFFFFF',
                 fontWeight: 700,
                 fontSize: '0.86rem',
@@ -350,13 +350,13 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
               background: '#FFFFFF',
               borderRadius: '16px',
               padding: '28px',
-              border: '1px solid #D5CDB8',
+              border: '1px solid rgba(85, 113, 132, 0.2)',
               boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <Shield size={20} color="#102B22" />
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+              <Shield size={20} color="#102B3F" />
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                 Pengaturan Keamanan
               </h3>
             </div>
@@ -397,7 +397,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
 
             <form onSubmit={handleSavePassword} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                   Kata Sandi Lama
                 </label>
                 <input
@@ -409,16 +409,16 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                     width: '100%',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    border: '1px solid #D5CDB8',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     fontSize: '0.86rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                   Kata Sandi Baru
                 </label>
                 <input
@@ -430,16 +430,16 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                     width: '100%',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    border: '1px solid #D5CDB8',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     fontSize: '0.86rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B22', marginBottom: '6px' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#102B3F', marginBottom: '6px' }}>
                   Ulangi Kata Sandi Baru
                 </label>
                 <input
@@ -451,9 +451,9 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                     width: '100%',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    border: '1px solid #D5CDB8',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     fontSize: '0.86rem',
-                    color: '#102B22',
+                    color: '#102B3F',
                     boxSizing: 'border-box',
                   }}
                 />
@@ -466,9 +466,9 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   marginTop: '8px',
                   padding: '11px 18px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
-                  background: '#F7F5EE',
-                  color: '#102B22',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
+                  background: '#F8FAF7',
+                  color: '#102B3F',
                   fontWeight: 700,
                   fontSize: '0.86rem',
                   cursor: 'pointer',
@@ -570,7 +570,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
               <LogOut size={26} />
             </div>
 
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', margin: '0 0 8px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', margin: '0 0 8px' }}>
               Konfirmasi Keluar Akun
             </h3>
             <p style={{ fontSize: '0.86rem', color: '#62685E', margin: '0 0 24px', lineHeight: 1.5 }}>
@@ -584,7 +584,7 @@ export const ProfilePageView: React.FC<ProfilePageViewProps> = ({
                   flex: 1,
                   padding: '11px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   background: '#FFFFFF',
                   fontWeight: 700,
                   fontSize: '0.86rem',

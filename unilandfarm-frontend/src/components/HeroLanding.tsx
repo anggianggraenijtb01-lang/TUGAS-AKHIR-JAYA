@@ -39,7 +39,7 @@ const YellowFlower: React.FC<{ size?: number; className?: string; style?: React.
           width="6"
           height="13"
           rx="3"
-          fill={i % 2 === 0 ? '#E5AC32' : '#6E8854'}
+          fill={i % 2 === 0 ? '#E5AC32' : '#C6F36B'}
           transform={`rotate(${angle})`}
         />
       ))}
@@ -341,7 +341,7 @@ export const HeroLanding: React.FC<HeroLandingProps> = ({
                 }}
                 style={{
                   background: '#E5AC32',
-                  color: '#142217',
+                  color: '#102B3F',
                   border: 'none',
                   borderRadius: '9999px',
                   padding: '14px 28px',

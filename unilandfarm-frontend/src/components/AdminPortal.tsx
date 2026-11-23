@@ -305,17 +305,17 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
           >
             <Shield size={28} color="#DC2626" />
           </div>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#102B22', margin: '0 0 8px' }}>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#102B3F', margin: '0 0 8px' }}>
             Akses Terbatas
           </h2>
-          <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.6, margin: '0 0 24px' }}>
+          <p style={{ fontSize: '0.88rem', color: '#557184', lineHeight: 1.6, margin: '0 0 24px' }}>
             Portal internal ini hanya dapat diakses oleh Administrator Sistem UNI-LANDFARM yang terotorisasi.
           </p>
           <button
             type="button"
             onClick={onBackToHome}
             style={{
-              background: '#102B22',
+              background: '#102B3F',
               color: '#FFFFFF',
               border: 'none',
               borderRadius: '10px',
@@ -384,9 +384,9 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       <aside
         style={{
           width: isSidebarCollapsed ? '78px' : '252px',
-          background: 'linear-gradient(165deg, #18261a 0%, #233726 55%, #2b422d 100%)',
+          background: 'linear-gradient(180deg, #102B3F 0%, #0A1C2A 100%)',
           borderRight: '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: '8px 0 32px rgba(24, 38, 26, 0.12)',
+          boxShadow: '8px 0 32px rgba(10, 28, 42, 0.25)',
           color: '#FFFFFF',
           display: 'flex',
           flexDirection: 'column',
@@ -462,15 +462,15 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   width: '38px',
                   height: '38px',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                  color: '#FFFFFF',
+                  background: '#183C57',
+                  color: '#C6F36B',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   fontSize: '0.88rem',
                   flexShrink: 0,
-                  boxShadow: '0 4px 12px rgba(24, 38, 26, 0.4)',
+                  boxShadow: '0 4px 12px rgba(16, 43, 63, 0.4)',
                 }}
               >
                 AD
@@ -479,8 +479,8 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div style={{ fontWeight: 600, fontSize: '0.84rem', color: '#FFFFFF', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {currentUser?.name || 'Super Admin'}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.7rem', color: '#b5d694', marginTop: '2px' }}>
-                  <span className="eloq-pulse-dot" style={{ width: '6px', height: '6px' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.7rem', color: '#C6F36B', marginTop: '2px' }}>
+                  <span className="eloq-pulse-dot" style={{ width: '6px', height: '6px', background: '#C6F36B' }} />
                   <span>Admin Operasional</span>
                 </div>
               </div>
@@ -533,11 +533,11 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     padding: isSidebarCollapsed ? '10px 0' : '10px 14px',
                     justifyContent: isSidebarCollapsed ? 'center' : 'flex-start',
                     borderRadius: '13px',
-                    border: isActive ? '1px solid rgba(255, 255, 255, 0.22)' : '1px solid transparent',
+                    border: isActive ? '1px solid rgba(198, 243, 107, 0.45)' : '1px solid transparent',
                     background: isActive
-                      ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
+                      ? '#183C57'
                       : 'transparent',
-                    boxShadow: isActive ? '0 8px 20px rgba(24, 38, 26, 0.42)' : 'none',
+                    boxShadow: isActive ? '0 8px 20px rgba(16, 43, 63, 0.5)' : 'none',
                     color: isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.72)',
                     fontWeight: isActive ? 600 : 500,
                     fontSize: '0.85rem',
@@ -560,7 +560,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     }
                   }}
                 >
-                  <span style={{ color: isActive ? '#d3e8bc' : 'rgba(255,255,255,0.65)', display: 'flex' }}>
+                  <span style={{ color: isActive ? '#C6F36B' : 'rgba(255,255,255,0.65)', display: 'flex' }}>
                     {m.icon}
                   </span>
                   {!isSidebarCollapsed && (
@@ -576,7 +576,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                         width: '6px',
                         height: '6px',
                         borderRadius: '50%',
-                        background: '#d3e8bc',
+                        background: '#C6F36B',
                       }}
                     />
                   )}
@@ -672,12 +672,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
         >
           {/* Left: Breadcrumbs & Page Titles */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', color: '#5d6759', marginBottom: '2px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', color: '#557184', marginBottom: '2px' }}>
               <span>Admin Studio</span>
               <span>/</span>
-              <span style={{ color: '#233726', fontWeight: 600 }}>{currentMenuMeta.label}</span>
+              <span style={{ color: '#102B3F', fontWeight: 600 }}>{currentMenuMeta.label}</span>
             </div>
-            <div style={{ fontWeight: 600, fontSize: '1.2rem', color: '#1c2d1f', letterSpacing: '-0.025em' }}>
+            <div style={{ fontWeight: 700, fontSize: '1.2rem', color: '#102B3F', letterSpacing: '-0.025em' }}>
               {activeMenu === 'dashboard'
                 ? 'Overview Platform'
                 : currentMenuMeta.label}
@@ -692,17 +692,17 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                background: '#f4f6f1',
-                border: '1px solid rgba(35, 55, 38, 0.12)',
+                background: '#F8FAF7',
+                border: '1px solid rgba(85, 113, 132, 0.16)',
                 borderRadius: '9999px',
                 padding: '7px 14px',
                 width: '230px',
               }}
             >
-              <Search size={14} color="#5d6759" />
+              <Search size={14} color="#557184" />
               <input
                 type="text"
-                placeholder="Cari pengguna, toko..."
+                placeholder="Cari pengguna, website..."
                 value={globalSearchQuery}
                 onChange={(e) => setGlobalSearchQuery(e.target.value)}
                 style={{
@@ -710,7 +710,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   outline: 'none',
                   background: 'transparent',
                   fontSize: '0.8rem',
-                  color: '#1c2d1f',
+                  color: '#102B3F',
                   width: '100%',
                 }}
               />
@@ -727,11 +727,11 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 height: '38px',
                 borderRadius: '50%',
                 background: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.12)',
+                border: '1px solid rgba(85, 113, 132, 0.16)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#1c2d1f',
+                color: '#102B3F',
               }}
             >
               <Bell size={16} />
@@ -743,10 +743,10 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   width: '17px',
                   height: '17px',
                   borderRadius: '50%',
-                  background: '#3d5a37',
-                  color: '#FFFFFF',
+                  background: '#C6F36B',
+                  color: '#102B3F',
                   fontSize: '0.62rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -765,7 +765,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 gap: '9px',
                 padding: '4px 12px 4px 5px',
                 background: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.12)',
+                border: '1px solid rgba(85, 113, 132, 0.16)',
                 borderRadius: '9999px',
               }}
             >
@@ -774,22 +774,22 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                  color: '#FFFFFF',
+                  background: '#183C57',
+                  color: '#C6F36B',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   fontSize: '0.75rem',
                 }}
               >
                 AD
               </div>
               <div style={{ textAlign: 'left', lineHeight: 1.15 }}>
-                <div style={{ fontSize: '0.78rem', fontWeight: 600, color: '#1c2d1f' }}>
+                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#102B3F' }}>
                   Super Admin
                 </div>
-                <div style={{ fontSize: '0.65rem', color: '#5d6759' }}>Verified</div>
+                <div style={{ fontSize: '0.65rem', color: '#557184' }}>Verified</div>
               </div>
             </div>
           </div>
@@ -817,27 +817,27 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div
                   style={{
                     background: '#FFFFFF',
-                    borderRadius: '22px',
+                    borderRadius: '20px',
                     padding: '20px 22px',
-                    border: '1px solid rgba(35, 55, 38, 0.08)',
-                    boxShadow: '0 10px 28px rgba(24, 38, 26, 0.04)',
+                    border: '1px solid rgba(85, 113, 132, 0.12)',
+                    boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#5d6759', letterSpacing: '0.05em' }}>TOTAL PENGGUNA</span>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'linear-gradient(135deg, #eef4eb 0%, #dce8d4 100%)', color: '#233726', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#557184', letterSpacing: '0.05em' }}>TOTAL PENGGUNA</span>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: '#EAF7D5', color: '#102B3F', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Users size={17} />
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 600, color: '#1c2d1f', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#102B3F', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                       {registeredUsers.length}
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#3d5a37', marginTop: '8px', fontWeight: 600 }}>
-                      <span>● {registeredUsers.filter((u) => u.status === 'ACTIVE').length} Aktif</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#102B3F', marginTop: '8px', fontWeight: 600 }}>
+                      <span style={{ color: '#102B3F' }}>● {registeredUsers.filter((u) => u.status === 'ACTIVE').length} Aktif</span>
                       {registeredUsers.some((u) => u.status === 'SUSPENDED') && (
                         <span style={{ color: '#DC2626' }}>• {registeredUsers.filter((u) => u.status === 'SUSPENDED').length} Suspend</span>
                       )}
@@ -849,43 +849,43 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div
                   style={{
                     background: '#FFFFFF',
-                    borderRadius: '22px',
+                    borderRadius: '20px',
                     padding: '20px 22px',
-                    border: '1px solid rgba(35, 55, 38, 0.08)',
-                    boxShadow: '0 10px 28px rgba(24, 38, 26, 0.04)',
+                    border: '1px solid rgba(85, 113, 132, 0.12)',
+                    boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#5d6759', letterSpacing: '0.05em' }}>TOTAL WEBSITE</span>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'linear-gradient(135deg, #eef4eb 0%, #dce8d4 100%)', color: '#233726', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#557184', letterSpacing: '0.05em' }}>TOTAL WEBSITE MIKRO</span>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: '#EAF7D5', color: '#102B3F', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Globe size={17} />
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 600, color: '#1c2d1f', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#102B3F', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                       {pages.length}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', marginTop: '8px' }}>
-                      <span style={{ color: '#3d5a37', fontWeight: 600 }}>
+                      <span style={{ color: '#102B3F', fontWeight: 600 }}>
                         ● {pages.filter((p) => p.publishStatus === 'PUBLISHED').length} Live
                       </span>
-                      <span style={{ color: '#5d6759' }}>• {pages.filter((p) => p.publishStatus === 'DRAFT').length} Draft</span>
+                      <span style={{ color: '#557184' }}>• {pages.filter((p) => p.publishStatus === 'DRAFT').length} Draft</span>
                     </div>
                   </div>
                 </div>
 
-                {/* C. Total Token Beredar (Highlighted Olive-Forest Studio Card) */}
+                {/* C. Total Token Beredar (Highlighted Deep Navy SaaS Card) */}
                 <div
                   style={{
-                    background: 'linear-gradient(145deg, #1d2e20 0%, #2b442f 52%, #48663b 100%)',
+                    background: 'linear-gradient(145deg, #102B3F 0%, #183C57 100%)',
                     color: '#FFFFFF',
-                    borderRadius: '22px',
+                    borderRadius: '20px',
                     padding: '20px 22px',
-                    border: '1px solid rgba(163, 194, 133, 0.28)',
-                    boxShadow: '0 16px 36px -8px rgba(24, 38, 26, 0.36)',
+                    border: '1px solid rgba(198, 243, 107, 0.3)',
+                    boxShadow: '0 16px 36px -8px rgba(16, 43, 63, 0.35)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
@@ -893,17 +893,17 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                     <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.05em' }}>TOKEN BEREDAR</span>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(255,255,255,0.14)', color: '#fde047', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(255,255,255,0.14)', color: '#C6F36B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Coins size={17} />
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 600, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                       {registeredUsers.reduce((sum, u) => sum + (u.tokenBalance || 0), 0).toLocaleString('id-ID')}
                     </div>
                     <div
                       onClick={() => setActiveMenu('tokens')}
-                      style={{ fontSize: '0.75rem', color: '#d3e8bc', marginTop: '8px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                      style={{ fontSize: '0.75rem', color: '#C6F36B', marginTop: '8px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
                     >
                       <span>Kelola Token</span>
                       <span>→</span>
@@ -915,29 +915,29 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div
                   style={{
                     background: '#FFFFFF',
-                    borderRadius: '22px',
+                    borderRadius: '20px',
                     padding: '20px 22px',
-                    border: '1px solid rgba(35, 55, 38, 0.08)',
-                    boxShadow: '0 10px 28px rgba(24, 38, 26, 0.04)',
+                    border: '1px solid rgba(85, 113, 132, 0.12)',
+                    boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#5d6759', letterSpacing: '0.05em' }}>VERIFIKASI TOP-UP</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#557184', letterSpacing: '0.05em' }}>VERIFIKASI TOP-UP</span>
                     <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: '#FEF3C7', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Clock size={17} />
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 600, color: '#1c2d1f', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#102B3F', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                       {transactions.filter((t) => t.status === 'PENDING').length}{' '}
-                      <span style={{ fontSize: '0.95rem', fontWeight: 500, color: '#5d6759' }}>Antrean</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: 500, color: '#557184' }}>Antrean</span>
                     </div>
                     <div
                       onClick={() => setActiveMenu('tokens')}
-                      style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#D97706', marginTop: '8px', fontWeight: 600, cursor: 'pointer' }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#D97706', marginTop: '8px', fontWeight: 700, cursor: 'pointer' }}
                     >
                       <span>● Cek Bukti Bayar</span>
                       <span>→</span>
@@ -960,15 +960,15 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '22px', flexWrap: 'wrap', gap: '14px' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <h3 style={{ margin: 0, fontSize: '1.12rem', fontWeight: 600, color: '#1c2d1f', letterSpacing: '-0.02em' }}>
+                      <h3 style={{ margin: 0, fontSize: '1.12rem', fontWeight: 700, color: '#102B3F', letterSpacing: '-0.02em' }}>
                         Analitik Pertumbuhan Platform
                       </h3>
                       <span
                         style={{
-                          background: '#eef4eb',
-                          color: '#233726',
+                          background: '#EAF7D5',
+                          color: '#102B3F',
                           fontSize: '0.72rem',
-                          fontWeight: 700,
+                          fontWeight: 800,
                           padding: '2px 9px',
                           borderRadius: '999px',
                         }}
@@ -976,14 +976,14 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                         +34.8% Bulan Ini
                       </span>
                     </div>
-                    <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#5d6759' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#557184' }}>
                       Tren metrik operasional real-time berdasarkan rentang waktu terpilih.
                     </p>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                     {/* Metric Selectors */}
-                    <div style={{ display: 'flex', background: '#eff3ec', padding: '4px', borderRadius: '999px' }}>
+                    <div style={{ display: 'flex', background: '#F8FAF7', padding: '4px', borderRadius: '999px', border: '1px solid rgba(85, 113, 132, 0.12)' }}>
                       {(['users', 'websites', 'ai', 'tokens'] as const).map((m) => (
                         <button
                           key={m}
@@ -991,14 +991,14 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                           style={{
                             background:
                               chartMetric === m
-                                ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
+                                ? '#102B3F'
                                 : 'transparent',
-                            color: chartMetric === m ? '#FFFFFF' : '#4b5748',
+                            color: chartMetric === m ? '#C6F36B' : '#557184',
                             border: 'none',
                             borderRadius: '999px',
                             padding: '6px 14px',
                             fontSize: '0.76rem',
-                            fontWeight: 600,
+                            fontWeight: 700,
                             cursor: 'pointer',
                             transition: 'all 0.2s ease',
                           }}
@@ -1009,20 +1009,20 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     </div>
 
                     {/* Period Switcher */}
-                    <div style={{ display: 'flex', background: '#eff3ec', padding: '4px', borderRadius: '999px' }}>
+                    <div style={{ display: 'flex', background: '#F8FAF7', padding: '4px', borderRadius: '999px', border: '1px solid rgba(85, 113, 132, 0.12)' }}>
                       {(['7d', '30d', '90d'] as const).map((p) => (
                         <button
                           key={p}
                           onClick={() => setActivityChartPeriod(p)}
                           style={{
                             background: activityChartPeriod === p ? '#FFFFFF' : 'transparent',
-                            color: activityChartPeriod === p ? '#1c2d1f' : '#5d6759',
+                            color: activityChartPeriod === p ? '#102B3F' : '#557184',
                             border: 'none',
                             borderRadius: '999px',
                             padding: '6px 12px',
                             fontSize: '0.76rem',
-                            fontWeight: 600,
-                            boxShadow: activityChartPeriod === p ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+                            fontWeight: 700,
+                            boxShadow: activityChartPeriod === p ? '0 2px 6px rgba(16, 43, 63, 0.1)' : 'none',
                             cursor: 'pointer',
                           }}
                         >
@@ -1038,22 +1038,22 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   <svg width="100%" height="195" viewBox="0 0 900 195" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
                     <defs>
                       <linearGradient id="eloqAdminChartGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#6E8854" stopOpacity="0.34" />
-                        <stop offset="65%" stopColor="#6E8854" stopOpacity="0.08" />
-                        <stop offset="100%" stopColor="#6E8854" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor="#C6F36B" stopOpacity="0.35" />
+                        <stop offset="65%" stopColor="#C6F36B" stopOpacity="0.08" />
+                        <stop offset="100%" stopColor="#C6F36B" stopOpacity="0.0" />
                       </linearGradient>
                       <linearGradient id="eloqAdminStrokeGrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#233726" />
-                        <stop offset="50%" stopColor="#3d5a37" />
-                        <stop offset="100%" stopColor="#6E8854" />
+                        <stop offset="0%" stopColor="#102B3F" />
+                        <stop offset="50%" stopColor="#183C57" />
+                        <stop offset="100%" stopColor="#84CC16" />
                       </linearGradient>
                     </defs>
 
                     {/* Subtle Horizontal Grid lines */}
-                    <line x1="0" y1="35" x2="900" y2="35" stroke="rgba(20,60,35,0.06)" strokeDasharray="4 4" />
-                    <line x1="0" y1="85" x2="900" y2="85" stroke="rgba(20,60,35,0.06)" strokeDasharray="4 4" />
-                    <line x1="0" y1="135" x2="900" y2="135" stroke="rgba(20,60,35,0.06)" strokeDasharray="4 4" />
-                    <line x1="0" y1="185" x2="900" y2="185" stroke="rgba(20,60,35,0.1)" />
+                    <line x1="0" y1="35" x2="900" y2="35" stroke="rgba(85, 113, 132, 0.12)" strokeDasharray="4 4" />
+                    <line x1="0" y1="85" x2="900" y2="85" stroke="rgba(85, 113, 132, 0.12)" strokeDasharray="4 4" />
+                    <line x1="0" y1="135" x2="900" y2="135" stroke="rgba(85, 113, 132, 0.12)" strokeDasharray="4 4" />
+                    <line x1="0" y1="185" x2="900" y2="185" stroke="rgba(85, 113, 132, 0.16)" />
 
                     {/* Smooth Cubic Bezier Area Fill */}
                     <path
@@ -1080,21 +1080,21 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                       { x: 900, y: 12 },
                     ].map((pt, i) => (
                       <g key={i}>
-                        <circle cx={pt.x} cy={pt.y} r="7" fill="rgba(110, 136, 84, 0.22)" />
-                        <circle cx={pt.x} cy={pt.y} r="4" fill="#FFFFFF" stroke="#3d5a37" strokeWidth="2.5" />
+                        <circle cx={pt.x} cy={pt.y} r="7" fill="rgba(198, 243, 107, 0.35)" />
+                        <circle cx={pt.x} cy={pt.y} r="4" fill="#FFFFFF" stroke="#102B3F" strokeWidth="2.5" />
                       </g>
                     ))}
                   </svg>
 
                   {/* X-Axis labels */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#5d6759', fontSize: '0.75rem', fontWeight: 500, marginTop: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#557184', fontSize: '0.75rem', fontWeight: 500, marginTop: '8px' }}>
                     <span>1 Okt</span>
                     <span>5 Okt</span>
                     <span>10 Okt</span>
                     <span>15 Okt</span>
                     <span>20 Okt</span>
                     <span>25 Okt</span>
-                    <span style={{ color: '#233726', fontWeight: 700 }}>Hari Ini</span>
+                    <span style={{ color: '#102B3F', fontWeight: 800 }}>Hari Ini</span>
                   </div>
                 </div>
               </div>
@@ -1119,10 +1119,10 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-                    <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 800, color: '#1c2d1f' }}>
+                    <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 800, color: '#102B3F' }}>
                       Aktivitas Terbaru
                     </h3>
-                    <span style={{ fontSize: '0.75rem', color: '#3d5a37', fontWeight: 700 }}>● Real-time</span>
+                    <span style={{ fontSize: '0.75rem', color: '#102B3F', fontWeight: 700 }}>● Real-time</span>
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -1134,13 +1134,13 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                       { icon: '🛡️', title: 'Verifikasi Mutasi Bank BCA Selesai', user: 'Admin System', time: '5 jam lalu', tag: 'VERIFY' },
                     ].map((item, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                        <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#F7F5EF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>
+                        <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#F8FAF7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>
                           {item.icon}
                         </div>
                         <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1c2d1f' }}>{item.title}</div>
-                          <div style={{ fontSize: '0.74rem', color: '#5d6759', marginTop: '2px' }}>
-                            {item.user} • <span style={{ color: '#8FA295' }}>{item.time}</span>
+                          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#102B3F' }}>{item.title}</div>
+                          <div style={{ fontSize: '0.74rem', color: '#557184', marginTop: '2px' }}>
+                            {item.user} • <span style={{ color: '#557184' }}>{item.time}</span>
                           </div>
                         </div>
                       </div>
@@ -1154,17 +1154,17 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     background: '#FFFFFF',
                     borderRadius: '18px',
                     padding: '24px',
-                    border: '1px solid #E7E6DE',
-                    boxShadow: '0 4px 16px rgba(24, 38, 26, 0.04)',
+                    border: '1px solid rgba(85, 113, 132, 0.12)',
+                    boxShadow: '0 4px 16px rgba(16, 43, 63, 0.04)',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
-                    <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 800, color: '#1c2d1f' }}>
+                    <h3 style={{ margin: 0, fontSize: '0.98rem', fontWeight: 800, color: '#102B3F' }}>
                       Distribusi Layanan AI & Gateway
                     </h3>
                     <span
                       onClick={() => setActiveMenu('ai-studio')}
-                      style={{ fontSize: '0.76rem', color: '#233726', fontWeight: 700, cursor: 'pointer' }}
+                      style={{ fontSize: '0.76rem', color: '#102B3F', fontWeight: 700, cursor: 'pointer' }}
                     >
                       Detail →
                     </span>
@@ -1174,33 +1174,33 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     {/* Feature 1 */}
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '4px' }}>
-                        <span style={{ fontWeight: 600, color: '#1c2d1f' }}>Headline & Banner Studio</span>
-                        <span style={{ fontWeight: 700, color: '#233726' }}>42% (14.280 Token)</span>
+                        <span style={{ fontWeight: 600, color: '#102B3F' }}>Headline & Banner Studio</span>
+                        <span style={{ fontWeight: 700, color: '#102B3F' }}>42% (14.280 Token)</span>
                       </div>
-                      <div style={{ height: '8px', background: '#F0EFEA', borderRadius: '999px', overflow: 'hidden' }}>
-                        <div style={{ width: '42%', height: '100%', background: 'linear-gradient(90deg, #233726, #6E8854)' }} />
+                      <div style={{ height: '8px', background: '#F0ECE1', borderRadius: '999px', overflow: 'hidden' }}>
+                        <div style={{ width: '42%', height: '100%', background: 'linear-gradient(90deg, #102B3F, #183C57)' }} />
                       </div>
                     </div>
 
                     {/* Feature 2 */}
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '4px' }}>
-                        <span style={{ fontWeight: 600, color: '#1c2d1f' }}>Katalog & Deskripsi Produk</span>
+                        <span style={{ fontWeight: 600, color: '#102B3F' }}>Katalog & Deskripsi Produk</span>
                         <span style={{ fontWeight: 700, color: '#D97706' }}>35% (11.900 Token)</span>
                       </div>
-                      <div style={{ height: '8px', background: '#F0EFEA', borderRadius: '999px', overflow: 'hidden' }}>
-                        <div style={{ width: '35%', height: '100%', background: '#F9C80E' }} />
+                      <div style={{ height: '8px', background: '#F0ECE1', borderRadius: '999px', overflow: 'hidden' }}>
+                        <div style={{ width: '35%', height: '100%', background: '#F59E0B' }} />
                       </div>
                     </div>
 
                     {/* Feature 3 */}
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', marginBottom: '4px' }}>
-                        <span style={{ fontWeight: 600, color: '#1c2d1f' }}>Jadwal Promo & Content Scheduler</span>
-                        <span style={{ fontWeight: 700, color: '#3d5a37' }}>15% (5.100 Token)</span>
+                        <span style={{ fontWeight: 600, color: '#102B3F' }}>Jadwal Promo & Content Scheduler</span>
+                        <span style={{ fontWeight: 700, color: '#102B3F' }}>15% (5.100 Token)</span>
                       </div>
-                      <div style={{ height: '8px', background: '#F0EFEA', borderRadius: '999px', overflow: 'hidden' }}>
-                        <div style={{ width: '15%', height: '100%', background: '#6E8854' }} />
+                      <div style={{ height: '8px', background: '#F0ECE1', borderRadius: '999px', overflow: 'hidden' }}>
+                        <div style={{ width: '15%', height: '100%', background: '#C6F36B' }} />
                       </div>
                     </div>
 
@@ -1209,18 +1209,18 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                       style={{
                         marginTop: '10px',
                         padding: '12px 14px',
-                        background: '#F7F5EF',
+                        background: '#F8FAF7',
                         borderRadius: '12px',
-                        border: '1px solid #E7E6DE',
+                        border: '1px solid rgba(85, 113, 132, 0.12)',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
                       }}
                     >
-                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c2d1f' }}>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#102B3F' }}>
                         Integrasi Pembayaran QRIS / VA
                       </div>
-                      <span style={{ background: '#eef4eb', color: '#233726', padding: '3px 8px', borderRadius: '999px', fontSize: '0.68rem', fontWeight: 800 }}>
+                      <span style={{ background: '#EAF7D5', color: '#102B3F', padding: '3px 8px', borderRadius: '999px', fontSize: '0.68rem', fontWeight: 800 }}>
                         ● Midtrans Aktif
                       </span>
                     </div>
@@ -1234,22 +1234,22 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   background: '#FFFFFF',
                   borderRadius: '18px',
                   padding: '24px 28px',
-                  border: '1px solid #E7E6DE',
-                  boxShadow: '0 4px 16px rgba(24, 38, 26, 0.04)',
+                  border: '1px solid rgba(85, 113, 132, 0.12)',
+                  boxShadow: '0 4px 16px rgba(16, 43, 63, 0.04)',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: '#1c2d1f' }}>
+                    <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: '#102B3F' }}>
                       Transaksi Memerlukan Verifikasi Manual
                     </h3>
-                    <p style={{ margin: '3px 0 0', fontSize: '0.78rem', color: '#5d6759' }}>
+                    <p style={{ margin: '3px 0 0', fontSize: '0.78rem', color: '#557184' }}>
                       Daftar transfer rekening bank manual yang melampirkan foto struk bukti pembayaran.
                     </p>
                   </div>
                   <button
                     onClick={() => setActiveMenu('tokens')}
-                    className="eloq-btn-grey"
+                    className="btn-outline-navy"
                     style={{
                       padding: '8px 16px',
                       fontSize: '0.78rem',
@@ -1262,7 +1262,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div style={{ overflowX: 'auto' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.82rem' }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid #E7E6DE', color: '#5d6759' }}>
+                      <tr style={{ borderBottom: '1px solid rgba(85, 113, 132, 0.16)', color: '#557184' }}>
                         <th style={{ padding: '10px 14px' }}>Invoice</th>
                         <th style={{ padding: '10px 14px' }}>Paket Token</th>
                         <th style={{ padding: '10px 14px' }}>Nominal</th>
@@ -1276,15 +1276,15 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                         .filter((t) => t.status === 'PENDING')
                         .slice(0, 4)
                         .map((tx) => (
-                          <tr key={tx.id} style={{ borderBottom: '1px solid #F0EFEA' }}>
-                            <td style={{ padding: '14px', fontWeight: 700, color: '#1c2d1f' }}>
+                          <tr key={tx.id} style={{ borderBottom: '1px solid rgba(85, 113, 132, 0.08)' }}>
+                            <td style={{ padding: '14px', fontWeight: 700, color: '#102B3F' }}>
                               {tx.invoiceCode}
                             </td>
-                            <td style={{ padding: '14px', color: '#1c2d1f' }}>
+                            <td style={{ padding: '14px', color: '#102B3F' }}>
                               <span style={{ fontWeight: 700 }}>+{tx.tokenAmount} Token</span>
-                              <div style={{ fontSize: '0.72rem', color: '#5d6759' }}>{tx.packageName}</div>
+                              <div style={{ fontSize: '0.72rem', color: '#557184' }}>{tx.packageName}</div>
                             </td>
-                            <td style={{ padding: '14px', fontWeight: 800, color: '#233726' }}>
+                            <td style={{ padding: '14px', fontWeight: 800, color: '#102B3F' }}>
                               Rp {tx.amountPaid.toLocaleString('id-ID')}
                             </td>
                             <td style={{ padding: '14px' }}>
@@ -1297,19 +1297,20 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                                 <button
                                   onClick={() => setViewProofModal(tx.proofImageUrl || null)}
                                   style={{
-                                    background: '#F7F5EF',
-                                    border: '1px solid #D8D7CE',
+                                    background: '#F8FAF7',
+                                    border: '1px solid rgba(85, 113, 132, 0.2)',
                                     padding: '4px 8px',
                                     borderRadius: '6px',
                                     fontSize: '0.72rem',
                                     cursor: 'pointer',
                                     fontWeight: 700,
+                                    color: '#102B3F',
                                   }}
                                 >
                                   📷 Lihat Struk
                                 </button>
                               ) : (
-                                <span style={{ color: '#8FA295', fontSize: '0.72rem' }}>Tidak ada</span>
+                                <span style={{ color: '#557184', fontSize: '0.72rem' }}>Tidak ada</span>
                               )}
                             </td>
                             <td style={{ padding: '14px', textAlign: 'right' }}>
@@ -1317,12 +1318,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                                 <button
                                   onClick={() => setVerifyRejectModal({ tx, action: 'verify', note: 'Mutasi valid' })}
                                   style={{
-                                    background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                                    color: '#FFFFFF',
+                                    background: '#C6F36B',
+                                    color: '#102B3F',
                                     border: 'none',
                                     padding: '6px 14px',
                                     borderRadius: '999px',
-                                    fontWeight: 700,
+                                    fontWeight: 800,
                                     fontSize: '0.76rem',
                                     cursor: 'pointer',
                                   }}
@@ -1455,8 +1456,8 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                                 width: '34px',
                                 height: '34px',
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                                color: '#FFFFFF',
+                                background: '#183C57',
+                                color: '#C6F36B',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -1468,8 +1469,8 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                               {u.name.substring(0, 2).toUpperCase()}
                             </div>
                             <div>
-                              <div style={{ fontWeight: 700, color: '#18251F' }}>{u.name}</div>
-                              <div style={{ fontSize: '0.72rem', color: '#6D786F' }}>{u.businessName || 'Usaha UMKM'}</div>
+                              <div style={{ fontWeight: 700, color: '#102B3F' }}>{u.name}</div>
+                              <div style={{ fontSize: '0.72rem', color: '#557184' }}>{u.businessName || 'Profil Mikro'}</div>
                             </div>
                           </div>
                         </td>
@@ -1903,16 +1904,16 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   >
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                        <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#18251F' }}>{pl.name}</span>
+                        <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#102B3F' }}>{pl.name}</span>
                         {pl.badge && (
-                          <span style={{ background: '#F9C80E', color: '#102B22', padding: '2px 8px', borderRadius: '999px', fontSize: '0.68rem', fontWeight: 800 }}>
+                          <span style={{ background: '#C6F36B', color: '#102B3F', padding: '2px 8px', borderRadius: '999px', fontSize: '0.68rem', fontWeight: 800 }}>
                             {pl.badge}
                           </span>
                         )}
                       </div>
 
-                      <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#173C2E', marginBottom: '8px' }}>
-                        Rp {pl.monthlyPrice.toLocaleString('id-ID')} <span style={{ fontSize: '0.75rem', color: '#6D786F', fontWeight: 400 }}>/ bulan</span>
+                      <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B3F', marginBottom: '8px' }}>
+                        Rp {pl.monthlyPrice.toLocaleString('id-ID')} <span style={{ fontSize: '0.75rem', color: '#557184', fontWeight: 400 }}>/ bulan</span>
                       </div>
 
                       <p style={{ fontSize: '0.78rem', color: '#6D786F', lineHeight: 1.45, marginBottom: '16px' }}>
@@ -2499,14 +2500,14 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
         </div>
 
         {/* ============================================================
-            ADMIN FOOTER (Unified Compact Olive-Forest Footer)
+            ADMIN FOOTER (Unified Deep Navy SaaS Footer)
             ============================================================ */}
         <footer
           style={{
             marginTop: 'auto',
-            background: 'linear-gradient(160deg, #1c2d1f 0%, #142217 60%, #0d170f 100%)',
+            background: 'linear-gradient(180deg, #102B3F 0%, #0A1C2A 100%)',
             borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            padding: '18px 28px',
+            padding: '20px 28px',
             color: '#FFFFFF',
           }}
         >
@@ -2543,7 +2544,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 onClick={() => setActiveMenu('websites')}
                 style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
               >
-                Website
+                Website Mikro
               </button>
               <button
                 type="button"
@@ -2555,7 +2556,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
               <button
                 type="button"
                 onClick={() => setActiveMenu('tokens')}
-                style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
+                style={{ background: 'transparent', border: 'none', color: '#C6F36B', cursor: 'pointer', fontSize: '0.8rem', padding: 0, fontWeight: 700 }}
               >
                 Transaksi &amp; Token
               </button>

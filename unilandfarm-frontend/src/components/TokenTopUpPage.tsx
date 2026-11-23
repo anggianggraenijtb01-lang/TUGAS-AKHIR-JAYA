@@ -236,7 +236,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
               onClick={() => setActiveStep('overview')}
               style={{
                 background: '#FFFFFF',
-                border: '1px solid #D5CDB8',
+                border: '1px solid rgba(85, 113, 132, 0.2)',
                 borderRadius: '8px',
                 padding: '8px 12px',
                 cursor: 'pointer',
@@ -253,7 +253,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             </button>
           )}
           <div>
-            <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+            <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
               {activeStep === 'overview' && 'Kelola Token & Top-Up'}
               {activeStep === 'checkout' && 'Pilih Metode Pembayaran'}
               {activeStep === 'instruction' && 'Instruksi Pembayaran'}
@@ -270,7 +270,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
         <div
           style={{
             background: '#FFFFFF',
-            border: '1px solid #D5CDB8',
+            border: '1px solid rgba(85, 113, 132, 0.2)',
             borderRadius: '16px',
             padding: '12px 20px',
             display: 'flex',
@@ -295,7 +295,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
           </div>
           <div>
             <div style={{ fontSize: '0.74rem', color: '#62685E', fontWeight: 600 }}>Saldo Token Anda</div>
-            <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#102B22', lineHeight: 1.1 }}>
+            <div style={{ fontSize: '1.35rem', fontWeight: 800, color: '#102B3F', lineHeight: 1.1 }}>
               {currentUser.tokenBalance}{' '}
               <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#687A4D' }}>Token</span>
             </div>
@@ -310,7 +310,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
         <div>
           {/* Packages Grid */}
           <div style={{ marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', marginBottom: '16px' }}>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', marginBottom: '16px' }}>
               Pilihan Paket Token
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
@@ -323,7 +323,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                       background: '#FFFFFF',
                       borderRadius: '16px',
                       padding: '28px 24px',
-                      border: isPopular ? '2px solid #F4C744' : '1px solid #D5CDB8',
+                      border: isPopular ? '2px solid #F4C744' : '1px solid rgba(85, 113, 132, 0.2)',
                       position: 'relative',
                       display: 'flex',
                       flexDirection: 'column',
@@ -352,7 +352,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     )}
 
                     <div>
-                      <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B22', marginBottom: '6px' }}>
+                      <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#102B3F', marginBottom: '6px' }}>
                         {pkg.name}
                       </div>
                       <p style={{ fontSize: '0.82rem', color: '#62685E', marginBottom: '20px', minHeight: '38px', lineHeight: 1.45 }}>
@@ -365,14 +365,14 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                           display: 'inline-flex',
                           alignItems: 'baseline',
                           gap: '6px',
-                          background: '#F7F5EE',
+                          background: '#F8FAF7',
                           padding: '8px 16px',
                           borderRadius: '12px',
                           marginBottom: '20px',
                           border: '1px solid #E5E0D0',
                         }}
                       >
-                        <span style={{ fontSize: '1.8rem', fontWeight: 900, color: '#102B22' }}>
+                        <span style={{ fontSize: '1.8rem', fontWeight: 900, color: '#102B3F' }}>
                           {pkg.tokenAmount}
                         </span>
                         <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#687A4D' }}>Token AI</span>
@@ -381,7 +381,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                       {/* Price */}
                       <div style={{ marginBottom: '22px' }}>
                         <div style={{ fontSize: '0.72rem', color: '#62685E', fontWeight: 600 }}>Biaya Sekali Beli</div>
-                        <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B22' }}>
+                        <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#102B3F' }}>
                           {formatRupiah(pkg.price)}
                         </div>
                       </div>
@@ -409,8 +409,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                         padding: '12px 18px',
                         borderRadius: '10px',
                         border: 'none',
-                        background: isPopular ? '#102B22' : '#F7F5EE',
-                        color: isPopular ? '#FFFFFF' : '#102B22',
+                        background: isPopular ? '#102B3F' : '#F8FAF7',
+                        color: isPopular ? '#FFFFFF' : '#102B3F',
                         fontWeight: 700,
                         fontSize: '0.88rem',
                         cursor: 'pointer',
@@ -432,7 +432,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
 
           {/* Transaction History Section */}
           <div>
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', marginBottom: '16px' }}>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', marginBottom: '16px' }}>
               Riwayat Transaksi Top-Up
             </h2>
 
@@ -443,7 +443,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                   borderRadius: '14px',
                   padding: '40px 24px',
                   textAlign: 'center',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                 }}
               >
                 <div
@@ -451,7 +451,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     width: '48px',
                     height: '48px',
                     borderRadius: '50%',
-                    background: '#F7F5EE',
+                    background: '#F8FAF7',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -461,7 +461,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 >
                   <CreditCard size={24} />
                 </div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#102B22', margin: '0 0 6px' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#102B3F', margin: '0 0 6px' }}>
                   Belum Ada Transaksi Top-Up
                 </h3>
                 <p style={{ fontSize: '0.84rem', color: '#62685E', margin: 0, maxWidth: '380px', marginInline: 'auto' }}>
@@ -473,7 +473,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 style={{
                   background: '#FFFFFF',
                   borderRadius: '14px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   overflow: 'hidden',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
                 }}
@@ -481,7 +481,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 <div style={{ overflowX: 'auto' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.84rem' }}>
                     <thead>
-                      <tr style={{ background: '#F7F5EE', borderBottom: '1px solid #E5E0D0', color: '#4B5548' }}>
+                      <tr style={{ background: '#F8FAF7', borderBottom: '1px solid #E5E0D0', color: '#4B5548' }}>
                         <th style={{ padding: '14px 18px', fontWeight: 700 }}>Kode Invoice</th>
                         <th style={{ padding: '14px 18px', fontWeight: 700 }}>Paket</th>
                         <th style={{ padding: '14px 18px', fontWeight: 700 }}>Jumlah Token</th>
@@ -494,14 +494,14 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     <tbody>
                       {myTransactions.map((tx) => (
                         <tr key={tx.id} style={{ borderBottom: '1px solid #F0ECE1' }}>
-                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B22' }}>
+                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B3F' }}>
                             {tx.invoiceCode}
                           </td>
                           <td style={{ padding: '14px 18px', color: '#304432' }}>{tx.packageName}</td>
-                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B22' }}>
+                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B3F' }}>
                             +{tx.tokenAmount}
                           </td>
-                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B22' }}>
+                          <td style={{ padding: '14px 18px', fontWeight: 700, color: '#102B3F' }}>
                             {formatRupiah(tx.amountPaid)}
                           </td>
                           <td style={{ padding: '14px 18px', color: '#687A4D' }}>{tx.paymentMethod}</td>
@@ -510,13 +510,13 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                             <button
                               onClick={() => setViewReceiptTx(tx)}
                               style={{
-                                background: '#F7F5EE',
-                                border: '1px solid #D5CDB8',
+                                background: '#F8FAF7',
+                                border: '1px solid rgba(85, 113, 132, 0.2)',
                                 borderRadius: '6px',
                                 padding: '6px 12px',
                                 fontSize: '0.74rem',
                                 fontWeight: 700,
-                                color: '#102B22',
+                                color: '#102B3F',
                                 cursor: 'pointer',
                                 display: 'inline-flex',
                                 alignItems: 'center',
@@ -545,8 +545,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px' }}>
           {/* Left Column: Payment Methods */}
           <div>
-            <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '24px', border: '1px solid #D5CDB8', marginBottom: '20px' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B22', marginBottom: '16px' }}>
+            <div style={{ background: '#FFFFFF', borderRadius: '16px', padding: '24px', border: '1px solid rgba(85, 113, 132, 0.2)', marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B3F', marginBottom: '16px' }}>
                 Pilih Metode Pembayaran
               </h3>
 
@@ -556,8 +556,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  border: selectedMethod === 'QRIS' ? '2px solid #102B22' : '1px solid #E5E0D0',
-                  background: selectedMethod === 'QRIS' ? '#F7F5EE' : '#FFFFFF',
+                  border: selectedMethod === 'QRIS' ? '2px solid #102B3F' : '1px solid #E5E0D0',
+                  background: selectedMethod === 'QRIS' ? '#F8FAF7' : '#FFFFFF',
                   cursor: 'pointer',
                   marginBottom: '12px',
                   display: 'flex',
@@ -571,7 +571,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                       width: '42px',
                       height: '42px',
                       borderRadius: '8px',
-                      background: '#102B22',
+                      background: '#102B3F',
                       color: '#FFFFFF',
                       display: 'flex',
                       alignItems: 'center',
@@ -583,7 +583,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     QRIS
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#102B22', fontSize: '0.9rem' }}>
+                    <div style={{ fontWeight: 700, color: '#102B3F', fontSize: '0.9rem' }}>
                       QRIS Nasional (BCA, GoPay, OVO, ShopeePay)
                     </div>
                     <div style={{ fontSize: '0.76rem', color: '#687A4D' }}>
@@ -596,7 +596,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    border: selectedMethod === 'QRIS' ? '5px solid #102B22' : '2px solid #D5CDB8',
+                    border: selectedMethod === 'QRIS' ? '5px solid #102B3F' : '2px solid rgba(85, 113, 132, 0.2)',
                     background: '#FFFFFF',
                   }}
                 />
@@ -608,8 +608,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  border: selectedMethod === 'VIRTUAL_ACCOUNT' ? '2px solid #102B22' : '1px solid #E5E0D0',
-                  background: selectedMethod === 'VIRTUAL_ACCOUNT' ? '#F7F5EE' : '#FFFFFF',
+                  border: selectedMethod === 'VIRTUAL_ACCOUNT' ? '2px solid #102B3F' : '1px solid #E5E0D0',
+                  background: selectedMethod === 'VIRTUAL_ACCOUNT' ? '#F8FAF7' : '#FFFFFF',
                   cursor: 'pointer',
                   marginBottom: '12px',
                   display: 'flex',
@@ -635,7 +635,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     VA
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#102B22', fontSize: '0.9rem' }}>
+                    <div style={{ fontWeight: 700, color: '#102B3F', fontSize: '0.9rem' }}>
                       Virtual Account Bank Otomatis
                     </div>
                     <div style={{ fontSize: '0.76rem', color: '#687A4D' }}>
@@ -648,7 +648,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    border: selectedMethod === 'VIRTUAL_ACCOUNT' ? '5px solid #102B22' : '2px solid #D5CDB8',
+                    border: selectedMethod === 'VIRTUAL_ACCOUNT' ? '5px solid #102B3F' : '2px solid rgba(85, 113, 132, 0.2)',
                     background: '#FFFFFF',
                   }}
                 />
@@ -660,8 +660,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  border: selectedMethod === 'MANUAL_TRANSFER' ? '2px solid #102B22' : '1px solid #E5E0D0',
-                  background: selectedMethod === 'MANUAL_TRANSFER' ? '#F7F5EE' : '#FFFFFF',
+                  border: selectedMethod === 'MANUAL_TRANSFER' ? '2px solid #102B3F' : '1px solid #E5E0D0',
+                  background: selectedMethod === 'MANUAL_TRANSFER' ? '#F8FAF7' : '#FFFFFF',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -686,7 +686,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     TRF
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#102B22', fontSize: '0.9rem' }}>
+                    <div style={{ fontWeight: 700, color: '#102B3F', fontSize: '0.9rem' }}>
                       Transfer Bank Manual (Verifikasi Bukti)
                     </div>
                     <div style={{ fontSize: '0.76rem', color: '#687A4D' }}>
@@ -699,7 +699,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    border: selectedMethod === 'MANUAL_TRANSFER' ? '5px solid #102B22' : '2px solid #D5CDB8',
+                    border: selectedMethod === 'MANUAL_TRANSFER' ? '5px solid #102B3F' : '2px solid rgba(85, 113, 132, 0.2)',
                     background: '#FFFFFF',
                   }}
                 />
@@ -714,22 +714,22 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 background: '#FFFFFF',
                 borderRadius: '16px',
                 padding: '24px',
-                border: '1px solid #D5CDB8',
+                border: '1px solid rgba(85, 113, 132, 0.2)',
                 boxShadow: '0 4px 16px rgba(0,0,0,0.03)',
               }}
             >
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B22', marginBottom: '16px' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B3F', marginBottom: '16px' }}>
                 Ringkasan Pesanan
               </h3>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.86rem' }}>
                 <span style={{ color: '#62685E' }}>Paket</span>
-                <span style={{ fontWeight: 700, color: '#102B22' }}>{selectedPkg.name}</span>
+                <span style={{ fontWeight: 700, color: '#102B3F' }}>{selectedPkg.name}</span>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', fontSize: '0.86rem' }}>
                 <span style={{ color: '#62685E' }}>Jumlah Token</span>
-                <span style={{ fontWeight: 800, color: '#102B22' }}>+{selectedPkg.tokenAmount} Token</span>
+                <span style={{ fontWeight: 800, color: '#102B3F' }}>+{selectedPkg.tokenAmount} Token</span>
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', fontSize: '0.86rem' }}>
@@ -747,8 +747,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                   marginBottom: '20px',
                 }}
               >
-                <span style={{ fontWeight: 800, color: '#102B22', fontSize: '0.96rem' }}>Total Tagihan</span>
-                <span style={{ fontWeight: 900, color: '#102B22', fontSize: '1.4rem' }}>
+                <span style={{ fontWeight: 800, color: '#102B3F', fontSize: '0.96rem' }}>Total Tagihan</span>
+                <span style={{ fontWeight: 900, color: '#102B3F', fontSize: '1.4rem' }}>
                   {formatRupiah(selectedPkg.price)}
                 </span>
               </div>
@@ -757,7 +757,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 onClick={handleConfirmOrder}
                 style={{
                   width: '100%',
-                  background: '#102B22',
+                  background: '#102B3F',
                   color: '#FFFFFF',
                   padding: '14px',
                   borderRadius: '10px',
@@ -790,7 +790,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
               background: '#FFFFFF',
               borderRadius: '16px',
               padding: '32px',
-              border: '1px solid #D5CDB8',
+              border: '1px solid rgba(85, 113, 132, 0.2)',
               boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
             }}
           >
@@ -810,10 +810,10 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
               >
                 INVOICE: {activeTransaction.invoiceCode}
               </div>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
                 Silakan Selesaikan Pembayaran
               </h2>
-              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#102B22', marginTop: '4px' }}>
+              <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#102B3F', marginTop: '4px' }}>
                 {formatRupiah(activeTransaction.amountPaid)}
               </div>
             </div>
@@ -822,7 +822,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             {activeTransaction.paymentMethod === 'QRIS' && (
               <div
                 style={{
-                  background: '#F7F5EE',
+                  background: '#F8FAF7',
                   borderRadius: '12px',
                   padding: '20px',
                   border: '1px solid #E5E0D0',
@@ -830,7 +830,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                   marginBottom: '24px',
                 }}
               >
-                <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B22', marginBottom: '12px' }}>
+                <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B3F', marginBottom: '12px' }}>
                   Scan Kode QRIS di Bawah Ini:
                 </div>
                 {/* Simulated Real QRIS Container */}
@@ -841,7 +841,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     background: '#FFFFFF',
                     borderRadius: '12px',
                     margin: '0 auto 12px',
-                    border: '1px solid #D5CDB8',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -849,7 +849,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     padding: '10px',
                   }}
                 >
-                  <div style={{ fontWeight: 800, fontSize: '0.7rem', color: '#102B22', marginBottom: '4px' }}>QRIS</div>
+                  <div style={{ fontWeight: 800, fontSize: '0.7rem', color: '#102B3F', marginBottom: '4px' }}>QRIS</div>
                   <div style={{ width: '130px', height: '130px', background: '#202720', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFFFF', fontSize: '0.72rem', textAlign: 'center', padding: '8px' }}>
                     [QRIS Barcode Resmi UNI-LANDFARM]
                   </div>
@@ -863,7 +863,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             {activeTransaction.paymentMethod === 'VIRTUAL_ACCOUNT' && (
               <div
                 style={{
-                  background: '#F7F5EE',
+                  background: '#F8FAF7',
                   borderRadius: '12px',
                   padding: '20px',
                   border: '1px solid #E5E0D0',
@@ -879,10 +879,10 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     background: '#FFFFFF',
                     padding: '12px 16px',
                     borderRadius: '8px',
-                    border: '1px solid #D5CDB8',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                   }}
                 >
-                  <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', letterSpacing: '0.04em' }}>
+                  <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', letterSpacing: '0.04em' }}>
                     8801 2026 8941 0023
                   </span>
                   <span style={{ fontSize: '0.76rem', color: '#687A4D', fontWeight: 700 }}>BCA Virtual Account</span>
@@ -893,7 +893,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             {activeTransaction.paymentMethod === 'MANUAL_TRANSFER' && (
               <div
                 style={{
-                  background: '#F7F5EE',
+                  background: '#F8FAF7',
                   borderRadius: '12px',
                   padding: '20px',
                   border: '1px solid #E5E0D0',
@@ -901,9 +901,9 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 }}
               >
                 <div style={{ fontSize: '0.82rem', color: '#62685E', marginBottom: '6px' }}>Rekening Resmi Transfer:</div>
-                <div style={{ background: '#FFFFFF', padding: '14px 16px', borderRadius: '8px', border: '1px solid #D5CDB8' }}>
-                  <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B22' }}>Bank Central Asia (BCA)</div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B22', margin: '4px 0' }}>
+                <div style={{ background: '#FFFFFF', padding: '14px 16px', borderRadius: '8px', border: '1px solid rgba(85, 113, 132, 0.2)' }}>
+                  <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B3F' }}>Bank Central Asia (BCA)</div>
+                  <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B3F', margin: '4px 0' }}>
                     0351 9882 10
                   </div>
                   <div style={{ fontSize: '0.78rem', color: '#687A4D' }}>a.n. PT UNI LANDFARM NUSANTARA</div>
@@ -914,8 +914,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             {/* Proof Upload Area */}
             <div style={{ borderTop: '1px solid #E5E0D0', paddingTop: '20px', marginBottom: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                <UploadCloud size={18} color="#102B22" />
-                <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+                <UploadCloud size={18} color="#102B3F" />
+                <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                   Unggah Bukti Transfer / Pembayaran
                 </h4>
               </div>
@@ -932,8 +932,8 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                   width: '100%',
                   padding: '10px',
                   borderRadius: '8px',
-                  background: '#F7F5EE',
-                  border: '1px dashed #D5CDB8',
+                  background: '#F8FAF7',
+                  border: '1px dashed rgba(85, 113, 132, 0.2)',
                   fontSize: '0.82rem',
                   boxSizing: 'border-box',
                 }}
@@ -957,7 +957,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                     style={{
                       maxHeight: '180px',
                       borderRadius: '8px',
-                      border: '1px solid #D5CDB8',
+                      border: '1px solid rgba(85, 113, 132, 0.2)',
                       boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
                     }}
                   />
@@ -986,7 +986,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 disabled={isUploading || !proofPreviewUrl}
                 style={{
                   width: '100%',
-                  background: !proofPreviewUrl ? '#D5CDB8' : '#102B22',
+                  background: !proofPreviewUrl ? 'rgba(85, 113, 132, 0.2)' : '#102B3F',
                   color: '#FFFFFF',
                   padding: '14px',
                   borderRadius: '10px',
@@ -1043,7 +1043,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                 Rincian Transaksi
               </h3>
               <button
@@ -1054,27 +1054,27 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
               </button>
             </div>
 
-            <div style={{ background: '#F7F5EE', padding: '16px', borderRadius: '10px', marginBottom: '16px' }}>
+            <div style={{ background: '#F8FAF7', padding: '16px', borderRadius: '10px', marginBottom: '16px' }}>
               <div style={{ fontSize: '0.74rem', color: '#687A4D' }}>KODE INVOICE</div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B22' }}>{viewReceiptTx.invoiceCode}</div>
+              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B3F' }}>{viewReceiptTx.invoiceCode}</div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.86rem', marginBottom: '20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: '#62685E' }}>Paket</span>
-                <span style={{ fontWeight: 700, color: '#102B22' }}>{viewReceiptTx.packageName}</span>
+                <span style={{ fontWeight: 700, color: '#102B3F' }}>{viewReceiptTx.packageName}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: '#62685E' }}>Jumlah Token</span>
-                <span style={{ fontWeight: 800, color: '#102B22' }}>+{viewReceiptTx.tokenAmount} Token</span>
+                <span style={{ fontWeight: 800, color: '#102B3F' }}>+{viewReceiptTx.tokenAmount} Token</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: '#62685E' }}>Total Biaya</span>
-                <span style={{ fontWeight: 800, color: '#102B22' }}>{formatRupiah(viewReceiptTx.amountPaid)}</span>
+                <span style={{ fontWeight: 800, color: '#102B3F' }}>{formatRupiah(viewReceiptTx.amountPaid)}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: '#62685E' }}>Metode</span>
-                <span style={{ fontWeight: 700, color: '#102B22' }}>{viewReceiptTx.paymentMethod}</span>
+                <span style={{ fontWeight: 700, color: '#102B3F' }}>{viewReceiptTx.paymentMethod}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: '#62685E' }}>Status</span>
@@ -1093,7 +1093,7 @@ export const TokenTopUpPage: React.FC<TokenTopUpPageProps> = ({
                 width: '100%',
                 padding: '10px',
                 borderRadius: '8px',
-                background: '#102B22',
+                background: '#102B3F',
                 color: '#FFFFFF',
                 border: 'none',
                 fontWeight: 700,

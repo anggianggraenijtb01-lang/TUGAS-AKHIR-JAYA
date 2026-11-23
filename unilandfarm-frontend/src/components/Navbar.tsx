@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   fontWeight: 700,
                   borderRadius: '9999px',
                   background: '#E5AC32',
-                  color: '#142217',
+                  color: '#102B3F',
                   border: 'none',
                   cursor: 'pointer',
                   display: 'flex',

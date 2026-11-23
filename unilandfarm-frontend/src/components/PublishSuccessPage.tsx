@@ -66,7 +66,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
       style={{
         backgroundColor: '#FAF8F2',
         minHeight: '100vh',
-        color: '#102B22',
+        color: '#102B3F',
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         display: 'flex',
         flexDirection: 'column',
@@ -93,7 +93,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
           <div onClick={onBackToHome} style={{ cursor: 'pointer' }} title="Kembali ke Beranda">
             <UniLandLogo size="sm" variant="light" />
           </div>
-          <span style={{ color: '#D5CDB8' }}>|</span>
+          <span style={{ color: 'rgba(85, 113, 132, 0.2)' }}>|</span>
           <span style={{ fontSize: '0.86rem', fontWeight: 700, color: '#166534' }}>
             Publikasi Sukses
           </span>
@@ -105,12 +105,12 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
             onClick={onBackToCms}
             style={{
               background: '#FAF8F2',
-              border: '1px solid #D5CDB8',
+              border: '1px solid rgba(85, 113, 132, 0.2)',
               borderRadius: '8px',
               padding: '7px 14px',
               fontSize: '0.82rem',
               fontWeight: 700,
-              color: '#102B22',
+              color: '#102B3F',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -126,7 +126,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
             type="button"
             onClick={onBackToDashboard}
             style={{
-              background: '#102B22',
+              background: '#102B3F',
               border: 'none',
               borderRadius: '8px',
               padding: '7px 16px',
@@ -229,7 +229,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               style={{
                 fontSize: 'clamp(1.7rem, 3vw, 2.2rem)',
                 fontWeight: 800,
-                color: '#102B22',
+                color: '#102B3F',
                 margin: '0 0 10px',
                 lineHeight: 1.25,
                 letterSpacing: '-0.02em',
@@ -253,7 +253,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
             {/* Live Domain URL Box */}
             <div
               style={{
-                background: '#FAF8F3',
+                background: '#F8FAF7',
                 borderRadius: '16px',
                 border: '1.5px solid #E6E0D0',
                 padding: '16px 20px',
@@ -291,7 +291,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                     style={{
                       fontSize: '0.98rem',
                       fontWeight: 800,
-                      color: '#102B22',
+                      color: '#102B3F',
                       textDecoration: 'none',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
@@ -310,8 +310,8 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   onClick={handleCopyLink}
                   style={{
                     background: copied ? '#15803D' : '#FFFFFF',
-                    color: copied ? '#FFFFFF' : '#102B22',
-                    border: '1px solid #D5CDB8',
+                    color: copied ? '#FFFFFF' : '#102B3F',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '8px',
                     padding: '8px 14px',
                     fontSize: '0.8rem',
@@ -333,8 +333,8 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   title="Lihat Kode QR Website"
                   style={{
                     background: '#FFFFFF',
-                    color: '#102B22',
-                    border: '1px solid #D5CDB8',
+                    color: '#102B3F',
+                    border: '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '8px',
                     padding: '8px 12px',
                     fontSize: '0.8rem',
@@ -367,7 +367,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                 onClick={() => onOpenPublicView(page.slug)}
                 style={{
                   background: '#F4C744',
-                  color: '#102B22',
+                  color: '#102B3F',
                   border: 'none',
                   borderRadius: '12px',
                   padding: '13px 28px',
@@ -426,7 +426,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               style={{
                 fontSize: '1rem',
                 fontWeight: 800,
-                color: '#102B22',
+                color: '#102B3F',
                 margin: '0 0 16px',
                 display: 'flex',
                 alignItems: 'center',
@@ -445,28 +445,28 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                 fontSize: '0.84rem',
               }}
             >
-              <div style={{ background: '#FAF8F3', padding: '12px 16px', borderRadius: '12px' }}>
+              <div style={{ background: '#F8FAF7', padding: '12px 16px', borderRadius: '12px' }}>
                 <span style={{ color: '#687A4D', fontSize: '0.74rem', display: 'block', marginBottom: '2px' }}>
                   Nama Bisnis / Toko:
                 </span>
-                <strong style={{ color: '#102B22' }}>{page.businessName || page.title}</strong>
+                <strong style={{ color: '#102B3F' }}>{page.businessName || page.title}</strong>
               </div>
 
-              <div style={{ background: '#FAF8F3', padding: '12px 16px', borderRadius: '12px' }}>
+              <div style={{ background: '#F8FAF7', padding: '12px 16px', borderRadius: '12px' }}>
                 <span style={{ color: '#687A4D', fontSize: '0.74rem', display: 'block', marginBottom: '2px' }}>
                   Struktur Konten:
                 </span>
-                <strong style={{ color: '#102B22' }}>{(page.sections || []).length} Blok Konten Aktif</strong>
+                <strong style={{ color: '#102B3F' }}>{(page.sections || []).length} Blok Konten Aktif</strong>
               </div>
 
-              <div style={{ background: '#FAF8F3', padding: '12px 16px', borderRadius: '12px' }}>
+              <div style={{ background: '#F8FAF7', padding: '12px 16px', borderRadius: '12px' }}>
                 <span style={{ color: '#687A4D', fontSize: '0.74rem', display: 'block', marginBottom: '2px' }}>
                   Waktu Publikasi:
                 </span>
-                <strong style={{ color: '#102B22' }}>{publishTimeFormatted}</strong>
+                <strong style={{ color: '#102B3F' }}>{publishTimeFormatted}</strong>
               </div>
 
-              <div style={{ background: '#FAF8F3', padding: '12px 16px', borderRadius: '12px' }}>
+              <div style={{ background: '#F8FAF7', padding: '12px 16px', borderRadius: '12px' }}>
                 <span style={{ color: '#687A4D', fontSize: '0.74rem', display: 'block', marginBottom: '2px' }}>
                   Status Server Hosting:
                 </span>
@@ -492,7 +492,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               style={{
                 fontSize: '1rem',
                 fontWeight: 800,
-                color: '#102B22',
+                color: '#102B3F',
                 margin: '0 0 16px',
                 display: 'flex',
                 alignItems: 'center',
@@ -509,7 +509,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '12px',
-                  background: '#FAF8F3',
+                  background: '#F8FAF7',
                   padding: '14px 16px',
                   borderRadius: '12px',
                 }}
@@ -520,7 +520,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                     height: '26px',
                     borderRadius: '50%',
                     background: '#F4C744',
-                    color: '#102B22',
+                    color: '#102B3F',
                     fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
@@ -532,7 +532,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   1
                 </div>
                 <div>
-                  <strong style={{ fontSize: '0.88rem', color: '#102B22' }}>Pasang di Bio Media Sosial</strong>
+                  <strong style={{ fontSize: '0.88rem', color: '#102B3F' }}>Pasang di Bio Media Sosial</strong>
                   <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#62685E', lineHeight: 1.45 }}>
                     Salin link website Anda dan tempel di bio profil Instagram, TikTok, dan Facebook bisnis agar calon pembeli dapat langsung menjelajahi katalog.
                   </p>
@@ -544,7 +544,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '12px',
-                  background: '#FAF8F3',
+                  background: '#F8FAF7',
                   padding: '14px 16px',
                   borderRadius: '12px',
                 }}
@@ -555,7 +555,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                     height: '26px',
                     borderRadius: '50%',
                     background: '#F4C744',
-                    color: '#102B22',
+                    color: '#102B3F',
                     fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
@@ -567,7 +567,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   2
                 </div>
                 <div>
-                  <strong style={{ fontSize: '0.88rem', color: '#102B22' }}>Bagikan ke Status &amp; Grup WhatsApp</strong>
+                  <strong style={{ fontSize: '0.88rem', color: '#102B3F' }}>Bagikan ke Status &amp; Grup WhatsApp</strong>
                   <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#62685E', lineHeight: 1.45 }}>
                     Gunakan tombol <em>Bagikan ke WhatsApp</em> di atas untuk mengabarkan peluncuran website ke pelanggan setia dan kontak terdekat Anda.
                   </p>
@@ -579,7 +579,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '12px',
-                  background: '#FAF8F3',
+                  background: '#F8FAF7',
                   padding: '14px 16px',
                   borderRadius: '12px',
                 }}
@@ -590,7 +590,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                     height: '26px',
                     borderRadius: '50%',
                     background: '#F4C744',
-                    color: '#102B22',
+                    color: '#102B3F',
                     fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
@@ -602,7 +602,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                   3
                 </div>
                 <div>
-                  <strong style={{ fontSize: '0.88rem', color: '#102B22' }}>Perbarui Promo &amp; Salinan via Agentic AI</strong>
+                  <strong style={{ fontSize: '0.88rem', color: '#102B3F' }}>Perbarui Promo &amp; Salinan via Agentic AI</strong>
                   <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#62685E', lineHeight: 1.45 }}>
                     Kapan pun Anda mengadakan diskon mingguan atau menambahkan produk baru, buka kembali CMS Editor dan gunakan bantuan AI untuk menulis narasi promo dalam hitungan detik.
                   </p>
@@ -618,12 +618,12 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               onClick={onBackToDashboard}
               style={{
                 background: '#FFFFFF',
-                border: '1px solid #D5CDB8',
+                border: '1px solid rgba(85, 113, 132, 0.2)',
                 borderRadius: '10px',
                 padding: '10px 22px',
                 fontSize: '0.86rem',
                 fontWeight: 700,
-                color: '#102B22',
+                color: '#102B3F',
                 cursor: 'pointer',
               }}
             >
@@ -634,7 +634,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               type="button"
               onClick={onBackToCms}
               style={{
-                background: '#102B22',
+                background: '#102B3F',
                 border: 'none',
                 borderRadius: '10px',
                 padding: '10px 24px',
@@ -680,7 +680,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
               Pindai Kode QR Website
             </h3>
             <p style={{ fontSize: '0.8rem', color: '#64748B', margin: '0 0 20px' }}>
@@ -693,7 +693,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                 width: '200px',
                 height: '200px',
                 margin: '0 auto 18px',
-                background: '#FAF8F3',
+                background: '#F8FAF7',
                 borderRadius: '16px',
                 border: '1.5px solid #E2E8F0',
                 display: 'flex',
@@ -707,7 +707,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
                 style={{
                   width: '140px',
                   height: '140px',
-                  background: '#102B22',
+                  background: '#102B3F',
                   borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
@@ -723,7 +723,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               </div>
             </div>
 
-            <div style={{ fontSize: '0.78rem', color: '#102B22', fontWeight: 700, marginBottom: '20px' }}>
+            <div style={{ fontSize: '0.78rem', color: '#102B3F', fontWeight: 700, marginBottom: '20px' }}>
               {fullUrl}
             </div>
 
@@ -732,7 +732,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
               onClick={() => setShowQrModal(false)}
               style={{
                 width: '100%',
-                background: '#102B22',
+                background: '#102B3F',
                 color: '#FFFFFF',
                 border: 'none',
                 borderRadius: '8px',
@@ -753,7 +753,7 @@ export const PublishSuccessPage: React.FC<PublishSuccessPageProps> = ({
           ============================================================ */}
       <footer
         style={{
-          background: '#102B22',
+          background: '#102B3F',
           padding: '24px 20px',
           color: '#FFFFFF',
           textAlign: 'center',

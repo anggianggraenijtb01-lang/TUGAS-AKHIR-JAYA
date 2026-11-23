@@ -193,7 +193,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
       style={{
         background: viewportMode === 'desktop' ? '#FAF8F3' : '#142018',
         minHeight: '100vh',
-        color: '#142217',
+        color: '#102B3F',
         fontFamily: "'Plus Jakarta Sans', sans-serif",
       }}
     >
@@ -303,7 +303,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
             padding: '8px 20px',
             borderRadius: '9999px',
             background: 'linear-gradient(135deg, #F4C744 0%, #E5A92B 100%)',
-            color: '#142217',
+            color: '#102B3F',
             fontWeight: 800,
             fontSize: '0.82rem',
             border: 'none',
@@ -395,7 +395,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                 style={{
                   fontWeight: 800,
                   fontSize: '1.18rem',
-                  color: '#142217',
+                  color: '#102B3F',
                   letterSpacing: '-0.02em',
                 }}
               >
@@ -418,7 +418,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                 <a
                   href="#beranda-toko"
                   style={{
-                    color: '#142217',
+                    color: '#102B3F',
                     fontWeight: 800,
                     textDecoration: 'none',
                     borderBottom: '2.5px solid #E5A92B',
@@ -457,7 +457,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                   borderRadius: '999px',
                   cursor: 'pointer',
                   padding: '8px 14px',
-                  color: '#142217',
+                  color: '#102B3F',
                   position: 'relative',
                   display: 'flex',
                   alignItems: 'center',
@@ -483,7 +483,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                 <span
                   style={{
                     background: '#E5A92B',
-                    color: '#142217',
+                    color: '#102B3F',
                     fontSize: '0.72rem',
                     fontWeight: 800,
                     borderRadius: '999px',
@@ -651,7 +651,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                               padding: '14px 28px',
                               borderRadius: '9999px',
                               background: 'linear-gradient(135deg, #F6CA45 0%, #E09F1F 100%)',
-                              color: '#142217',
+                              color: '#102B3F',
                               fontWeight: 800,
                               fontSize: '0.94rem',
                               border: 'none',
@@ -819,7 +819,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                       style={{
                         fontSize: 'clamp(1.65rem, 2.8vw, 2.25rem)',
                         fontWeight: 800,
-                        color: '#142217',
+                        color: '#102B3F',
                         letterSpacing: '-0.025em',
                         marginBottom: '10px',
                       }}
@@ -872,7 +872,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                             style={{
                               fontSize: '1.15rem',
                               fontWeight: 800,
-                              color: '#142217',
+                              color: '#102B3F',
                               marginBottom: '8px',
                             }}
                           >
@@ -932,7 +932,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                         style={{
                           fontSize: 'clamp(1.65rem, 2.6vw, 2.15rem)',
                           fontWeight: 800,
-                          color: '#142217',
+                          color: '#102B3F',
                           margin: 0,
                           letterSpacing: '-0.025em',
                         }}
@@ -953,7 +953,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                         borderRadius: '999px',
                         background: '#FFFFFF',
                         border: '1px solid #DCD4C4',
-                        color: '#142217',
+                        color: '#102B3F',
                         fontWeight: 700,
                         fontSize: '0.85rem',
                         cursor: 'pointer',
@@ -1042,7 +1042,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                                 bottom: '10px',
                                 right: '12px',
                                 background: 'rgba(255, 255, 255, 0.92)',
-                                color: '#142217',
+                                color: '#102B3F',
                                 fontSize: '0.72rem',
                                 fontWeight: 800,
                                 padding: '3px 9px',
@@ -1070,7 +1070,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                                 style={{
                                   fontSize: '1.08rem',
                                   fontWeight: 800,
-                                  color: '#142217',
+                                  color: '#102B3F',
                                   marginBottom: '6px',
                                 }}
                               >
@@ -1184,7 +1184,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                         style={{
                           fontSize: 'clamp(1.6rem, 2.5vw, 2.1rem)',
                           fontWeight: 800,
-                          color: '#142217',
+                          color: '#102B3F',
                           marginBottom: '8px',
                         }}
                       >
@@ -1230,7 +1230,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                             <p
                               style={{
                                 fontSize: '0.96rem',
-                                color: '#142217',
+                                color: '#102B3F',
                                 lineHeight: 1.6,
                                 margin: 0,
                               }}
@@ -1256,7 +1256,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                               {t.author.charAt(0)}
                             </div>
                             <div>
-                              <div style={{ fontWeight: 800, fontSize: '0.92rem', color: '#142217' }}>
+                              <div style={{ fontWeight: 800, fontSize: '0.92rem', color: '#102B3F' }}>
                                 {t.author}
                               </div>
                               <div style={{ fontSize: '0.78rem', color: '#5A6B5D' }}>{t.role}</div>
@@ -1277,7 +1277,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                       style={{
                         fontSize: 'clamp(1.55rem, 2.4vw, 2rem)',
                         fontWeight: 800,
-                        color: '#142217',
+                        color: '#102B3F',
                         marginBottom: '8px',
                       }}
                     >
@@ -1311,7 +1311,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                               cursor: 'pointer',
                               fontWeight: 700,
                               fontSize: '0.96rem',
-                              color: '#142217',
+                              color: '#102B3F',
                             }}
                           >
                             <span>{faq.q}</span>
@@ -1385,7 +1385,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
                         padding: '13px 28px',
                         borderRadius: '999px',
                         background: 'linear-gradient(135deg, #F6CA45 0%, #E09F1F 100%)',
-                        color: '#142217',
+                        color: '#102B3F',
                         fontWeight: 800,
                         fontSize: '0.92rem',
                         textDecoration: 'none',
@@ -1433,7 +1433,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
             right: '24px',
             zIndex: 95,
             background: 'linear-gradient(135deg, #F6CA45, #E09F1F)',
-            color: '#142217',
+            color: '#102B3F',
             padding: '12px 20px',
             borderRadius: '9999px',
             fontWeight: 800,
@@ -1500,7 +1500,7 @@ Mohon info ketersediaan stok, total ongkir, dan nomor rekening pembayaran ya. Te
               maxWidth: '440px',
               height: '100%',
               background: '#FFFFFF',
-              color: '#142217',
+              color: '#102B3F',
               display: 'flex',
               flexDirection: 'column',
               boxShadow: '-12px 0 40px rgba(0, 0, 0, 0.25)',

@@ -437,7 +437,7 @@ export const App: React.FC = () => {
       style={{
         position: 'relative',
         minHeight: '100vh',
-        background: isLightView ? '#FAF7F2' : 'var(--bg-dark)',
+        background: isLightView ? '#F8FAF7' : '#102B3F',
       }}
     >
       {/* Background Ambient Glow Lights (only on dark views) */}

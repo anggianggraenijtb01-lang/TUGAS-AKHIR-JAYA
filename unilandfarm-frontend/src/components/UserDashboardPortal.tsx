@@ -214,11 +214,11 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
           <div
             onClick={() => onOpenPublicView(page.slug)}
             style={{
-              height: '132px',
-              borderRadius: '15px',
+              height: '136px',
+              borderRadius: '16px',
               overflow: 'hidden',
               position: 'relative',
-              background: 'linear-gradient(135deg, #0d2818 0%, #1b4d2e 100%)',
+              background: 'linear-gradient(135deg, #102B3F 0%, #183C57 100%)',
               cursor: 'pointer',
             }}
           >
@@ -238,7 +238,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, rgba(10,20,14,0.35) 0%, rgba(10,20,14,0.65) 100%)',
+                background: 'linear-gradient(180deg, rgba(16,43,63,0.2) 0%, rgba(16,43,63,0.75) 100%)',
               }}
             />
 
@@ -259,7 +259,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 style={{
                   background: 'rgba(255, 255, 255, 0.92)',
                   backdropFilter: 'blur(8px)',
-                  color: '#0b1710',
+                  color: '#102B3F',
                   fontSize: '0.7rem',
                   fontWeight: 600,
                   padding: '4px 10px',
@@ -275,11 +275,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
 
               <span
                 style={{
-                  background: isPublished ? 'rgba(22, 163, 74, 0.92)' : 'rgba(245, 158, 11, 0.92)',
-                  backdropFilter: 'blur(8px)',
-                  color: '#ffffff',
-                  fontSize: '0.66rem',
-                  fontWeight: 700,
+                  background: isPublished ? '#C6F36B' : 'rgba(245, 158, 11, 0.92)',
+                  color: isPublished ? '#102B3F' : '#ffffff',
+                  fontSize: '0.68rem',
+                  fontWeight: 800,
                   padding: '3px 9px',
                   borderRadius: '999px',
                   display: 'inline-flex',
@@ -292,7 +291,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                     width: '5px',
                     height: '5px',
                     borderRadius: '50%',
-                    background: '#ffffff',
+                    background: isPublished ? '#102B3F' : '#ffffff',
                   }}
                 />
                 {isPublished ? 'Live' : 'Draft'}
@@ -315,14 +314,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
             >
               <span
                 style={{
-                  background: 'rgba(11, 23, 16, 0.65)',
+                  background: 'rgba(16, 43, 63, 0.8)',
                   backdropFilter: 'blur(6px)',
-                  padding: '2px 8px',
+                  padding: '3px 8px',
                   borderRadius: '6px',
-                  fontWeight: 500,
+                  fontWeight: 600,
+                  color: '#C6F36B',
                 }}
               >
-                {page.category || 'UMKM Nusantara'}
+                {page.category || 'Website Mikro'}
               </span>
               <span style={{ fontWeight: 600, opacity: 0.9 }}>
                 {(page.sections || []).length} Blok • {page.viewCount || 0} dilihat
@@ -336,8 +336,8 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontSize: '1.04rem',
-                fontWeight: 600,
-                color: '#0b1710',
+                fontWeight: 700,
+                color: '#102B3F',
                 margin: '0 0 4px',
                 letterSpacing: '-0.02em',
                 lineHeight: 1.25,
@@ -349,7 +349,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
             <p
               style={{
                 fontSize: '0.8rem',
-                color: '#5b6960',
+                color: '#557184',
                 margin: 0,
                 lineHeight: 1.45,
                 display: '-webkit-box',
@@ -358,7 +358,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 overflow: 'hidden',
               }}
             >
-              {page.description || 'Website profil dan katalog produk resmi UMKM.'}
+              {page.description || 'Website mikro dan kehadiran digital terpadu.'}
             </p>
           </div>
         </div>
@@ -374,7 +374,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
         >
           <button
             onClick={() => onOpenCms(page)}
-            className="eloq-btn-grey"
+            className="btn-navy"
             style={{
               flex: 1,
               padding: '8px 14px',
@@ -388,7 +388,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
 
           <button
             onClick={() => onOpenPublicView(page.slug)}
-            className="eloq-btn-outline"
+            className="btn-outline-navy"
             style={{
               padding: '8px 13px',
               fontSize: '0.8rem',
@@ -438,36 +438,39 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
       {/* ============================================================
           SIDEBAR NAVIGATION (Modern Floating Deep Forest Olive Studio)
           ============================================================ */}
+      {/* ============================================================
+          SIDEBAR NAVIGATION (Deep Navy & Fresh Lime SaaS Layout)
+          ============================================================ */}
       <aside
         style={{
-          width: '248px',
-          background: 'linear-gradient(165deg, #18261a 0%, #233726 55%, #2b422d 100%)',
-          color: '#E0EAE2',
+          width: '252px',
+          background: 'linear-gradient(180deg, #102B3F 0%, #0A1C2A 100%)',
+          color: '#F8FAF7',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRight: '1px solid rgba(85, 113, 132, 0.2)',
           position: 'sticky',
           top: 0,
           height: '100vh',
           boxSizing: 'border-box',
-          padding: '22px 16px',
+          padding: '24px 16px',
           flexShrink: 0,
           zIndex: 40,
-          boxShadow: '8px 0 32px rgba(24, 38, 26, 0.12)',
+          boxShadow: '8px 0 32px rgba(16, 43, 63, 0.18)',
         }}
       >
         <div>
           {/* Logo UNI-LANDFARM */}
           <div
-            style={{ padding: '0 8px', marginBottom: '26px', cursor: 'pointer' }}
+            style={{ padding: '0 8px', marginBottom: '28px', cursor: 'pointer' }}
             onClick={onBackToHome}
             title="Kembali ke Beranda Publik"
           >
             <UniLandLogo size="md" variant="dark" />
           </div>
 
-          {/* 4 Clean Sidebar Navigation Items */}
+          {/* Clean Sidebar Navigation Items */}
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {sidebarNavItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -492,13 +495,11 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                     width: '100%',
                     padding: '11px 14px',
                     borderRadius: '14px',
-                    border: isActive ? '1px solid rgba(255, 255, 255, 0.22)' : '1px solid transparent',
-                    background: isActive
-                      ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                      : 'transparent',
-                    boxShadow: isActive ? '0 8px 20px rgba(24, 38, 26, 0.45)' : 'none',
-                    color: isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.72)',
-                    fontWeight: isActive ? 600 : 500,
+                    border: isActive ? '1px solid rgba(198, 243, 107, 0.45)' : '1px solid transparent',
+                    background: isActive ? '#183C57' : 'transparent',
+                    boxShadow: isActive ? '0 8px 20px rgba(16, 43, 63, 0.35)' : 'none',
+                    color: isActive ? '#FFFFFF' : 'rgba(248, 250, 247, 0.72)',
+                    fontWeight: isActive ? 700 : 500,
                     fontSize: '0.88rem',
                     cursor: 'pointer',
                     textAlign: 'left',
@@ -513,12 +514,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   onMouseLeave={(e) => {
                     if (!isActive) {
                       e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = 'rgba(255, 255, 255, 0.72)';
+                      e.currentTarget.style.color = 'rgba(248, 250, 247, 0.72)';
                     }
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
-                    <span style={{ color: isActive ? '#d3e8bc' : 'rgba(255,255,255,0.65)', display: 'flex' }}>
+                    <span style={{ color: isActive ? '#C6F36B' : 'rgba(248,250,247,0.65)', display: 'flex' }}>
                       {item.icon}
                     </span>
                     <span>{item.label}</span>
@@ -526,10 +527,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   {item.badge !== undefined && item.badge > 0 && (
                     <span
                       style={{
-                        background: isActive ? 'rgba(255, 255, 255, 0.22)' : 'rgba(163, 194, 133, 0.18)',
-                        color: isActive ? '#FFFFFF' : '#d3e8bc',
+                        background: isActive ? '#C6F36B' : 'rgba(198, 243, 107, 0.2)',
+                        color: isActive ? '#102B3F' : '#C6F36B',
                         fontSize: '0.7rem',
-                        fontWeight: 700,
+                        fontWeight: 800,
                         padding: '2px 8px',
                         borderRadius: '9999px',
                       }}
@@ -546,34 +547,37 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
         {/* Bottom Studio Card inside Sidebar */}
         <div
           style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            background: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '16px',
-            padding: '14px',
+            padding: '16px',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-            <span className="eloq-pulse-dot" />
-            <span style={{ fontSize: '0.74rem', fontWeight: 600, color: '#ffffff' }}>
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: '#C6F36B',
+                boxShadow: '0 0 10px #C6F36B',
+              }}
+            />
+            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#FFFFFF' }}>
               Agentic AI Studio
             </span>
           </div>
-          <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.68)', margin: '0 0 10px', lineHeight: 1.4 }}>
-            Buat website atau jadwal promo otomatis dengan AI.
+          <p style={{ fontSize: '0.74rem', color: 'rgba(248,250,247,0.68)', margin: '0 0 12px', lineHeight: 1.45 }}>
+            Buat website mikro atau rancang struktur konten baru dalam hitungan detik.
           </p>
           <button
             onClick={() => onCreateNewWebsite()}
+            className="btn-lime"
             style={{
               width: '100%',
-              padding: '8px 10px',
-              borderRadius: '999px',
-              border: '1px solid rgba(255,255,255,0.22)',
-              background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-              color: '#ffffff',
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(24, 38, 26, 0.35)',
+              padding: '8px 12px',
+              fontSize: '0.78rem',
+              boxShadow: '0 4px 14px rgba(198, 243, 107, 0.4)',
             }}
           >
             + Website AI Baru
@@ -584,56 +588,59 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
       {/* ============================================================
           MAIN CONTENT AREA (Compact & Flush Footer Layout)
           ============================================================ */}
-      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, boxSizing: 'border-box' }}>
-        <div style={{ flex: 1, padding: '22px 28px 40px', maxWidth: '1400px', width: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, boxSizing: 'border-box', backgroundColor: '#F8FAF7' }}>
+        <div style={{ flex: 1, padding: '24px 32px 40px', maxWidth: '1400px', width: '100%', margin: '0 auto', boxSizing: 'border-box' }}>
         {/* Top Header Bar */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: '20px',
+            marginBottom: '24px',
             flexWrap: 'wrap',
-            gap: '14px',
+            gap: '16px',
+            paddingBottom: '16px',
+            borderBottom: '1px solid rgba(85, 113, 132, 0.14)',
           }}
         >
           <div>
-            <h1 style={{ fontSize: '1.4rem', fontWeight: 800, margin: 0, color: '#1c2d1f', letterSpacing: '-0.02em' }}>
-              {activeTab === 'dashboard' && 'Dashboard UMKM'}
-              {activeTab === 'website-saya' && 'Kelola Website Saya'}
+            <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.45rem', fontWeight: 800, margin: 0, color: '#102B3F', letterSpacing: '-0.025em' }}>
+              {activeTab === 'dashboard' && 'Dashboard Pengguna'}
+              {activeTab === 'website-saya' && 'Kelola Website Mikro'}
               {activeTab === 'template' && 'Katalog Template'}
-              {activeTab === 'token' && 'Token & Top-Up'}
+              {activeTab === 'token' && 'Saldo AI & Top-Up'}
               {activeTab === 'notifikasi' && 'Notifikasi Sistem'}
               {activeTab === 'profil' && 'Profil & Pengaturan Akun'}
             </h1>
-            <p style={{ margin: '3px 0 0', color: '#5d6759', fontSize: '0.82rem' }}>
+            <p style={{ margin: '4px 0 0', color: '#557184', fontSize: '0.84rem' }}>
               Selamat datang kembali, <strong>{currentUser.name}</strong> •{' '}
-              {currentUser.businessName || 'Usaha Digital UMKM'}
+              {currentUser.businessName || 'Kehadiran Digital'}
             </p>
           </div>
 
           {/* Right Header: Notification Badge & Profile Pill with Dropdown */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', position: 'relative' }} ref={profileMenuRef}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }} ref={profileMenuRef}>
             {/* Notification Button */}
             <button
               onClick={() => setActiveTab('notifikasi')}
               title="Buka Notifikasi"
               style={{
-                width: '36px',
-                height: '36px',
+                width: '38px',
+                height: '38px',
                 borderRadius: '50%',
                 background: '#FFFFFF',
-                border: '1px solid #D5CDB8',
+                border: '1px solid rgba(85, 113, 132, 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 position: 'relative',
                 cursor: 'pointer',
-                color: '#102B22',
+                color: '#102B3F',
                 transition: 'all 0.15s ease',
+                boxShadow: '0 2px 8px rgba(16, 43, 63, 0.04)',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#102B22')}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#D5CDB8')}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#102B3F')}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(85, 113, 132, 0.2)')}
             >
               <Bell size={16} />
               {unreadNotifCount > 0 && (
@@ -641,12 +648,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   style={{
                     position: 'absolute',
                     top: '7px',
-                    right: '8px',
-                    width: '7px',
-                    height: '7px',
+                    right: '7px',
+                    width: '8px',
+                    height: '8px',
                     borderRadius: '50%',
-                    background: '#F4C744',
-                    border: '1.5px solid #FFFFFF',
+                    background: '#C6F36B',
+                    border: '1.5px solid #102B3F',
                   }}
                 />
               )}
@@ -661,24 +668,24 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 alignItems: 'center',
                 gap: '8px',
                 background: '#FFFFFF',
-                border: isProfileMenuOpen ? '1px solid #102B22' : '1px solid #D5CDB8',
+                border: isProfileMenuOpen ? '1.5px solid #102B3F' : '1px solid rgba(85, 113, 132, 0.2)',
                 borderRadius: '9999px',
-                padding: '3px 12px 3px 5px',
+                padding: '4px 14px 4px 5px',
                 cursor: 'pointer',
                 userSelect: 'none',
-                boxShadow: isProfileMenuOpen ? '0 2px 8px rgba(16, 43, 34, 0.1)' : 'none',
+                boxShadow: isProfileMenuOpen ? '0 4px 14px rgba(16, 43, 63, 0.1)' : '0 2px 6px rgba(16, 43, 63, 0.04)',
                 transition: 'all 0.15s ease',
               }}
             >
               <div
                 style={{
-                  width: '28px',
-                  height: '28px',
+                  width: '30px',
+                  height: '30px',
                   borderRadius: '50%',
-                  background: '#102B22',
-                  color: '#F4C744',
+                  background: '#102B3F',
+                  color: '#C6F36B',
                   fontWeight: 800,
-                  fontSize: '0.74rem',
+                  fontSize: '0.78rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -686,12 +693,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               >
                 {(currentUser.name || 'U').substring(0, 1).toUpperCase()}
               </div>
-              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#102B22' }}>
+              <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#102B3F' }}>
                 {currentUser.name}
               </span>
               <ChevronDown
                 size={13}
-                color="#687A4D"
+                color="#557184"
                 style={{
                   transform: isProfileMenuOpen ? 'rotate(180deg)' : 'rotate(0)',
                   transition: 'transform 0.2s ease',
@@ -706,22 +713,22 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   position: 'absolute',
                   top: 'calc(100% + 8px)',
                   right: 0,
-                  width: '250px',
+                  width: '260px',
                   background: '#FFFFFF',
-                  borderRadius: '14px',
-                  border: '1px solid rgba(16, 43, 34, 0.12)',
-                  boxShadow: '0 12px 32px rgba(16, 43, 34, 0.12), 0 2px 6px rgba(0,0,0,0.04)',
-                  padding: '8px',
+                  borderRadius: '16px',
+                  border: '1px solid rgba(85, 113, 132, 0.16)',
+                  boxShadow: '0 16px 40px rgba(16, 43, 63, 0.12), 0 2px 6px rgba(0,0,0,0.04)',
+                  padding: '10px',
                   zIndex: 100,
                   animation: 'fadeIn 0.15s ease',
                 }}
               >
                 {/* User info mini header */}
-                <div style={{ padding: '8px 10px', borderBottom: '1px solid #F0ECE1' }}>
-                  <div style={{ fontSize: '0.84rem', fontWeight: 800, color: '#102B22' }}>
+                <div style={{ padding: '8px 10px', borderBottom: '1px solid rgba(85, 113, 132, 0.12)' }}>
+                  <div style={{ fontSize: '0.84rem', fontWeight: 800, color: '#102B3F' }}>
                     {currentUser.name}
                   </div>
-                  <div style={{ fontSize: '0.72rem', color: '#687A4D', marginTop: '2px' }}>
+                  <div style={{ fontSize: '0.72rem', color: '#557184', marginTop: '2px' }}>
                     {currentUser.email || currentUser.phoneNumber || 'Akun UMKM Terverifikasi'}
                   </div>
                 </div>
@@ -729,21 +736,21 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 {/* Token Balance inside Dropdown */}
                 <div
                   style={{
-                    background: '#FAF8F3',
+                    background: '#F8FAF7',
                     borderRadius: '10px',
                     padding: '8px 10px',
                     margin: '8px 0',
-                    border: '1px solid #EDE8DA',
+                    border: '1px solid rgba(85, 113, 132, 0.14)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Coins size={15} color="#B45309" />
+                    <Coins size={15} color="#102B3F" />
                     <div>
-                      <div style={{ fontSize: '0.64rem', color: '#687A4D', fontWeight: 600 }}>Saldo Token</div>
-                      <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#102B22' }}>
+                      <div style={{ fontSize: '0.64rem', color: '#557184', fontWeight: 600 }}>Saldo Token</div>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#102B3F' }}>
                         {tokenBalance} Token
                       </div>
                     </div>
@@ -754,8 +761,8 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                       setActiveTab('token');
                     }}
                     style={{
-                      background: '#F4C744',
-                      color: '#102B22',
+                      background: '#C6F36B',
+                      color: '#102B3F',
                       border: 'none',
                       borderRadius: '6px',
                       padding: '3px 8px',
@@ -924,13 +931,13 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               </div>
             )}
 
-            {/* Modern Studio Bento Metric Cards */}
+            {/* Modern SaaS Bento Metric Cards */}
             <div
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                gap: '16px',
-                marginBottom: '26px',
+                gap: '18px',
+                marginBottom: '28px',
               }}
             >
               {/* Card 1: Total Website */}
@@ -938,103 +945,96 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 style={{
                   background: '#FFFFFF',
                   borderRadius: '22px',
-                  padding: '22px 24px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  boxShadow: '0 10px 28px rgba(24, 38, 26, 0.04)',
+                  padding: '24px 26px',
+                  border: '1px solid rgba(85, 113, 132, 0.14)',
+                  boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
+                  transition: 'all 0.25s ease',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <span style={{ fontSize: '0.74rem', color: '#5d6759', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Total Website
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                  <span style={{ fontSize: '0.74rem', color: '#557184', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Total Website Mikro
                   </span>
                   <div
                     style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '38px',
+                      height: '38px',
                       borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #eef4eb 0%, #dce8d4 100%)',
+                      background: '#EAF7D5',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#233726',
+                      color: '#102B3F',
                     }}
                   >
-                    <Globe size={17} />
+                    <Globe size={18} />
                   </div>
                 </div>
-                <div style={{ fontSize: '2.1rem', fontWeight: 600, color: '#1c2d1f', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#102B3F', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
                   {totalWebsites}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#5d6759', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ color: '#3d5a37', fontWeight: 600 }}>● {publishedCount} Live</span>
+                <div style={{ fontSize: '0.78rem', color: '#557184', marginTop: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ color: '#10B981', fontWeight: 700 }}>● {publishedCount} Live</span>
                   <span>•</span>
                   <span>{draftCount} Draft</span>
                 </div>
               </div>
 
-              {/* Card 2: Saldo Token AI (Highlighted Olive-Forest Studio Card) */}
+              {/* Card 2: Saldo Token AI (Highlighted Deep Navy & Lime Studio Card) */}
               <div
                 style={{
-                  background: 'linear-gradient(145deg, #1d2e20 0%, #2b442f 52%, #48663b 100%)',
-                  color: '#FFFFFF',
+                  background: 'linear-gradient(135deg, #102B3F 0%, #183C57 100%)',
+                  color: '#F8FAF7',
                   borderRadius: '22px',
-                  padding: '22px 24px',
-                  border: '1px solid rgba(163, 194, 133, 0.28)',
-                  boxShadow: '0 16px 36px -8px rgba(24, 38, 26, 0.38)',
+                  padding: '24px 26px',
+                  border: '1px solid rgba(198, 243, 107, 0.35)',
+                  boxShadow: '0 16px 36px -8px rgba(16, 43, 63, 0.28)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <span style={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.75)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                  <span style={{ fontSize: '0.74rem', color: '#C6F36B', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     Saldo Token AI
                   </span>
                   <div
                     style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '38px',
+                      height: '38px',
                       borderRadius: '12px',
-                      background: 'rgba(255, 255, 255, 0.14)',
+                      background: 'rgba(255, 255, 255, 0.12)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#fde047',
+                      color: '#C6F36B',
                     }}
                   >
-                    <Coins size={17} />
+                    <Coins size={18} />
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                  <div style={{ fontSize: '2.1rem', fontWeight: 600, color: '#FFFFFF', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                  <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
                     {tokenBalance}{' '}
-                    <span style={{ fontSize: '0.84rem', fontWeight: 500, color: 'rgba(255,255,255,0.72)' }}>Token</span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'rgba(248, 250, 247, 0.72)' }}>Token</span>
                   </div>
                   <button
                     onClick={() => setActiveTab('token')}
+                    className="btn-lime"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.94)',
-                      color: '#233726',
-                      border: 'none',
-                      borderRadius: '999px',
                       padding: '6px 14px',
-                      fontSize: '0.76rem',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                      fontSize: '0.78rem',
+                      boxShadow: '0 4px 12px rgba(198, 243, 107, 0.4)',
                     }}
                   >
                     Top-Up ↗
                   </button>
                 </div>
-                <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.72)', marginTop: '8px' }}>
-                  Siap digunakan untuk asisten AI &amp; CMS
+                <div style={{ fontSize: '0.76rem', color: 'rgba(248, 250, 247, 0.7)', marginTop: '10px' }}>
+                  Siap digunakan untuk Agentic AI CMS &amp; copywriter
                 </div>
               </div>
 
@@ -1043,59 +1043,60 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 style={{
                   background: '#FFFFFF',
                   borderRadius: '22px',
-                  padding: '22px 24px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  boxShadow: '0 10px 28px rgba(24, 38, 26, 0.04)',
+                  padding: '24px 26px',
+                  border: '1px solid rgba(85, 113, 132, 0.14)',
+                  boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
+                  transition: 'all 0.25s ease',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <span style={{ fontSize: '0.74rem', color: '#5d6759', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                  <span style={{ fontSize: '0.74rem', color: '#557184', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     Pemberitahuan
                   </span>
                   <div
                     style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '38px',
+                      height: '38px',
                       borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #eef4eb 0%, #dce8d4 100%)',
+                      background: '#F0F5EE',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#233726',
+                      color: '#102B3F',
                     }}
                   >
-                    <Bell size={17} />
+                    <Bell size={18} />
                   </div>
                 </div>
-                <div style={{ fontSize: '2.1rem', fontWeight: 600, color: '#1c2d1f', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
+                <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#102B3F', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
                   {unreadNotifCount}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: '#5d6759', marginTop: '8px' }}>
-                  {unreadNotifCount > 0 ? 'Pesan belum dibaca' : 'Semua pesan telah dibaca'}
+                <div style={{ fontSize: '0.78rem', color: '#557184', marginTop: '10px' }}>
+                  {unreadNotifCount > 0 ? 'Pesan baru belum dibaca' : 'Semua pesan telah dibaca'}
                 </div>
               </div>
             </div>
 
             {/* Quick Actions & Recent Websites */}
-            <div style={{ marginBottom: '28px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
-                <div className="eloq-dot-label">
-                  <span className="eloq-dot" />
-                  <h2 style={{ fontSize: '1.15rem', fontWeight: 600, color: '#0b1710', margin: 0, letterSpacing: '-0.02em' }}>
-                    Daftar Website Usaha Anda
+            <div style={{ marginBottom: '32px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#C6F36B', boxShadow: '0 0 10px #C6F36B' }} />
+                  <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 700, color: '#102B3F', margin: 0, letterSpacing: '-0.02em' }}>
+                    Daftar Website Mikro Anda
                   </h2>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   {pages.length > 0 && (
                     <button
                       onClick={() => setActiveTab('website-saya')}
-                      className="eloq-btn-outline"
+                      className="btn-outline-navy"
                       style={{
-                        padding: '7px 14px',
-                        fontSize: '0.8rem',
+                        padding: '7px 15px',
+                        fontSize: '0.82rem',
                       }}
                     >
                       Lihat Semua ({pages.length}) →
@@ -1103,10 +1104,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   )}
                   <button
                     onClick={() => onCreateNewWebsite()}
-                    className="eloq-btn-grey"
+                    className="btn-lime"
                     style={{
-                      padding: '8px 16px',
-                      fontSize: '0.82rem',
+                      padding: '8px 18px',
+                      fontSize: '0.84rem',
                     }}
                   >
                     <Plus size={15} />
@@ -1141,15 +1142,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   >
                     <Globe size={24} />
                   </div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
                     Belum Ada Website yang Dibuat
                   </h3>
-                  <p style={{ fontSize: '0.82rem', color: '#62685E', margin: '0 0 16px', maxWidth: '380px', marginInline: 'auto' }}>
-                    Mulai perkenalkan produk UMKM Anda dengan membuat website landing page instan menggunakan template siap pakai.
+                  <p style={{ fontSize: '0.82rem', color: '#557184', margin: '0 0 16px', maxWidth: '380px', marginInline: 'auto' }}>
+                    Mulai perkenalkan usaha atau profil Anda dengan membuat website mikro instan menggunakan template siap pakai.
                   </p>
                   <button
                     onClick={() => setActiveTab('template')}
-                    className="eloq-btn-grey"
+                    className="btn-lime"
                     style={{
                       padding: '10px 18px',
                       fontSize: '0.82rem',
@@ -1190,10 +1191,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               }}
             >
               <div>
-                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1c2d1f', margin: 0 }}>
+                <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
                   Semua Website Anda ({pages.length})
                 </h2>
-                <p style={{ fontSize: '0.8rem', color: '#5d6759', margin: '3px 0 0' }}>
+                <p style={{ fontSize: '0.8rem', color: '#557184', margin: '3px 0 0' }}>
                   Kelola, edit konten, atau pratinjau landing page produk toko Anda.
                 </p>
               </div>
@@ -1223,18 +1224,19 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               }}
             >
               {/* Status Filter Pills */}
-              <div style={{ display: 'flex', gap: '6px' }}>
+              <div style={{ display: 'flex', gap: '8px' }}>
                 <button
                   onClick={() => setWebsiteFilter('all')}
                   style={{
-                    background: websiteFilter === 'all' ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)' : '#FFFFFF',
-                    color: websiteFilter === 'all' ? '#FFFFFF' : '#304432',
-                    border: websiteFilter === 'all' ? 'none' : '1px solid #D5CDB8',
+                    background: websiteFilter === 'all' ? '#102B3F' : '#FFFFFF',
+                    color: websiteFilter === 'all' ? '#F8FAF7' : '#557184',
+                    border: websiteFilter === 'all' ? '1px solid #102B3F' : '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '999px',
-                    padding: '6px 14px',
-                    fontSize: '0.78rem',
+                    padding: '6px 16px',
+                    fontSize: '0.8rem',
                     fontWeight: websiteFilter === 'all' ? 700 : 500,
                     cursor: 'pointer',
+                    transition: 'all 0.2s ease',
                   }}
                 >
                   Semua ({totalWebsites})
@@ -1242,14 +1244,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 <button
                   onClick={() => setWebsiteFilter('published')}
                   style={{
-                    background: websiteFilter === 'published' ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)' : '#FFFFFF',
-                    color: websiteFilter === 'published' ? '#FFFFFF' : '#304432',
-                    border: websiteFilter === 'published' ? 'none' : '1px solid #D5CDB8',
+                    background: websiteFilter === 'published' ? '#102B3F' : '#FFFFFF',
+                    color: websiteFilter === 'published' ? '#C6F36B' : '#557184',
+                    border: websiteFilter === 'published' ? '1px solid #102B3F' : '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '999px',
-                    padding: '6px 14px',
-                    fontSize: '0.78rem',
+                    padding: '6px 16px',
+                    fontSize: '0.8rem',
                     fontWeight: websiteFilter === 'published' ? 700 : 500,
                     cursor: 'pointer',
+                    transition: 'all 0.2s ease',
                   }}
                 >
                   Terpublikasi ({publishedCount})
@@ -1257,14 +1260,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 <button
                   onClick={() => setWebsiteFilter('draft')}
                   style={{
-                    background: websiteFilter === 'draft' ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)' : '#FFFFFF',
-                    color: websiteFilter === 'draft' ? '#FFFFFF' : '#304432',
-                    border: websiteFilter === 'draft' ? 'none' : '1px solid #D5CDB8',
+                    background: websiteFilter === 'draft' ? '#102B3F' : '#FFFFFF',
+                    color: websiteFilter === 'draft' ? '#F8FAF7' : '#557184',
+                    border: websiteFilter === 'draft' ? '1px solid #102B3F' : '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '999px',
-                    padding: '6px 14px',
-                    fontSize: '0.78rem',
+                    padding: '6px 16px',
+                    fontSize: '0.8rem',
                     fontWeight: websiteFilter === 'draft' ? 700 : 500,
                     cursor: 'pointer',
+                    transition: 'all 0.2s ease',
                   }}
                 >
                   Draft ({draftCount})
@@ -1276,15 +1280,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
+                  gap: '8px',
                   background: '#FFFFFF',
-                  border: '1px solid #D5CDB8',
-                  borderRadius: '8px',
-                  padding: '5px 10px',
-                  width: '220px',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
+                  borderRadius: '12px',
+                  padding: '7px 14px',
+                  width: '240px',
                 }}
               >
-                <Search size={14} color="#687A4D" />
+                <Search size={15} color="#557184" />
                 <input
                   type="text"
                   placeholder="Cari website..."
@@ -1293,10 +1297,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   style={{
                     border: 'none',
                     outline: 'none',
-                    fontSize: '0.78rem',
+                    fontSize: '0.82rem',
                     width: '100%',
                     background: 'transparent',
-                    color: '#102B22',
+                    color: '#102B3F',
                   }}
                 />
               </div>
@@ -1336,12 +1340,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
             ============================================================ */}
         {activeTab === 'template' && (
           <div>
-            <div style={{ marginBottom: '18px' }}>
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
-                Katalog Template Website
+            <div style={{ marginBottom: '22px' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
+                Katalog Template Website Mikro
               </h2>
-              <p style={{ fontSize: '0.84rem', color: '#687A4D', margin: '4px 0 0' }}>
-                Pilih template desain yang sesuai dengan kategori bisnis Anda.
+              <p style={{ fontSize: '0.85rem', color: '#557184', margin: '4px 0 0' }}>
+                Pilih template profesional yang telah dioptimalkan untuk persona dan industri Anda.
               </p>
             </div>
 
@@ -1352,14 +1356,15 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   key={cat}
                   onClick={() => setSelectedTemplateCategory(cat)}
                   style={{
-                    background: selectedTemplateCategory === cat ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)' : '#FFFFFF',
-                    color: selectedTemplateCategory === cat ? '#FFFFFF' : '#304432',
-                    border: selectedTemplateCategory === cat ? 'none' : '1px solid #D5CDB8',
+                    background: selectedTemplateCategory === cat ? '#102B3F' : '#FFFFFF',
+                    color: selectedTemplateCategory === cat ? '#F8FAF7' : '#557184',
+                    border: selectedTemplateCategory === cat ? '1px solid #102B3F' : '1px solid rgba(85, 113, 132, 0.2)',
                     borderRadius: '999px',
-                    padding: '8px 16px',
+                    padding: '7px 18px',
                     fontSize: '0.82rem',
                     fontWeight: selectedTemplateCategory === cat ? 700 : 500,
                     cursor: 'pointer',
+                    transition: 'all 0.2s ease',
                   }}
                 >
                   {cat}
@@ -1376,11 +1381,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                     background: '#FFFFFF',
                     borderRadius: '20px',
                     overflow: 'hidden',
-                    border: '1px solid rgba(35, 55, 38, 0.1)',
-                    boxShadow: '0 8px 24px rgba(24, 38, 26, 0.04)',
+                    border: '1px solid rgba(85, 113, 132, 0.16)',
+                    boxShadow: '0 8px 24px rgba(16, 43, 63, 0.04)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
+                    transition: 'all 0.3s ease',
                   }}
                 >
                   <div>
@@ -1395,11 +1401,11 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                         style={{
                           width: '100%',
                           height: '160px',
-                          background: '#E5E0D0',
+                          background: '#F0F5EE',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          color: '#5d6759',
+                          color: '#557184',
                         }}
                       >
                         <Layout size={36} />
@@ -1409,20 +1415,21 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                     <div style={{ padding: '18px 20px 10px' }}>
                       <span
                         style={{
-                          background: '#eef4eb',
-                          color: '#3d5a37',
-                          fontSize: '0.68rem',
+                          background: '#EAF7D5',
+                          color: '#102B3F',
+                          fontSize: '0.72rem',
                           fontWeight: 700,
-                          padding: '3px 9px',
+                          padding: '3px 10px',
                           borderRadius: '999px',
+                          border: '1px solid rgba(198, 243, 107, 0.5)',
                         }}
                       >
                         {tpl.category}
                       </span>
-                      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#1c2d1f', margin: '8px 0 4px' }}>
+                      <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.08rem', fontWeight: 700, color: '#102B3F', margin: '10px 0 4px' }}>
                         {tpl.name}
                       </h3>
-                      <p style={{ fontSize: '0.8rem', color: '#5d6759', margin: 0, lineHeight: 1.45 }}>
+                      <p style={{ fontSize: '0.82rem', color: '#557184', margin: 0, lineHeight: 1.45 }}>
                         {tpl.description}
                       </p>
                     </div>
@@ -1431,7 +1438,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   <div style={{ padding: '12px 20px 18px' }}>
                     <button
                       onClick={() => onCreateNewWebsite(tpl)}
-                      className="eloq-btn-grey"
+                      className="btn-lime"
                       style={{
                         width: '100%',
                         padding: '10px',
@@ -1525,14 +1532,14 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
         </div>
 
         {/* ============================================================
-            DASHBOARD FOOTER (Unified Compact Olive-Forest Footer)
+            DASHBOARD FOOTER (Unified Deep Navy SaaS Footer)
             ============================================================ */}
         <footer
           style={{
             marginTop: 'auto',
-            background: 'linear-gradient(160deg, #1c2d1f 0%, #142217 60%, #0d170f 100%)',
+            background: 'linear-gradient(180deg, #102B3F 0%, #0A1C2A 100%)',
             borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            padding: '18px 28px',
+            padding: '20px 28px',
             color: '#FFFFFF',
           }}
         >
@@ -1576,13 +1583,13 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                 onClick={() => setActiveTab('token')}
                 style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
               >
-                Token &amp; Top-Up
+                Token &amp; AI
               </button>
               <a
                 href="https://wa.me/6281234567890?text=Halo%20Bantuan%20UNI-LANDFARM"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: '#d3e8bc', textDecoration: 'none', fontWeight: 600 }}
+                style={{ color: '#C6F36B', textDecoration: 'none', fontWeight: 600 }}
               >
                 Bantuan WhatsApp ↗
               </a>
@@ -1601,7 +1608,8 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.5)',
+            background: 'rgba(16, 43, 63, 0.6)',
+            backdropFilter: 'blur(4px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -1618,7 +1626,7 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               padding: '28px',
               maxWidth: '400px',
               width: '100%',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+              boxShadow: '0 20px 40px rgba(16, 43, 63, 0.25)',
               textAlign: 'center',
             }}
           >
@@ -1638,10 +1646,10 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
               <LogOut size={24} />
             </div>
 
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
               Keluar dari Akun?
             </h3>
-            <p style={{ fontSize: '0.84rem', color: '#62685E', margin: '0 0 20px', lineHeight: 1.45 }}>
+            <p style={{ fontSize: '0.84rem', color: '#557184', margin: '0 0 20px', lineHeight: 1.45 }}>
               Apakah Anda yakin ingin mengakhiri sesi kerja? Sesi Anda akan ditutup dengan aman.
             </p>
 
@@ -1652,12 +1660,12 @@ export const UserDashboardPortal: React.FC<UserDashboardPortalProps> = ({
                   flex: 1,
                   padding: '10px',
                   borderRadius: '8px',
-                  border: '1px solid #D5CDB8',
+                  border: '1px solid rgba(85, 113, 132, 0.2)',
                   background: '#FFFFFF',
                   fontWeight: 700,
                   fontSize: '0.84rem',
                   cursor: 'pointer',
-                  color: '#202720',
+                  color: '#102B3F',
                 }}
               >
                 Batal

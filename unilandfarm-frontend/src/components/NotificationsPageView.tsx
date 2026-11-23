@@ -96,7 +96,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B22', margin: 0 }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#102B3F', margin: 0 }}>
             Pusat Notifikasi
           </h1>
           <p style={{ fontSize: '0.88rem', color: '#687A4D', margin: '4px 0 0' }}>
@@ -109,12 +109,12 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
             onClick={onMarkAllRead}
             style={{
               background: '#FFFFFF',
-              border: '1px solid #D5CDB8',
+              border: '1px solid rgba(85, 113, 132, 0.2)',
               borderRadius: '8px',
               padding: '8px 16px',
               fontSize: '0.82rem',
               fontWeight: 700,
-              color: '#102B22',
+              color: '#102B3F',
               cursor: 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
@@ -134,7 +134,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
           background: '#FFFFFF',
           borderRadius: '14px',
           padding: '12px 18px',
-          border: '1px solid #D5CDB8',
+          border: '1px solid rgba(85, 113, 132, 0.2)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -154,7 +154,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
               key={tab.id}
               onClick={() => setSelectedCategory(tab.id)}
               style={{
-                background: selectedCategory === tab.id ? '#102B22' : 'transparent',
+                background: selectedCategory === tab.id ? '#102B3F' : 'transparent',
                 color: selectedCategory === tab.id ? '#FFFFFF' : '#304432',
                 border: 'none',
                 borderRadius: '8px',
@@ -178,7 +178,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
             gap: '8px',
             fontSize: '0.82rem',
             fontWeight: 600,
-            color: '#102B22',
+            color: '#102B3F',
             cursor: 'pointer',
             userSelect: 'none',
           }}
@@ -201,7 +201,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
             borderRadius: '16px',
             padding: '60px 24px',
             textAlign: 'center',
-            border: '1px solid #D5CDB8',
+            border: '1px solid rgba(85, 113, 132, 0.2)',
           }}
         >
           <div
@@ -209,7 +209,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
               width: '54px',
               height: '54px',
               borderRadius: '50%',
-              background: '#F7F5EE',
+              background: '#F8FAF7',
               color: '#687A4D',
               display: 'flex',
               alignItems: 'center',
@@ -219,7 +219,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
           >
             <Bell size={26} />
           </div>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B22', margin: '0 0 6px' }}>
+          <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#102B3F', margin: '0 0 6px' }}>
             Tidak Ada Notifikasi
           </h3>
           <p style={{ fontSize: '0.84rem', color: '#62685E', margin: 0, maxWidth: '360px', marginInline: 'auto' }}>
@@ -239,7 +239,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
                   background: isUnread ? '#FFFFFF' : '#FAF8F4',
                   borderRadius: '14px',
                   padding: '18px 22px',
-                  border: isUnread ? '1.5px solid #102B22' : '1px solid #E5E0D0',
+                  border: isUnread ? '1.5px solid #102B3F' : '1px solid #E5E0D0',
                   boxShadow: isUnread ? '0 4px 14px rgba(16, 43, 34, 0.04)' : 'none',
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -287,7 +287,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
                         <span
                           style={{
                             background: '#F4C744',
-                            color: '#102B22',
+                            color: '#102B3F',
                             fontSize: '0.64rem',
                             fontWeight: 800,
                             padding: '1px 6px',
@@ -299,7 +299,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
                       )}
                     </div>
 
-                    <h4 style={{ fontSize: '0.94rem', fontWeight: 800, color: '#102B22', margin: '0 0 4px' }}>
+                    <h4 style={{ fontSize: '0.94rem', fontWeight: 800, color: '#102B3F', margin: '0 0 4px' }}>
                       {notif.title}
                     </h4>
                     <p style={{ fontSize: '0.82rem', color: '#4B5548', margin: 0, lineHeight: 1.45 }}>
@@ -314,13 +314,13 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
                     <button
                       onClick={() => onNavigateAction(notif.actionUrl)}
                       style={{
-                        background: '#F7F5EE',
-                        border: '1px solid #D5CDB8',
+                        background: '#F8FAF7',
+                        border: '1px solid rgba(85, 113, 132, 0.2)',
                         borderRadius: '6px',
                         padding: '6px 10px',
                         fontSize: '0.74rem',
                         fontWeight: 700,
-                        color: '#102B22',
+                        color: '#102B3F',
                         cursor: 'pointer',
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -338,7 +338,7 @@ export const NotificationsPageView: React.FC<NotificationsPageViewProps> = ({
                       title="Tandai sudah dibaca"
                       style={{
                         background: 'none',
-                        border: '1px solid #D5CDB8',
+                        border: '1px solid rgba(85, 113, 132, 0.2)',
                         borderRadius: '6px',
                         padding: '6px 10px',
                         fontSize: '0.74rem',

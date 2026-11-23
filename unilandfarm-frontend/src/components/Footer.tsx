@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAuth, onOpenPricing }) => 
                     padding: '11px 24px',
                     borderRadius: '9999px',
                     background: '#F4C744',
-                    color: '#142217',
+                    color: '#102B3F',
                     fontWeight: 800,
                     fontSize: '0.86rem',
                     border: 'none',

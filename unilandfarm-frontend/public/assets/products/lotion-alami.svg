@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2f4ee"/>
+      <stop offset="60%" stop-color="#dfe5d7"/>
+      <stop offset="100%" stop-color="#c9d3be"/>
+    </linearGradient>
+    <linearGradient id="creamBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dfd9cb"/>
+      <stop offset="35%" stop-color="#fdfbf7"/>
+      <stop offset="75%" stop-color="#ece6d9"/>
+      <stop offset="100%" stop-color="#cbc2b0"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b692c"/>
+      <stop offset="40%" stop-color="#efd79d"/>
+      <stop offset="70%" stop-color="#c39b4f"/>
+      <stop offset="100%" stop-color="#7a5b22"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="6" dy="14" stdDeviation="12" flood-color="#1c261b" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <circle cx="300" cy="210" r="165" fill="#ffffff" opacity="0.55"/>
+
+  <!-- Botanical Leaves -->
+  <path d="M185,340 C135,290 120,220 145,165 C185,185 205,255 185,340 Z" fill="#3a5a35" opacity="0.9"/>
+  <path d="M415,340 C465,290 480,220 455,165 C415,185 395,255 415,340 Z" fill="#638452" opacity="0.9"/>
+
+  <!-- Stone Podium -->
+  <g filter="url(#shadow)">
+    <path d="M150,358 L450,358 L450,404 C450,416 382,426 300,426 C218,426 150,416 150,404 Z" fill="#dadfd2"/>
+    <ellipse cx="300" cy="358" rx="150" ry="17" fill="#f4f6f0"/>
+  </g>
+
+  <!-- Lotion Dispenser Bottle -->
+  <g filter="url(#shadow)">
+    <!-- Pump Dispenser -->
+    <rect x="287" y="58" width="26" height="24" rx="4" fill="#1e241e"/>
+    <path d="M300,62 L348,68 C353,69 353,76 347,76 L300,74 Z" fill="#1e241e"/>
+    <rect x="280" y="80" width="40" height="16" rx="2" fill="url(#gold)"/>
+    <rect x="272" y="96" width="56" height="24" rx="4" fill="#233726"/>
+    <!-- Bottle Body -->
+    <path d="M236,156 C236,130 258,120 300,120 C342,120 364,130 364,156 L364,354 C364,366 342,374 300,374 C258,374 236,366 236,354 Z" fill="url(#creamBody)"/>
+    <rect x="250" y="144" width="14" height="198" rx="7" fill="#ffffff" opacity="0.7"/>
+    <!-- Label -->
+    <rect x="248" y="182" width="104" height="146" rx="4" fill="#233726"/>
+    <rect x="253" y="187" width="94" height="136" rx="2" fill="none" stroke="url(#gold)" stroke-width="1"/>
+    <text x="300" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" letter-spacing="2" fill="#f5e1b2">GREENORA</text>
+    <text x="300" y="236" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="600" letter-spacing="1.4" fill="#a7c48c">BODY LOTION ALAMI</text>
+    <line x1="270" y1="248" x2="330" y2="248" stroke="#6E8854" stroke-width="1"/>
+    <text x="300" y="266" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-style="italic" fill="#e6efe0">Shea Butter &amp; Olive</text>
+    <text x="300" y="302" text-anchor="middle" font-family="sans-serif" font-size="6.5" letter-spacing="1.2" fill="#ebd298">250 ML • BPOM RI</text>
+  </g>
+</svg>

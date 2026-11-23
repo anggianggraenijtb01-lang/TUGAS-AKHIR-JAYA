@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f7ed"/>
+      <stop offset="100%" stop-color="#c5e0b8"/>
+    </linearGradient>
+    <linearGradient id="pakcoyLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#489e32"/>
+      <stop offset="100%" stop-color="#1b5412"/>
+    </linearGradient>
+    <linearGradient id="pakcoyStem" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d8f0c8"/>
+      <stop offset="50%" stop-color="#f7fff2"/>
+      <stop offset="100%" stop-color="#b8dca2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="14" stdDeviation="12" flood-color="#143010" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <circle cx="300" cy="220" r="165" fill="#ffffff" opacity="0.65"/>
+  <g filter="url(#shadow)">
+    <!-- Glossy Dark Green Spoon Leaves -->
+    <circle cx="235" cy="175" r="68" fill="url(#pakcoyLeaf)"/>
+    <circle cx="365" cy="175" r="68" fill="url(#pakcoyLeaf)"/>
+    <circle cx="300" cy="145" r="76" fill="#3b8c26"/>
+    <!-- Thick Crisp White-Green Pakcoy Stems -->
+    <path d="M235,215 C235,295 255,380 300,385 C345,380 365,295 365,215 C340,240 260,240 235,215 Z" fill="url(#pakcoyStem)"/>
+    <path d="M265,200 C265,285 278,375 300,385 C322,375 335,285 335,200 Z" fill="#ffffff" opacity="0.7"/>
+    <!-- Fresh Farm Band -->
+    <rect x="238" y="295" width="124" height="54" rx="6" fill="#233726" stroke="#ebd298" stroke-width="1.5"/>
+    <text x="300" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" letter-spacing="1.5" fill="#ffffff">PAKCOY ORGANIK</text>
+    <text x="300" y="338" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="600" letter-spacing="1.2" fill="#a7c48c">SEGAR • BEBAS PESTISIDA</text>
+  </g>
+</svg>

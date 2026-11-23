@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf3eb"/>
+      <stop offset="100%" stop-color="#e5bfa0"/>
+    </linearGradient>
+    <linearGradient id="chiliJar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5e0d08"/>
+      <stop offset="35%" stop-color="#c92216"/>
+      <stop offset="75%" stop-color="#8c140c"/>
+      <stop offset="100%" stop-color="#450703"/>
+    </linearGradient>
+    <linearGradient id="goldCap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8c692b"/>
+      <stop offset="45%" stop-color="#f5dea3"/>
+      <stop offset="100%" stop-color="#75561e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="12" stdDeviation="10" flood-color="#360c05" flood-opacity="0.26"/>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <circle cx="300" cy="215" r="175" fill="#ffffff" opacity="0.6"/>
+  <g filter="url(#shadow)">
+    <path d="M110,358 L490,358 L490,404 C490,416 405,426 300,426 C195,426 110,416 110,404 Z" fill="#6e3f20"/>
+    <ellipse cx="300" cy="358" rx="190" ry="17" fill="#8f552e"/>
+  </g>
+  <!-- Left Jar -->
+  <g filter="url(#shadow)" transform="translate(-110, 15) scale(0.75)">
+    <rect x="220" y="92" width="160" height="34" rx="7" fill="#1f1917"/>
+    <path d="M204,152 C204,130 226,122 300,122 C374,122 396,130 396,152 L390,352 C390,368 358,376 300,376 C242,376 210,368 210,352 Z" fill="url(#chiliJar)"/>
+    <rect x="222" y="186" width="156" height="136" rx="5" fill="#1f1614" stroke="url(#goldCap)" stroke-width="2"/>
+    <text x="300" y="242" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#f5dea3">CAKALANG</text>
+  </g>
+  <!-- Right Jar -->
+  <g filter="url(#shadow)" transform="translate(110, 15) scale(0.75)">
+    <rect x="220" y="92" width="160" height="34" rx="7" fill="#1f1917"/>
+    <path d="M204,152 C204,130 226,122 300,122 C374,122 396,130 396,152 L390,352 C390,368 358,376 300,376 C242,376 210,368 210,352 Z" fill="url(#chiliJar)"/>
+    <rect x="222" y="186" width="156" height="136" rx="5" fill="#1f1614" stroke="url(#goldCap)" stroke-width="2"/>
+    <text x="300" y="242" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">BAWANG</text>
+  </g>
+  <!-- Center Jar -->
+  <g filter="url(#shadow)" transform="translate(0, -5) scale(0.84)">
+    <rect x="220" y="92" width="160" height="34" rx="7" fill="url(#goldCap)"/>
+    <path d="M204,152 C204,130 226,122 300,122 C374,122 396,130 396,152 L390,352 C390,368 358,376 300,376 C242,376 210,368 210,352 Z" fill="url(#chiliJar)"/>
+    <rect x="222" y="186" width="156" height="136" rx="5" fill="#fbf7f0" stroke="url(#goldCap)" stroke-width="2"/>
+    <text x="300" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#1f120e">PAKET 3 BOTOL</text>
+    <text x="300" y="248" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b91c1c">BUNDLING HEMAT</text>
+    <text x="300" y="285" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#7c2d12">CUMI • CAKALANG • BAWANG</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5ede2"/>
+      <stop offset="55%" stop-color="#e4d4be"/>
+      <stop offset="100%" stop-color="#cbb393"/>
+    </linearGradient>
+    <linearGradient id="matteBag" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#17120e"/>
+      <stop offset="25%" stop-color="#2e241d"/>
+      <stop offset="55%" stop-color="#231b15"/>
+      <stop offset="85%" stop-color="#140f0c"/>
+      <stop offset="100%" stop-color="#0d0a08"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8c5327"/>
+      <stop offset="35%" stop-color="#e8b382"/>
+      <stop offset="65%" stop-color="#b87642"/>
+      <stop offset="100%" stop-color="#6e3e19"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="6" dy="16" stdDeviation="14" flood-color="#1f140b" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <circle cx="300" cy="210" r="175" fill="#fffaf2" opacity="0.55"/>
+
+  <!-- Wooden Roastery Table Top -->
+  <g filter="url(#shadow)">
+    <path d="M120,355 L480,355 L480,404 C480,418 400,428 300,428 C200,428 120,418 120,404 Z" fill="#5c3a21"/>
+    <ellipse cx="300" cy="355" rx="180" ry="18" fill="#7c5130"/>
+  </g>
+
+  <!-- Stand-up Matte Black Coffee Pouch -->
+  <g filter="url(#shadow)">
+    <path d="M198,74 L402,74 L388,364 C388,374 352,380 300,380 C248,380 212,374 212,364 Z" fill="url(#matteBag)"/>
+    <!-- Top Zip Seal Groove -->
+    <rect x="198" y="74" width="204" height="12" rx="2" fill="#362b22"/>
+    <line x1="202" y1="96" x2="398" y2="96" stroke="url(#copper)" stroke-width="1.5" opacity="0.8"/>
+    <!-- Left Bag Crease Highlight -->
+    <path d="M214,88 L224,362" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.08"/>
+    <!-- One-way Degassing Valve -->
+    <circle cx="300" cy="122" r="9" fill="#1c1612" stroke="#4a3b2f" stroke-width="1.5"/>
+    <circle cx="300" cy="122" r="2.5" fill="#6e5846"/>
+
+    <!-- Specialty Roastery Label -->
+    <rect x="224" y="148" width="152" height="184" rx="4" fill="#fbf7f0"/>
+    <rect x="230" y="154" width="140" height="172" rx="2" fill="none" stroke="url(#copper)" stroke-width="1.2"/>
+    <rect x="262" y="166" width="76" height="16" rx="8" fill="#3c2415"/>
+    <text x="300" y="177" text-anchor="middle" font-family="sans-serif" font-size="6.8" font-weight="bold" letter-spacing="1.2" fill="#f3d5b5">FINE ROBUSTA</text>
+    <text x="300" y="206" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" letter-spacing="1.5" fill="#24160d">LERENG SLAMET</text>
+    <text x="300" y="222" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="600" letter-spacing="1.6" fill="#9c5a25">SINGLE ORIGIN JAVA</text>
+    <line x1="250" y1="234" x2="350" y2="234" stroke="#dfd3c3" stroke-width="1"/>
+    <text x="300" y="252" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-style="italic" fill="#594638">Dark Chocolate, Bold &amp; Nutty</text>
+    <!-- Roast Level Dots -->
+    <g transform="translate(272, 268)">
+      <circle cx="0" cy="0" r="4" fill="#3c2415"/>
+      <circle cx="14" cy="0" r="4" fill="#3c2415"/>
+      <circle cx="28" cy="0" r="4" fill="#3c2415"/>
+      <circle cx="42" cy="0" r="4" fill="#3c2415"/>
+      <circle cx="56" cy="0" r="4" fill="#d6c7b4"/>
+    </g>
+    <text x="300" y="310" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="bold" letter-spacing="1.2" fill="#3c2415">NETTO 250G • BIJI / BUBUK</text>
+  </g>
+
+  <!-- Roasted Coffee Beans Around Base -->
+  <g fill="#2b180c">
+    <ellipse cx="195" cy="366" rx="14" ry="9" transform="rotate(-20 195 366)"/>
+    <path d="M184,369 Q195,363 206,363" stroke="#120904" stroke-width="1.5" fill="none"/>
+    <ellipse cx="222" cy="376" rx="13" ry="8.5" transform="rotate(15 222 376)"/>
+    <path d="M211,374 Q222,378 233,378" stroke="#120904" stroke-width="1.5" fill="none"/>
+    <ellipse cx="395" cy="372" rx="14" ry="9" transform="rotate(25 395 372)"/>
+    <path d="M384,368 Q395,374 406,375" stroke="#120904" stroke-width="1.5" fill="none"/>
+    <ellipse cx="420" cy="362" rx="12" ry="8" transform="rotate(-15 420 362)"/>
+  </g>
+</svg>

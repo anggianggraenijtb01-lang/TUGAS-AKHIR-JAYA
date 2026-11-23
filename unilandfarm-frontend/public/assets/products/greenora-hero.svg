@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" width="800" height="540">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f1e8"/>
+      <stop offset="55%" stop-color="#e8e0cf"/>
+      <stop offset="100%" stop-color="#d7cbb4"/>
+    </linearGradient>
+    <radialGradient id="sunlight" cx="25%" cy="20%" r="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88"/>
+      <stop offset="50%" stop-color="#fdfbf7" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#c9bba0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="podiumTop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#efeae0"/>
+      <stop offset="50%" stop-color="#f9f6f0"/>
+      <stop offset="100%" stop-color="#ded5c4"/>
+    </linearGradient>
+    <linearGradient id="podiumSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dfd6c5"/>
+      <stop offset="40%" stop-color="#ebe4d6"/>
+      <stop offset="100%" stop-color="#c4b8a2"/>
+    </linearGradient>
+    <linearGradient id="emeraldBottle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#183222"/>
+      <stop offset="28%" stop-color="#2c5539"/>
+      <stop offset="55%" stop-color="#3c6e4b"/>
+      <stop offset="85%" stop-color="#1d3c28"/>
+      <stop offset="100%" stop-color="#122619"/>
+    </linearGradient>
+    <linearGradient id="amberBottle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#61320d"/>
+      <stop offset="25%" stop-color="#9e5618"/>
+      <stop offset="50%" stop-color="#c9792b"/>
+      <stop offset="80%" stop-color="#7c4110"/>
+      <stop offset="100%" stop-color="#472306"/>
+    </linearGradient>
+    <linearGradient id="creamJar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e3dccf"/>
+      <stop offset="35%" stop-color="#fcfaf5"/>
+      <stop offset="75%" stop-color="#ebe4d7"/>
+      <stop offset="100%" stop-color="#cdc3b0"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9e7b3b"/>
+      <stop offset="35%" stop-color="#ebd197"/>
+      <stop offset="55%" stop-color="#c59f54"/>
+      <stop offset="85%" stop-color="#f3deb0"/>
+      <stop offset="100%" stop-color="#8b692c"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4e7344"/>
+      <stop offset="50%" stop-color="#2e4b29"/>
+      <stop offset="100%" stop-color="#1b2f19"/>
+    </linearGradient>
+    <linearGradient id="leafLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7b9e66"/>
+      <stop offset="100%" stop-color="#3c5c34"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#2c2418" flood-opacity="0.22"/>
+    </filter>
+    <filter id="bottleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="8" dy="12" stdDeviation="10" flood-color="#1a1610" flood-opacity="0.26"/>
+    </filter>
+  </defs>
+
+  <!-- Studio Backdrop -->
+  <rect width="800" height="540" fill="url(#bg)"/>
+  <rect width="800" height="540" fill="url(#sunlight)"/>
+
+  <!-- Architectural Arch Backdrop -->
+  <path d="M220,540 L220,190 A180,180 0 0,1 580,190 L580,540 Z" fill="#efe9dc" opacity="0.75"/>
+  <path d="M250,540 L250,205 A150,150 0 0,1 550,205 L550,540 Z" fill="#e2d9c6" opacity="0.55"/>
+
+  <!-- Botanical Foliage Left & Right -->
+  <g opacity="0.92">
+    <!-- Left Botanical Stems -->
+    <path d="M235,390 C180,330 140,250 115,155" stroke="#2d4928" stroke-width="4" fill="none"/>
+    <path d="M180,310 C125,305 95,265 110,225 C145,235 175,270 180,310 Z" fill="url(#leafGrad)"/>
+    <path d="M150,245 C95,230 75,185 95,150 C130,165 150,205 150,245 Z" fill="url(#leafLight)"/>
+    <path d="M210,350 C165,365 125,345 125,305 C160,305 195,325 210,350 Z" fill="url(#leafLight)"/>
+    <path d="M195,265 C215,215 255,185 280,200 C265,240 230,260 195,265 Z" fill="url(#leafGrad)"/>
+    <!-- Right Botanical Stems -->
+    <path d="M560,390 C615,320 650,245 675,160" stroke="#2d4928" stroke-width="4" fill="none"/>
+    <path d="M605,320 C655,315 685,280 675,235 C635,245 610,280 605,320 Z" fill="url(#leafGrad)"/>
+    <path d="M635,250 C685,235 710,195 695,155 C655,170 635,210 635,250 Z" fill="url(#leafLight)"/>
+    <path d="M585,285 C565,235 530,205 505,220 C520,255 550,280 585,285 Z" fill="url(#leafGrad)"/>
+  </g>
+
+  <!-- Travertine Stone Podium -->
+  <g filter="url(#softShadow)">
+    <path d="M140,415 L660,415 L660,485 C660,502 544,515 400,515 C256,515 140,502 140,485 Z" fill="url(#podiumSide)"/>
+    <ellipse cx="400" cy="415" rx="260" ry="28" fill="url(#podiumTop)"/>
+  </g>
+
+  <!-- Product 1: Tall Cream Botanical Pump Bottle (Center-Left) -->
+  <g filter="url(#bottleShadow)">
+    <!-- Pump Head -->
+    <rect x="333" y="95" width="22" height="22" rx="4" fill="#1a1d1a"/>
+    <path d="M344,98 L382,102 C386,103 386,109 381,109 L344,108 Z" fill="#1a1d1a"/>
+    <rect x="328" y="115" width="32" height="14" rx="2" fill="url(#gold)"/>
+    <rect x="322" y="129" width="44" height="22" rx="4" fill="#232723"/>
+    <!-- Bottle Body -->
+    <path d="M294,185 C294,162 315,150 344,150 C373,150 394,162 394,185 L394,402 C394,412 384,418 344,418 C304,418 294,412 294,402 Z" fill="url(#creamJar)"/>
+    <!-- Specular Highlight -->
+    <rect x="306" y="168" width="12" height="232" rx="6" fill="#ffffff" opacity="0.65"/>
+    <!-- Luxury Label -->
+    <rect x="302" y="220" width="84" height="142" rx="4" fill="#ffffff" stroke="#d8ceb8" stroke-width="1"/>
+    <rect x="306" y="224" width="76" height="134" rx="2" fill="none" stroke="#c59f54" stroke-width="0.8" opacity="0.7"/>
+    <circle cx="344" cy="252" r="11" fill="#233726"/>
+    <path d="M340,255 C340,247 348,245 349,249 C350,253 344,257 340,255 Z" fill="#ebd197"/>
+    <text x="344" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" font-weight="bold" letter-spacing="1.8" fill="#1b2e1e">GREENORA</text>
+    <text x="344" y="294" text-anchor="middle" font-family="sans-serif" font-size="6.5" letter-spacing="1.2" fill="#6E8854">BOTANICAL LOTION</text>
+    <line x1="322" y1="304" x2="366" y2="304" stroke="#d5cab4" stroke-width="1"/>
+    <text x="344" y="318" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" font-style="italic" fill="#5c5649">Pure Olive &amp; Aloe</text>
+    <text x="344" y="344" text-anchor="middle" font-family="sans-serif" font-size="6" letter-spacing="1" fill="#888173">BPOM • 250 ML</text>
+  </g>
+
+  <!-- Product 2: Emerald Serum Dropper Bottle (Front-Left) -->
+  <g filter="url(#bottleShadow)">
+    <!-- Rubber Dropper Bulb -->
+    <path d="M235,204 C235,186 261,186 261,204 L263,228 L233,228 Z" fill="#1c201d"/>
+    <!-- Gold Collar -->
+    <rect x="227" y="226" width="42" height="20" rx="3" fill="url(#gold)"/>
+    <!-- Emerald Glass Body -->
+    <path d="M210,272 C210,255 224,246 248,246 C272,246 286,255 286,272 L286,412 C286,420 276,425 248,425 C220,425 210,420 210,412 Z" fill="url(#emeraldBottle)"/>
+    <!-- Glass Highlight -->
+    <rect x="218" y="262" width="8" height="148" rx="4" fill="#ffffff" opacity="0.28"/>
+    <!-- Serum Label -->
+    <rect x="216" y="292" width="64" height="102" rx="3" fill="#faf7f0"/>
+    <rect x="219" y="295" width="58" height="96" rx="2" fill="none" stroke="#c59f54" stroke-width="0.7"/>
+    <text x="248" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-weight="bold" letter-spacing="1.2" fill="#233726">GREENORA</text>
+    <text x="248" y="333" text-anchor="middle" font-family="sans-serif" font-size="5.8" letter-spacing="1" fill="#6E8854">FACIAL SERUM</text>
+    <line x1="230" y1="342" x2="266" y2="342" stroke="#d8ceb8" stroke-width="0.8"/>
+    <text x="248" y="356" text-anchor="middle" font-family="Georgia, serif" font-size="6" font-style="italic" fill="#595346">Centella &amp; Gold</text>
+    <text x="248" y="380" text-anchor="middle" font-family="sans-serif" font-size="5.5" letter-spacing="0.8" fill="#888173">30 ML • BPOM</text>
+  </g>
+
+  <!-- Product 3: Botanical Cream Jar (Front-Right) -->
+  <g filter="url(#bottleShadow)">
+    <!-- Gold Lid -->
+    <rect x="424" y="286" width="136" height="28" rx="7" fill="url(#gold)"/>
+    <rect x="434" y="290" width="24" height="20" rx="3" fill="#ffffff" opacity="0.35"/>
+    <!-- Frosted Cream Jar Body -->
+    <path d="M416,314 L568,314 L564,410 C564,422 538,428 492,428 C446,428 420,422 420,410 Z" fill="url(#creamJar)"/>
+    <rect x="430" y="320" width="14" height="94" rx="6" fill="#ffffff" opacity="0.6"/>
+    <!-- Jar Label -->
+    <rect x="438" y="334" width="108" height="68" rx="4" fill="#ffffff" stroke="#dfd5c0" stroke-width="1"/>
+    <text x="492" y="357" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" letter-spacing="1.6" fill="#233726">GREENORA</text>
+    <text x="492" y="370" text-anchor="middle" font-family="sans-serif" font-size="6.5" letter-spacing="1.2" fill="#6E8854">HERBAL MOISTURIZER</text>
+    <text x="492" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" font-style="italic" fill="#6e6658">100% Organic Botanicals</text>
+  </g>
+
+  <!-- Foreground Botanical Leaf Accent -->
+  <path d="M365,428 C385,408 415,408 432,425 C412,438 385,438 365,428 Z" fill="url(#leafLight)"/>
+  <path d="M395,432 C412,418 438,420 450,434 C430,442 410,440 395,432 Z" fill="url(#leafGrad)"/>
+</svg>

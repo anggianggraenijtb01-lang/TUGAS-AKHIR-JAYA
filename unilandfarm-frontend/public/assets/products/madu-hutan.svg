@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbf5e8"/>
+      <stop offset="55%" stop-color="#f0e2c4"/>
+      <stop offset="100%" stop-color="#dec698"/>
+    </linearGradient>
+    <radialGradient id="warmGlow" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fffdf7" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f2dec0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="honeyLiquid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="35%" stop-color="#d97706"/>
+      <stop offset="70%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="honeyGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="30%" stop-color="#fbbf24"/>
+      <stop offset="55%" stop-color="#f59e0b"/>
+      <stop offset="85%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#652b09"/>
+    </linearGradient>
+    <linearGradient id="goldLid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a6829"/>
+      <stop offset="30%" stop-color="#f4dca2"/>
+      <stop offset="55%" stop-color="#c69e4e"/>
+      <stop offset="82%" stop-color="#f7e5b9"/>
+      <stop offset="100%" stop-color="#785820"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="6" dy="14" stdDeviation="12" flood-color="#3b2308" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <rect width="600" height="450" fill="url(#warmGlow)"/>
+
+  <!-- Subtle Honeycomb Geometric Pattern in Background -->
+  <g stroke="#d4b475" stroke-width="1.2" fill="none" opacity="0.28">
+    <polygon points="120,90 145,75 170,90 170,120 145,135 120,120"/>
+    <polygon points="170,90 195,75 220,90 220,120 195,135 170,120"/>
+    <polygon points="145,135 170,120 195,135 195,165 170,180 145,165"/>
+    <polygon points="430,100 455,85 480,100 480,130 455,145 430,130"/>
+    <polygon points="455,145 480,130 505,145 505,175 480,190 455,175"/>
+  </g>
+
+  <!-- Botanical Leaves -->
+  <path d="M180,340 C130,305 110,245 130,200 C170,215 190,275 180,340 Z" fill="#47693e" opacity="0.9"/>
+  <path d="M425,340 C475,305 495,245 475,200 C435,215 415,275 425,340 Z" fill="#638452" opacity="0.9"/>
+
+  <!-- Wooden Podium Base -->
+  <g filter="url(#shadow)">
+    <path d="M140,355 L460,355 L460,398 C460,412 388,422 300,422 C212,422 140,412 140,398 Z" fill="#b08248"/>
+    <ellipse cx="300" cy="355" rx="160" ry="18" fill="#d6ad73"/>
+  </g>
+
+  <!-- Luxury Glass Honey Jar -->
+  <g filter="url(#shadow)">
+    <!-- Gold Ribbed Lid -->
+    <rect x="224" y="96" width="152" height="32" rx="7" fill="url(#goldLid)"/>
+    <!-- Glass Neck -->
+    <rect x="234" y="128" width="132" height="16" fill="#fef3c7" opacity="0.7"/>
+    <!-- Jar Body Filled with Golden Forest Honey -->
+    <path d="M206,168 C206,146 226,138 300,138 C374,138 394,146 394,168 L388,348 C388,365 358,374 300,374 C242,374 212,365 212,348 Z" fill="url(#honeyGlow)"/>
+    <!-- Inner Golden Glow & Specular Highlight -->
+    <ellipse cx="300" cy="260" rx="68" ry="85" fill="#fde68a" opacity="0.28"/>
+    <rect x="222" y="160" width="14" height="184" rx="7" fill="#ffffff" opacity="0.42"/>
+    <rect x="368" y="166" width="6" height="174" rx="3" fill="#fef08a" opacity="0.35"/>
+
+    <!-- Hexagonal Luxury Crest Label -->
+    <polygon points="300,182 364,212 364,296 300,326 236,296 236,212" fill="#233726" stroke="url(#goldLid)" stroke-width="3"/>
+    <polygon points="300,190 356,217 356,291 300,318 244,291 244,217" fill="none" stroke="#ebd298" stroke-width="0.8" opacity="0.7"/>
+    <text x="300" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" letter-spacing="2" fill="#f7e5b9">GREENORA</text>
+    <text x="300" y="246" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="600" letter-spacing="1.4" fill="#a7c48c">MADU HUTAN MURNI</text>
+    <line x1="266" y1="256" x2="334" y2="256" stroke="#c69e4e" stroke-width="1"/>
+    <text x="300" y="273" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" font-style="italic" fill="#fef3c7">100% Raw Wildflower</text>
+    <text x="300" y="294" text-anchor="middle" font-family="sans-serif" font-size="6.8" letter-spacing="1.2" fill="#ebd298">NETTO 350G • HALAL</text>
+  </g>
+
+  <!-- Wooden Honey Dipper on Right -->
+  <g filter="url(#shadow)" transform="translate(415, 255) rotate(-28)">
+    <rect x="0" y="18" width="95" height="8" rx="4" fill="#c79555"/>
+    <ellipse cx="0" cy="22" rx="18" ry="14" fill="#d9a764"/>
+    <line x1="-10" y1="10" x2="-10" y2="34" stroke="#8c5820" stroke-width="2.5"/>
+    <line x1="-3" y1="8" x2="-3" y2="36" stroke="#8c5820" stroke-width="2.5"/>
+    <line x1="4" y1="8" x2="4" y2="36" stroke="#8c5820" stroke-width="2.5"/>
+    <line x1="11" y1="10" x2="11" y2="34" stroke="#8c5820" stroke-width="2.5"/>
+  </g>
+</svg>

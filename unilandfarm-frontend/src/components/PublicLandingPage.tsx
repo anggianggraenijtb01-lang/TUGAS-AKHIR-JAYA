@@ -2,22 +2,39 @@ import React, { useState } from 'react';
 import { User, Template, Plan, BillingInterval } from '../types';
 import { UniLandLogo } from './UniLandLogo';
 import {
-  ShoppingBag,
   Sparkles,
   MessageCircle,
-  Calendar,
   Globe,
-  TrendingUp,
+  Layers,
+  Smartphone,
+  Eye,
+  CheckCircle2,
+  ArrowRight,
+  Send,
+  Zap,
+  ExternalLink,
+  ChevronRight,
+  RefreshCw,
+  Sliders,
+  Shield,
+  Clock,
+  Layout,
+  User as UserIcon,
+  Users,
+  Calendar,
+  Briefcase,
+  Menu,
+  X,
 } from './icons/LucideIcons';
 
 interface PublicLandingPageProps {
   currentUser: User | null;
   templates: Template[];
-  plans: Plan[];
+  plans?: Plan[];
   onOpenAuth: (mode?: 'login' | 'register') => void;
   onOpenDashboard?: () => void;
   onOpenAiWizard: (prefillName?: string) => void;
-  onSelectPlan: (plan: Plan, interval: BillingInterval) => void;
+  onSelectPlan?: (plan: Plan, interval: BillingInterval) => void;
   onOpenPublicView: (slug: string) => void;
   onUseTemplate: (template: Template) => void;
 }
@@ -25,1849 +42,1041 @@ interface PublicLandingPageProps {
 export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
   currentUser,
   templates,
-  plans,
   onOpenAuth,
   onOpenDashboard,
   onOpenAiWizard,
-  onSelectPlan,
   onOpenPublicView,
   onUseTemplate,
 }) => {
   const [activeNav, setActiveNav] = useState('beranda');
-  const [billingInterval, setBillingInterval] = useState<BillingInterval>('monthly');
-  const [activeCategory, setActiveCategory] = useState('Semua');
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [studioTab, setStudioTab] = useState<'cms' | 'dashboard'>('cms');
-  const [quickBrandName, setQuickBrandName] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [previewDevice, setPreviewDevice] = useState<'desktop' | 'mobile'>('desktop');
+  const [showcaseCategory, setShowcaseCategory] = useState<'all' | 'portfolio' | 'organization' | 'event' | 'service'>('all');
+  const [promptInput, setPromptInput] = useState('Buatkan website portofolio UX designer modern...');
 
-  // Real templates mapped directly to initialLandingPages & initialTemplates in mockData.ts
-  const templateShowcase = [
-    {
-      id: 'tpl_kopi',
-      name: 'Artisan Coffee & Roastery',
-      brandName: 'Kopi Lereng Slamet',
-      category: 'Perkebunan & Kopi',
-      origin: 'Template Roastery & Perkebunan',
-      domain: 'unilandfarm.id/site/kopi-robusta-slamet',
-      slug: 'kopi-robusta-slamet',
-      description:
-        'Template khusus usaha kopi, teh, dan hasil perkebunan dengan katalog varian sangrai dan order grosir via WhatsApp.',
-      themeBg: '#1c2d1f',
-      themeAccent: '#d3e8bc',
-      heroBadge: '100% SINGLE ORIGIN',
-      heroHeadline: 'Kopi Asli Petani Lereng Slamet',
-      heroSub: 'Dipetik matang, diproses dengan teliti, dikirim segar ke rumah Anda.',
-      heroImage: '/assets/coffee_hero_bg.jpg?v=2',
-      trustItems: [
-        '100% Arabika Lereng Slamet',
-        'Pengiriman Seluruh Indonesia',
-        'Kualitas Terjamin Petani',
-      ],
-      highlights: [
-        'Katalog Varian Sangrai',
-        'Keranjang Order WhatsApp',
-        'Profil Kebun & Proses',
-        'Otomatisasi Konten AI',
-      ],
-      products: [
-        {
-          name: 'Robusta Natural 250g',
-          price: 'Rp 45.000',
-          tag: 'Best Seller',
-          rating: '5.0 • Siap Kirim',
-          img: '/assets/products/kopi-robusta.svg',
-        },
-        {
-          name: 'Wine Fermented 250g',
-          price: 'Rp 65.000',
-          tag: 'Edisi Terbatas',
-          rating: '4.9 • Fresh Roast',
-          img: '/assets/products/kopi-wine.svg',
-        },
-        {
-          name: 'Cold Brew Blend 500g',
-          price: 'Rp 80.000',
-          tag: 'Favorit Kafe',
-          rating: '5.0 • Grosir',
-          img: '/assets/products/kopi-coldbrew.svg',
-        },
-      ],
-    },
-    {
-      id: 'tpl_madu',
-      name: 'Herbal & Natural Skincare',
-      brandName: 'Greenora Natural Care',
-      category: 'Kesehatan & Herbal',
-      origin: 'Template Herbal & Perawatan Alami',
-      domain: 'unilandfarm.id/site/greenora',
-      slug: 'greenora',
-      description:
-        'Desain bersih untuk produk herbal, madu murni, dan skincare alami dengan highlight komposisi BPOM.',
-      themeBg: '#1f3322',
-      themeAccent: '#d3e8bc',
-      heroBadge: '100% BAHAN ALAMI PILIHAN',
-      heroHeadline: 'Produk Alami untuk Hidup Lebih Sehat',
-      heroSub: 'Ekstrak botanikal murni tanpa bahan kimia sintetis, aman untuk perawatan harian.',
-      heroImage: '/assets/products/greenora-hero.svg',
-      trustItems: [
-        '100% Organik BPOM',
-        'Gratis Ongkir Nasional',
-        'Respon WhatsApp Cepat',
-      ],
-      highlights: [
-        'Etalase Produk & BPOM',
-        'Konsultasi & Order WA',
-        'Deskripsi Manfaat AI',
-        'Tampilan Bersih & Elegan',
-      ],
-      products: [
-        {
-          name: 'Serum Wajah Alami',
-          price: 'Rp 85.000',
-          tag: 'BPOM Resmi',
-          rating: '5.0 • Siap Kirim',
-          img: '/assets/products/serum-wajah.svg',
-        },
-        {
-          name: 'Madu Hutan Murni',
-          price: 'Rp 45.000',
-          tag: '100% Murni',
-          rating: '4.9 • Best Seller',
-          img: '/assets/products/madu-hutan.svg',
-        },
-        {
-          name: 'Minyak Atsiri Herbal',
-          price: 'Rp 65.000',
-          tag: 'Aromaterapi',
-          rating: '5.0 • Murni',
-          img: '/assets/products/minyak-atsiri.svg',
-        },
-      ],
-    },
-    {
-      id: 'tpl_hidroponik',
-      name: 'Fresh Urban Farm & Sayur',
-      brandName: 'Hijau Hydro Farm',
-      category: 'Pertanian Modern',
-      origin: 'Template Sayur & Pertanian Segar',
-      domain: 'unilandfarm.id/site/sayur-hidroponik-segar',
-      slug: 'sayur-hidroponik-segar',
-      description:
-        'Cocok untuk kebun hidroponik, buah segar, dan supplier pangan dengan fitur paket langganan mingguan.',
-      themeBg: '#1c2f20',
-      themeAccent: '#d3e8bc',
-      heroBadge: 'BEBAS PESTISIDA & HIGIENIS',
-      heroHeadline: 'Sayur Hidroponik Segar Panen Setiap Pagi',
-      heroSub: 'Diantar langsung dari greenhouse steril ke dapur keluarga Anda.',
-      heroImage: '/assets/products/hydro-hero.svg',
-      trustItems: [
-        'Air Nutrisi Steril',
-        '0% Residu Pestisida',
-        'Panen Pagi Kirim Siang',
-      ],
-      highlights: [
-        'Katalog Panen Harian',
-        'Paket Langganan Mingguan',
-        'Format Pesanan WA Instan',
-        'Jadwal Promo Panen AI',
-      ],
-      products: [
-        {
-          name: 'Selada Romaine 250g',
-          price: 'Rp 18.000',
-          tag: 'Panen Pagi',
-          rating: '5.0 • Renyah',
-          img: '/assets/products/selada.svg',
-        },
-        {
-          name: 'Pakcoy Organik 500g',
-          price: 'Rp 15.000',
-          tag: 'Favorit',
-          rating: '4.9 • Segar',
-          img: '/assets/products/pakcoy.svg',
-        },
-        {
-          name: 'Kale Curly Superfood',
-          price: 'Rp 28.000',
-          tag: 'Organik',
-          rating: '5.0 • Superfood',
-          img: '/assets/products/kale.svg',
-        },
-      ],
-    },
-    {
-      id: 'tpl_kuliner_olahan',
-      name: 'Kuliner Kemasan & Sambal',
-      brandName: 'Dapur Sambal Bu Roes',
-      category: 'Kuliner & F&B',
-      origin: 'Template Kuliner & Oleh-Oleh',
-      domain: 'unilandfarm.id/site/sambal-bu-roes-asli',
-      slug: 'sambal-bu-roes-asli',
-      description:
-        'Dirancang untuk usaha kuliner kemasan, frozen food, dan camilan dengan katalog bundling hemat.',
-      themeBg: '#261c17',
-      themeAccent: '#f3d9b1',
-      heroBadge: '100% CABAI SEGAR TANPA PENGAWET',
-      heroHeadline: 'Sensasi Pedas Gurih Rempah Nusantara',
-      heroSub: 'Dimasak slow-cooked 4 jam dengan potongan cumi dan cakalang melimpah.',
-      heroImage: '/assets/products/sambal-hero.svg',
-      trustItems: [
-        'Cabai Rawit Segar Pilihan',
-        'Masak Slow-Cooked 4 Jam',
-        'Segel Vakum Anti Tumpah',
-      ],
-      highlights: [
-        'Katalog Varian & Bundling',
-        'Checkout Langsung ke WA',
-        'Label Level Kepedasan',
-        'Teks Promosi Kuliner AI',
-      ],
-      products: [
-        {
-          name: 'Sambal Cumi Asin 200g',
-          price: 'Rp 38.000',
-          tag: 'Terlaris',
-          rating: '5.0 • 1.2rb Terjual',
-          img: '/assets/products/sambal-cumi.svg',
-        },
-        {
-          name: 'Sambal Cakalang Asap',
-          price: 'Rp 42.000',
-          tag: 'Pedas Gurih',
-          rating: '4.9 • Best Seller',
-          img: '/assets/products/sambal-cakalang.svg',
-        },
-        {
-          name: 'Bundling 3 Botol Juara',
-          price: 'Rp 105.000',
-          tag: 'Hemat 15rb',
-          rating: '5.0 • Paket Hemat',
-          img: '/assets/products/sambal-bundling.svg',
-        },
-      ],
-    },
-  ];
-
-  const filteredShowcase =
-    activeCategory === 'Semua'
-      ? templateShowcase
-      : templateShowcase.filter((t) => t.category.toLowerCase().includes(activeCategory.toLowerCase()));
-
-  const faqs = [
-    {
-      q: 'Apakah harus bisa coding untuk membuat website di sini?',
-      a: 'Tidak perlu. Cukup pilih template, isi foto produk serta nomor WhatsApp, dan website toko Anda langsung aktif.',
-    },
-    {
-      q: 'Apa fungsi utama fitur Agentic AI CMS?',
-      a: 'Membantu Anda menulis deskripsi produk otomatis, merangkai kalimat promosi, dan menjadwalkan pergantian banner diskon.',
-    },
-    {
-      q: 'Bagaimana cara pembeli memesan produk saya?',
-      a: 'Saat pembeli klik tombol beli di website, mereka langsung diarahkan ke WhatsApp Anda dengan teks rincian pesanan yang sudah terisi otomatis.',
-    },
-    {
-      q: 'Metode pembayaran apa saja yang tersedia?',
-      a: 'Mendukung QRIS instan (BCA, Mandiri, BRI, GoPay, OVO, ShopeePay) dan Virtual Account seluruh bank nasional.',
-    },
-    {
-      q: 'Bisakah saya memakai domain sendiri (.com / .id)?',
-      a: 'Bisa. Paket Pro dan Bisnis mendukung integrasi domain kustom serta fitur unduh file HTML mandiri.',
-    },
-  ];
-
-  const scrollToSection = (id: string, navKey: string) => {
+  // Smooth scroll helper
+  const scrollTo = (id: string, navKey: string) => {
     setActiveNav(navKey);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleUseShowcaseTemplate = (item: (typeof templateShowcase)[0]) => {
-    const matched =
-      templates.find((t) => t.id === item.id) ||
-      templates.find((t) => t.category.toLowerCase().includes(item.category.split(' ')[0].toLowerCase())) ||
-      templates[0];
+  // 4 Core Showcase Micro-Webs (Section 5.6)
+  const showcases = [
+    {
+      id: 'showcase-portfolio',
+      category: 'portfolio',
+      categoryLabel: 'Personal Portfolio',
+      icon: <UserIcon size={16} />,
+      title: 'Alex Pratama — Senior Product Designer',
+      tagline: 'Portofolio interaktif dengan highlight studi kasus, keahlian desain, dan tautan kolaborasi.',
+      slug: 'alex-pratama',
+      themeBadge: 'Minimal Dark & Mint',
+      accentColor: '#C6F36B',
+      heroPreview: 'Membantu startup mendesain pengalaman digital yang berdampak nyata.',
+      stats: '8 Tahun Pengalaman • 24 Proyek Selesai',
+      chips: ['Case Studies', 'Interactive Resume', 'Contact Form', 'Skills Radar'],
+    },
+    {
+      id: 'showcase-org',
+      category: 'organization',
+      categoryLabel: 'Organization Profile',
+      icon: <Users size={16} />,
+      title: 'Komunitas Hijau Nusantara',
+      tagline: 'Halaman resmi pergerakan pelestarian lingkungan, program penanaman pohon, dan laporan donasi.',
+      slug: 'hijau-nusantara',
+      themeBadge: 'Clean Forest Eco',
+      accentColor: '#102B3F',
+      heroPreview: 'Bersama mewujudkan hutan kota yang asri dan berkelanjutan di seluruh Indonesia.',
+      stats: '12.000+ Relawan • 45 Kota',
+      chips: ['Visi & Misi', 'Program Aktif', 'Galeri Kegiatan', 'Pendaftaran Relawan'],
+    },
+    {
+      id: 'showcase-event',
+      category: 'event',
+      categoryLabel: 'Event Landing Page',
+      icon: <Calendar size={16} />,
+      title: 'Nusantara Tech Summit 2026',
+      tagline: 'Landing page konferensi teknologi dengan jadwal rundown, profil pembicara, dan registrasi tiket.',
+      slug: 'tech-summit-2026',
+      themeBadge: 'High-Impact Vibrant',
+      accentColor: '#F59E0B',
+      heroPreview: 'Masa depan AI, cloud architecture, dan inovasi digital Indonesia.',
+      stats: '2 Hari • 30 Pembicara • 1.500 Peserta',
+      chips: ['Rundown Acara', 'Profil Speaker', 'Lokasi & Peta', 'Form Pendaftaran'],
+    },
+    {
+      id: 'showcase-service',
+      category: 'service',
+      categoryLabel: 'Professional Service Profile',
+      icon: <Briefcase size={16} />,
+      title: 'Studio Karsa Kreasi',
+      tagline: 'Profil agensi konsultan branding dan digital presence untuk bisnis yang sedang bertumbuh.',
+      slug: 'karsa-kreasi',
+      themeBadge: 'Editorial Slate & Warm',
+      accentColor: '#7B4B28',
+      heroPreview: 'Membangun identitas brand yang memikat, autentik, dan siap bersaing di pasar global.',
+      stats: '98% Kepuasan Klien • 150+ Brand',
+      chips: ['Layanan Unggulan', 'Metodologi Kerja', 'Testimoni Klien', 'Booking Konsultasi'],
+    },
+  ];
 
-    if (matched) {
-      onUseTemplate(matched);
-    } else {
-      onOpenAiWizard(item.brandName);
-    }
-  };
-
-  const displayPlans: Plan[] =
-    plans && plans.length > 0
-      ? plans
-      : [
-          {
-            id: 'plan_free',
-            name: 'Paket Gratis',
-            slug: 'free',
-            description: 'Katalog online gratis untuk UMKM baru memulai.',
-            monthlyPrice: 0,
-            yearlyPrice: 0,
-            isFree: true,
-            isActive: true,
-            limits: {
-              websites: 1,
-              tokens: 15,
-              templates: 'basic',
-              customDomain: false,
-              scheduler: false,
-              exportHtml: false,
-              prioritySupport: false,
-            },
-            features: [
-              '1 Website Toko Resmi',
-              'Order Langsung ke WhatsApp',
-              '15 Token AI Generator',
-              'Subdomain & Hosting Cepat',
-            ],
-          },
-          {
-            id: 'plan_pro',
-            name: 'Paket Pro UMKM',
-            slug: 'pro',
-            description: 'Katalog profesional & otomatisasi konten AI.',
-            monthlyPrice: 59000,
-            yearlyPrice: 590000,
-            isPopular: true,
-            isActive: true,
-            limits: {
-              websites: 5,
-              tokens: 150,
-              templates: 'all',
-              customDomain: false,
-              scheduler: true,
-              exportHtml: true,
-              prioritySupport: true,
-            },
-            features: [
-              'Hingga 5 Website Toko',
-              '150 Token AI & Jadwal Promo',
-              'Akses Semua Template Premium',
-              'Export File HTML Mandiri',
-            ],
-          },
-          {
-            id: 'plan_business',
-            name: 'Paket Bisnis Agrobisnis',
-            slug: 'business',
-            description: 'Solusi skala besar untuk distributor & aneka cabang.',
-            monthlyPrice: 149000,
-            yearlyPrice: 1490000,
-            isActive: true,
-            limits: {
-              websites: 'unlimited',
-              tokens: 450,
-              templates: 'all',
-              customDomain: true,
-              scheduler: true,
-              exportHtml: true,
-              prioritySupport: true,
-            },
-            features: [
-              'Website Toko Tanpa Batas',
-              'Custom Domain (.id / .com)',
-              '450 Token AI Otomatisasi',
-              'Multi-Admin & Dukungan Prioritas',
-            ],
-          },
-        ];
+  const filteredShowcases =
+    showcaseCategory === 'all'
+      ? showcases
+      : showcases.filter((s) => s.category === showcaseCategory);
 
   return (
-    <div className="eloq-page">
+    <div className="saas-page" style={{ backgroundColor: '#F8FAF7', color: '#102B3F' }}>
       {/* ============================================================
-          1. TOP NAVBAR
+          5.1 NAVBAR (Sticky, Responsive, Active Navigation)
          ============================================================ */}
       <header
         style={{
           position: 'sticky',
           top: 0,
-          zIndex: 100,
-          backgroundColor: '#eef3eb',
+          zIndex: 1000,
+          backgroundColor: 'rgba(248, 250, 247, 0.92)',
           backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(35, 55, 38, 0.12)',
+          borderBottom: '1px solid rgba(85, 113, 132, 0.14)',
+          transition: 'all 0.25s ease',
         }}
       >
         <div
-          className="eloq-container"
+          className="saas-container"
           style={{
-            height: '76px',
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr auto',
+            display: 'flex',
             alignItems: 'center',
-            gap: '2rem',
+            justifyContent: 'space-between',
+            height: '76px',
           }}
         >
+          {/* Brand Logo */}
           <div
-            onClick={() => scrollToSection('top-hero', 'beranda')}
+            onClick={() => scrollTo('hero-section', 'beranda')}
             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
           >
-            <UniLandLogo size="md" variant="light" />
+            <UniLandLogo size="md" variant="light" showTagline={false} />
           </div>
 
+          {/* Desktop Navigation Links */}
           <nav
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              gap: '2.5rem',
+              gap: '2.2rem',
             }}
             className="hidden md:flex"
           >
             {[
-              { key: 'beranda', label: 'Beranda', target: 'top-hero' },
-              { key: 'tentang', label: 'Platform', target: 'tentang' },
-              { key: 'karya', label: 'Template', target: 'template' },
-              { key: 'layanan', label: 'Fitur AI', target: 'fitur' },
-              { key: 'harga', label: 'Harga', target: 'harga' },
-              { key: 'faq', label: 'FAQ', target: 'faq' },
+              { key: 'beranda', label: 'Beranda', target: 'hero-section' },
+              { key: 'fitur', label: 'Fitur', target: 'feature-section' },
+              { key: 'cara-kerja', label: 'Cara Kerja', target: 'how-it-works-section' },
+              { key: 'contoh', label: 'Contoh Website', target: 'showcase-section' },
+              { key: 'tentang', label: 'Tentang', target: 'problem-section' },
             ].map((item) => (
               <button
                 key={item.key}
-                onClick={() => scrollToSection(item.target, item.key)}
+                onClick={() => scrollTo(item.target, item.key)}
                 className={`eloq-nav-link ${activeNav === item.key ? 'active' : ''}`}
+                style={{
+                  fontSize: '0.94rem',
+                  fontWeight: activeNav === item.key ? 700 : 500,
+                  color: activeNav === item.key ? '#102B3F' : '#557184',
+                  padding: '6px 0',
+                }}
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/*Right: Auth & Signature Eloqwnt Pill CTA */}
+          {/* Auth Actions / CTA */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {currentUser ? (
               <button
-                onClick={() => onOpenDashboard && onOpenDashboard()}
-                className="eloq-btn-black"
+                onClick={() => (onOpenDashboard ? onOpenDashboard() : onOpenAuth('login'))}
+                className="btn-navy"
                 style={{
-                  padding: '0.68rem 1.4rem',
-                  fontSize: '0.92rem',
-                  background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                  color: '#ffffff',
-                  boxShadow: '0 8px 22px -4px rgba(35, 55, 38, 0.42)',
+                  padding: '0.62rem 1.35rem',
+                  fontSize: '0.88rem',
                 }}
               >
-                <span>Dashboard</span>
-                <span>↗</span>
+                <Layout size={16} />
+                <span>Buka Dashboard</span>
               </button>
             ) : (
               <>
                 <button
                   onClick={() => onOpenAuth('login')}
-                  className="eloq-nav-link"
-                  style={{ marginRight: '0.25rem', fontWeight: 500 }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#102B3F',
+                    fontSize: '0.92rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    padding: '8px 14px',
+                    borderRadius: '999px',
+                  }}
+                  className="hidden sm:inline-block"
                 >
                   Masuk
                 </button>
                 <button
                   onClick={() => onOpenAiWizard()}
-                  className="eloq-btn-grey"
+                  className="btn-lime"
                   style={{
-                    padding: '0.68rem 1.4rem',
-                    fontSize: '0.92rem',
-                    background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                    color: '#ffffff',
-                    boxShadow: '0 8px 22px -4px rgba(35, 55, 38, 0.42)',
+                    padding: '0.62rem 1.35rem',
+                    fontSize: '0.88rem',
                   }}
                 >
-                  <span>Mulai Sekarang</span>
+                  <Sparkles size={16} />
+                  <span>Mulai Gratis</span>
                 </button>
               </>
             )}
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(85, 113, 132, 0.2)',
+                borderRadius: '8px',
+                padding: '6px',
+                color: '#102B3F',
+                cursor: 'pointer',
+              }}
+              className="flex md:hidden"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div
+            style={{
+              padding: '1rem 1.5rem 1.5rem',
+              backgroundColor: '#FFFFFF',
+              borderBottom: '1px solid rgba(85, 113, 132, 0.16)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.8rem',
+            }}
+            className="flex md:hidden"
+          >
+            {[
+              { key: 'beranda', label: 'Beranda', target: 'hero-section' },
+              { key: 'fitur', label: 'Fitur', target: 'feature-section' },
+              { key: 'cara-kerja', label: 'Cara Kerja', target: 'how-it-works-section' },
+              { key: 'contoh', label: 'Contoh Website', target: 'showcase-section' },
+              { key: 'tentang', label: 'Tentang', target: 'problem-section' },
+            ].map((item) => (
+              <button
+                key={item.key}
+                onClick={() => scrollTo(item.target, item.key)}
+                style={{
+                  textAlign: 'left',
+                  background: 'none',
+                  border: 'none',
+                  padding: '8px 0',
+                  fontSize: '1rem',
+                  fontWeight: activeNav === item.key ? 700 : 500,
+                  color: activeNav === item.key ? '#102B3F' : '#557184',
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+            <div style={{ paddingTop: '0.5rem', borderTop: '1px solid #ECE7D9' }}>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenAuth('login');
+                }}
+                style={{
+                  width: '100%',
+                  textAlign: 'center',
+                  padding: '10px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(16,43,63,0.2)',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  background: 'transparent',
+                }}
+              >
+                Masuk ke Akun
+              </button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* ============================================================
-          2. HERO SECTION (Full-Height Architectural Studio Stage)
+          5.2 HERO SECTION (Master Headline, Subheadline, CTAs & Product Mockup)
          ============================================================ */}
       <section
-        id="top-hero"
+        id="hero-section"
         className="eloq-hero-surface"
         style={{
-          borderRadius: '0 0 40px 40px',
-          minHeight: 'calc(94svh - 76px)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
           position: 'relative',
-          overflow: 'hidden',
-          paddingTop: '6.5rem',
-          paddingBottom: '6.5rem',
+          paddingTop: '4.5rem',
+          paddingBottom: '5.5rem',
         }}
       >
-        {/* Multi-Layer Architectural Studio Grid & Symmetrical Olive Glows */}
         <div className="eloq-hero-grid-bg" />
         <div className="eloq-aurora-orb-1" />
         <div className="eloq-aurora-orb-2" />
         <div className="eloq-aurora-orb-3" />
 
-        {/* Precision Studio Architectural Geometry Overlay (Concentric Arcs & Crosshair Nodes) */}
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 800"
-          fill="none"
-          preserveAspectRatio="xMidYMid slice"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            zIndex: 1,
-          }}
-        >
-          <defs>
-            <radialGradient id="heroArchFade" cx="50%" cy="46%" r="54%">
-              <stop offset="0%" stopColor="#233726" stopOpacity="0.14" />
-              <stop offset="65%" stopColor="#3d5a37" stopOpacity="0.07" />
-              <stop offset="100%" stopColor="#233726" stopOpacity="0" />
-            </radialGradient>
-            <linearGradient id="heroBeamLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#6E8854" stopOpacity="0.16" />
-              <stop offset="100%" stopColor="#6E8854" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient id="heroBeamRight" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#3d5a37" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#3d5a37" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
-          {/* Soft Architectural Top Corner Light Beams */}
-          <polygon points="0,0 460,0 720,520 0,340" fill="url(#heroBeamLeft)" />
-          <polygon points="1440,0 980,0 720,520 1440,340" fill="url(#heroBeamRight)" />
-
-          {/* Concentric Studio Rings Centered Behind Headline */}
-          <circle cx="720" cy="370" r="260" stroke="url(#heroArchFade)" strokeWidth="1" strokeDasharray="4 6" />
-          <circle cx="720" cy="370" r="420" stroke="url(#heroArchFade)" strokeWidth="1" />
-          <circle cx="720" cy="370" r="590" stroke="url(#heroArchFade)" strokeWidth="1" strokeDasharray="8 10" />
-          <ellipse cx="720" cy="790" rx="680" ry="210" stroke="rgba(61, 90, 55, 0.09)" strokeWidth="1" />
-
-          {/* Architectural Frame Lines */}
-          <line x1="180" y1="0" x2="180" y2="800" stroke="rgba(35, 55, 38, 0.05)" strokeWidth="1" />
-          <line x1="1260" y1="0" x2="1260" y2="800" stroke="rgba(35, 55, 38, 0.05)" strokeWidth="1" />
-          <line x1="0" y1="140" x2="1440" y2="140" stroke="rgba(35, 55, 38, 0.045)" strokeWidth="1" />
-          <line x1="0" y1="640" x2="1440" y2="640" stroke="rgba(35, 55, 38, 0.045)" strokeWidth="1" />
-
-          {/* Precision Crosshair Markers (+) at Studio Grid Intersections */}
-          <g stroke="rgba(61, 90, 55, 0.28)" strokeWidth="1.25" strokeLinecap="round">
-            <path d="M175 140 H185 M180 135 V145" />
-            <path d="M1255 140 H1265 M1260 135 V145" />
-            <path d="M175 640 H185 M180 635 V645" />
-            <path d="M1255 640 H1265 M1260 635 V645" />
-            <path d="M335 260 H345 M340 255 V265" />
-            <path d="M1095 260 H1105 M1100 255 V265" />
-          </g>
-        </svg>
-
         <div
-          className="eloq-container"
+          className="saas-container"
           style={{
-            flex: 1,
+            position: 'relative',
+            zIndex: 5,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center',
-            maxWidth: '1040px',
-            margin: '0 auto',
-            position: 'relative',
-            zIndex: 2,
           }}
         >
-          {/* Warm Golden Harvest Pill Badge */}
-          <div className="eloq-reveal-1" style={{ marginBottom: '1.25rem' }}>
-            <span className="eloq-badge-gold">
-              ✦ Platform Website Toko &amp; Asisten AI UMKM
+          {/* Pill Badge */}
+          <div style={{ marginBottom: '1.4rem' }}>
+            <span
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '6px 16px',
+                borderRadius: '999px',
+                backgroundColor: '#EAF7D5',
+                border: '1px solid rgba(198, 243, 107, 0.65)',
+                color: '#102B3F',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '0.84rem',
+                fontWeight: 700,
+                letterSpacing: '0.01em',
+                boxShadow: '0 2px 10px rgba(198, 243, 107, 0.25)',
+              }}
+            >
+              <Sparkles size={15} color="#102B3F" />
+              <span>AI-Powered Micro-Web Platform</span>
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: '#102B3F',
+                }}
+              />
+              <span style={{ color: '#557184', fontWeight: 600 }}>Tanpa Coding</span>
             </span>
           </div>
 
-          {/* Monumental Display Headline */}
+          {/* Master Headline (Section 5.2 Requirement) */}
           <h1
-            className="eloq-reveal-2"
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 'clamp(2.55rem, 5.1vw, 4.65rem)',
-              fontWeight: 600,
-              lineHeight: 1.06,
-              letterSpacing: '-0.04em',
-              color: '#1c2d1f',
-              maxWidth: '960px',
-              marginBottom: '1.2rem',
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
+              fontWeight: 800,
+              lineHeight: 1.08,
+              letterSpacing: '-0.035em',
+              color: '#102B3F',
+              maxWidth: '920px',
+              margin: '0 auto 1.25rem',
             }}
           >
-            Partner kreatif &amp; teknologi untuk{' '}
-            <span className="eloq-gradient-text">akselerasi brand UMKM lokal</span>
+            Website Impianmu,{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #102B3F 0%, #183C57 40%, #7B4B28 75%, #F59E0B 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Cukup Ceritakan.
+            </span>
           </h1>
 
-          {/* Clean 1-Sentence Subtitle Below H1 */}
+          {/* Master Subheadline (Section 5.2 Requirement) */}
           <p
-            className="eloq-reveal-3"
             style={{
-              fontSize: 'clamp(1rem, 1.25vw, 1.15rem)',
-              color: '#4e564c',
-              maxWidth: '620px',
-              lineHeight: 1.55,
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
+              lineHeight: 1.6,
+              color: '#557184',
+              maxWidth: '720px',
+              margin: '0 auto 2.4rem',
               fontWeight: 400,
-              marginBottom: '2.2rem',
-              letterSpacing: '-0.015em',
             }}
           >
-            Bantu UMKM naik kelas dengan website toko resmi berdaya AI dan pesanan langsung ke WhatsApp tanpa potongan biaya.
+            Buat, kelola, dan publikasikan website mikro profesional dengan bantuan AI.
+            Tanpa perlu memahami coding.
           </p>
 
-          {/* CTA Pill Buttons (Pine Forest + Warm Amber Gold) */}
+          {/* CTAs (Section 5.2 Requirement) */}
           <div
-            className="eloq-reveal-4"
             style={{
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '1rem',
+              gap: '1.1rem',
+              marginBottom: '3.75rem',
             }}
           >
             <button
               onClick={() => onOpenAiWizard()}
-              className="eloq-btn-grey"
+              className="btn-lime"
               style={{
-                background: 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 80%, #c98a2c 100%)',
-                color: '#ffffff',
-                boxShadow:
-                  '0 12px 28px -6px rgba(35, 55, 38, 0.42), 0 0 20px rgba(229, 172, 50, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.35)',
+                padding: '0.95rem 2.2rem',
+                fontSize: '1.02rem',
               }}
             >
-              <span>Buat Website Sekarang</span>
+              <span>Mulai Buat Website</span>
+              <ArrowRight size={18} />
             </button>
+
             <button
-              onClick={() => scrollToSection('template', 'karya')}
-              className="eloq-btn-outline"
+              onClick={() => scrollTo('how-it-works-section', 'cara-kerja')}
+              className="btn-outline-navy"
               style={{
-                borderColor: 'rgba(123, 75, 40, 0.24)',
-                color: '#342316',
+                padding: '0.95rem 2rem',
+                fontSize: '1.02rem',
               }}
             >
-              <span>Lihat Template Demo</span>
-              <span>↗</span>
+              <span>Lihat Cara Kerja</span>
+              <ChevronRight size={18} />
             </button>
           </div>
-        </div>
-      </section>
 
-      {/* ============================================================
-          3. PLATFORM PREVIEW ISLAND (`#tentang` — Ultra-Clean Studio Showcase)
-         ============================================================ */}
-      <section id="tentang" className="eloq-container" style={{ marginTop: '3.25rem' }}>
-        <div className="eloq-island eloq-who-grid" style={{ alignItems: 'center' }}>
-          {/* Left: Clean Minimalist Storefront & Analytics Preview */}
+          {/* ============================================================
+              VISUAL MOCKUP PRODUK (Section 5.2 Requirement)
+              - AI Chat Builder
+              - Live Website Preview with Desktop/Mobile Switcher
+              - Micro-Web Dashboard stats
+             ============================================================ */}
           <div
             style={{
-              backgroundColor: '#f3f6f1',
-              border: '1px solid rgba(35, 55, 38, 0.08)',
-              borderRadius: '24px',
-              padding: '1.25rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
+              width: '100%',
+              maxWidth: '1080px',
+              backgroundColor: '#FFFFFF',
+              borderRadius: '28px',
+              border: '1px solid rgba(85, 113, 132, 0.18)',
+              boxShadow:
+                '0 32px 80px -16px rgba(16, 43, 63, 0.14), 0 8px 24px rgba(16, 43, 63, 0.05)',
+              overflow: 'hidden',
+              textAlign: 'left',
+              position: 'relative',
             }}
           >
-            {/* Top Mode Switcher */}
+            {/* Mockup Browser Window Topbar */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: '0.5rem',
-                flexWrap: 'wrap',
+                padding: '12px 20px',
+                backgroundColor: '#F0F5EE',
+                borderBottom: '1px solid rgba(85, 113, 132, 0.14)',
               }}
             >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  backgroundColor: '#e5ebe1',
-                  padding: '4px',
-                  borderRadius: '999px',
-                }}
-              >
-                <button
-                  onClick={() => setStudioTab('cms')}
-                  style={{
-                    padding: '0.4rem 0.95rem',
-                    borderRadius: '999px',
-                    fontSize: '0.78rem',
-                    fontWeight: 600,
-                    border: 'none',
-                    cursor: 'pointer',
-                    background:
-                      studioTab === 'cms'
-                        ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                        : 'transparent',
-                    color: studioTab === 'cms' ? '#ffffff' : '#435244',
-                    boxShadow:
-                      studioTab === 'cms' ? '0 4px 10px rgba(35, 55, 38, 0.22)' : 'none',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  Pratinjau Toko
-                </button>
-                <button
-                  onClick={() => setStudioTab('dashboard')}
-                  style={{
-                    padding: '0.4rem 0.95rem',
-                    borderRadius: '999px',
-                    fontSize: '0.78rem',
-                    fontWeight: 600,
-                    border: 'none',
-                    cursor: 'pointer',
-                    background:
-                      studioTab === 'dashboard'
-                        ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                        : 'transparent',
-                    color: studioTab === 'dashboard' ? '#ffffff' : '#435244',
-                    boxShadow:
-                      studioTab === 'dashboard' ? '0 4px 10px rgba(35, 55, 38, 0.22)' : 'none',
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  Analitik Toko
-                </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#EF4444' }} />
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#F59E0B' }} />
+                <span style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#10B981' }} />
               </div>
 
-              <button
-                onClick={() => onOpenPublicView('kopi-robusta-slamet')}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  fontSize: '0.78rem',
-                  fontWeight: 600,
-                  color: '#233726',
-                  cursor: 'pointer',
-                  padding: 0,
-                }}
-              >
-                Buka Demo Live ↗
-              </button>
-            </div>
-
-            {/* Clean Browser Frame */}
-            <div
-              onClick={() => onOpenPublicView('kopi-robusta-slamet')}
-              style={{
-                borderRadius: '18px',
-                overflow: 'hidden',
-                backgroundColor: '#ffffff',
-                cursor: 'pointer',
-                boxShadow: '0 14px 34px rgba(24, 38, 26, 0.08)',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-              }}
-            >
-              {/* Minimalist Browser Top Bar */}
+              {/* URL Pill */}
               <div
                 style={{
-                  backgroundColor: '#f8faf7',
-                  padding: '10px 16px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '10px',
-                  borderBottom: '1px solid rgba(35, 55, 38, 0.08)',
+                  gap: '8px',
+                  backgroundColor: '#FFFFFF',
+                  padding: '5px 16px',
+                  borderRadius: '999px',
+                  border: '1px solid rgba(85, 113, 132, 0.16)',
+                  fontSize: '0.82rem',
+                  color: '#557184',
+                  fontFamily: 'monospace',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                </div>
-
-                <div
-                  style={{
-                    backgroundColor: '#eef2eb',
-                    borderRadius: '999px',
-                    padding: '3px 14px',
-                    fontSize: '0.7rem',
-                    fontWeight: 600,
-                    color: '#3d5a37',
-                    letterSpacing: '-0.01em',
-                  }}
-                >
-                  kopislamet.uniland.id
-                </div>
-
+                <Globe size={13} color="#102B3F" />
+                <span style={{ color: '#102B3F', fontWeight: 600 }}>unilandfarm.id</span>
+                <span>/site/alex-creative</span>
                 <span
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '5px',
+                    backgroundColor: '#EAF7D5',
+                    color: '#102B3F',
                     fontSize: '0.68rem',
-                    fontWeight: 600,
-                    color: '#3d5a37',
+                    fontWeight: 700,
+                    padding: '2px 8px',
+                    borderRadius: '999px',
+                    marginLeft: '4px',
                   }}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#6E8854' }} />
-                  Online
+                  LIVE
                 </span>
               </div>
 
-              {studioTab === 'cms' ? (
-                /* Ultra-Clean Full-Width Storefront Preview */
-                <div style={{ backgroundColor: '#ffffff' }}>
-                  {/* Store Navigation Row */}
-                  <div
-                    style={{
-                      padding: '12px 18px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      borderBottom: '1px solid rgba(35, 55, 38, 0.06)',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span
-                        style={{
-                          width: '22px',
-                          height: '22px',
-                          borderRadius: '6px',
-                          background: 'linear-gradient(135deg, #233726 0%, #6E8854 100%)',
-                          color: '#ffffff',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '0.66rem',
-                          fontWeight: 700,
-                        }}
-                      >
-                        K
-                      </span>
-                      <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#1c2d1f' }}>
-                        Kopi Lereng Slamet
-                      </span>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.7rem', color: '#5d6759', fontWeight: 500 }}>
-                      <span style={{ color: '#1c2d1f', fontWeight: 600 }}>Katalog</span>
-                      <span>Tentang</span>
-                      <span
-                        style={{
-                          background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                          color: '#ffffff',
-                          padding: '4px 11px',
-                          borderRadius: '999px',
-                          fontSize: '0.66rem',
-                          fontWeight: 600,
-                        }}
-                      >
-                        Order WA ↗
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Clean Architectural Split Hero Banner */}
-                  <div
-                    style={{
-                      margin: '14px 16px 12px',
-                      borderRadius: '14px',
-                      background: 'linear-gradient(135deg, #1c2d1f 0%, #273e2b 55%, #3d5a37 100%)',
-                      padding: '18px 20px',
-                      display: 'grid',
-                      gridTemplateColumns: '1.25fr 0.9fr',
-                      gap: '14px',
-                      alignItems: 'center',
-                      color: '#ffffff',
-                    }}
-                  >
-                    <div>
-                      <span
-                        style={{
-                          display: 'inline-block',
-                          backgroundColor: 'rgba(255,255,255,0.12)',
-                          color: '#d3e8bc',
-                          fontSize: '0.6rem',
-                          fontWeight: 600,
-                          padding: '3px 9px',
-                          borderRadius: '999px',
-                          marginBottom: '8px',
-                          letterSpacing: '0.03em',
-                        }}
-                      >
-                        100% ARABIKA SINGLE ORIGIN
-                      </span>
-                      <div
-                        style={{
-                          fontSize: '1.05rem',
-                          fontWeight: 600,
-                          lineHeight: 1.2,
-                          letterSpacing: '-0.02em',
-                          marginBottom: '6px',
-                        }}
-                      >
-                        Kopi Asli Petani Lereng Slamet
-                      </div>
-                      <div
-                        style={{
-                          fontSize: '0.68rem',
-                          color: 'rgba(255,255,255,0.78)',
-                          lineHeight: 1.45,
-                          marginBottom: '12px',
-                        }}
-                      >
-                        Dipetik matang dari ketinggian 1.200 mdpl dan disangrai segar setiap minggu.
-                      </div>
-                      <span
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '5px',
-                          backgroundColor: '#ffffff',
-                          color: '#1c2d1f',
-                          fontSize: '0.66rem',
-                          fontWeight: 700,
-                          padding: '5px 12px',
-                          borderRadius: '999px',
-                        }}
-                      >
-                        Pesan via WhatsApp ↗
-                      </span>
-                    </div>
-
-                    <div
-                      style={{
-                        borderRadius: '10px',
-                        overflow: 'hidden',
-                        height: '118px',
-                        backgroundColor: 'rgba(255,255,255,0.08)',
-                        border: '1px solid rgba(255,255,255,0.14)',
-                      }}
-                    >
-                      <img
-                        src="/assets/products/kopi-robusta.svg"
-                        alt="Kopi Lereng Slamet"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Clean 3-Column Mini Product Catalog */}
-                  <div style={{ padding: '4px 16px 16px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginBottom: '8px',
-                      }}
-                    >
-                      <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#1c2d1f' }}>
-                        Katalog Produk Unggulan
-                      </span>
-                      <span style={{ fontSize: '0.64rem', color: '#5d6759', fontWeight: 500 }}>
-                        3 produk ditampilkan
-                      </span>
-                    </div>
-
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '10px',
-                      }}
-                    >
-                      {[
-                        { name: 'Robusta Dampit', price: 'Rp 65.000', img: '/assets/products/kopi-robusta.svg' },
-                        { name: 'Arabika Wine', price: 'Rp 95.000', img: '/assets/products/kopi-wine.svg' },
-                        { name: 'Cold Brew 250ml', price: 'Rp 35.000', img: '/assets/products/kopi-coldbrew.svg' },
-                      ].map((prod, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            backgroundColor: '#f8faf7',
-                            border: '1px solid rgba(35, 55, 38, 0.08)',
-                            borderRadius: '10px',
-                            padding: '7px',
-                          }}
-                        >
-                          <div
-                            style={{
-                              height: '58px',
-                              borderRadius: '7px',
-                              overflow: 'hidden',
-                              backgroundColor: '#eef2eb',
-                              marginBottom: '6px',
-                            }}
-                          >
-                            <img
-                              src={prod.img}
-                              alt={prod.name}
-                              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                            />
-                          </div>
-                          <div
-                            style={{
-                              fontSize: '0.66rem',
-                              fontWeight: 700,
-                              color: '#1c2d1f',
-                              whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                            }}
-                          >
-                            {prod.name}
-                          </div>
-                          <div
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              marginTop: '3px',
-                            }}
-                          >
-                            <span style={{ fontSize: '0.62rem', fontWeight: 700, color: '#3d5a37' }}>
-                              {prod.price}
-                            </span>
-                            <span
-                              style={{
-                                fontSize: '0.56rem',
-                                fontWeight: 700,
-                                color: '#233726',
-                                backgroundColor: '#e5ebe1',
-                                padding: '2px 6px',
-                                borderRadius: '999px',
-                              }}
-                            >
-                              + WA
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                /* Clean Minimalist Analytics View */
-                <div
+              {/* Device Switcher */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <button
+                  type="button"
+                  onClick={() => setPreviewDevice('desktop')}
                   style={{
-                    backgroundColor: '#ffffff',
-                    padding: '16px',
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
                     display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
+                    alignItems: 'center',
+                    gap: '4px',
+                    backgroundColor: previewDevice === 'desktop' ? '#102B3F' : 'transparent',
+                    color: previewDevice === 'desktop' ? '#F8FAF7' : '#557184',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '10px',
-                    }}
-                  >
-                    {[
-                      { label: 'PENGUNJUNG', val: '2.340', badge: '+28% bulan ini' },
-                      { label: 'PESANAN WA', val: '418', badge: 'Konversi 17,8%' },
-                      { label: 'TOKEN AI', val: '250', badge: 'Paket Pro UMKM' },
-                    ].map((k, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          backgroundColor: '#f8faf7',
-                          borderRadius: '12px',
-                          padding: '12px',
-                          border: '1px solid rgba(35, 55, 38, 0.08)',
-                        }}
-                      >
-                        <div style={{ fontSize: '0.58rem', fontWeight: 700, color: '#5d6759', letterSpacing: '0.04em' }}>
-                          {k.label}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: '1.15rem',
-                            fontWeight: 700,
-                            color: '#1c2d1f',
-                            margin: '3px 0',
-                          }}
-                        >
-                          {k.val}
-                        </div>
-                        <div style={{ fontSize: '0.6rem', fontWeight: 600, color: '#3d5a37' }}>
-                          {k.badge}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div
-                    style={{
-                      backgroundColor: '#f8faf7',
-                      borderRadius: '14px',
-                      padding: '14px',
-                      border: '1px solid rgba(35, 55, 38, 0.08)',
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#1c2d1f' }}>
-                        Statistik Kunjungan &amp; Klik WhatsApp
-                      </span>
-                      <span
-                        style={{
-                          fontSize: '0.6rem',
-                          fontWeight: 600,
-                          color: '#233726',
-                          backgroundColor: '#e5ebe1',
-                          padding: '3px 9px',
-                          borderRadius: '999px',
-                        }}
-                      >
-                        30 Hari Terakhir
-                      </span>
-                    </div>
-                    <svg viewBox="0 0 400 115" style={{ width: '100%', height: '125px', display: 'block' }}>
-                      <defs>
-                        <linearGradient id="studioChartGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#6E8854" stopOpacity="0.32" />
-                          <stop offset="100%" stopColor="#6E8854" stopOpacity="0.0" />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d="M 10 92 C 60 84, 95 58, 140 62 C 185 66, 220 34, 270 30 C 320 26, 355 16, 390 12 L 390 108 L 10 108 Z"
-                        fill="url(#studioChartGrad)"
-                      />
-                      <path
-                        d="M 10 92 C 60 84, 95 58, 140 62 C 185 66, 220 34, 270 30 C 320 26, 355 16, 390 12"
-                        fill="none"
-                        stroke="#3d5a37"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                      {[
-                        [10, 92],
-                        [140, 62],
-                        [270, 30],
-                        [390, 12],
-                      ].map(([cx, cy], idx) => (
-                        <circle
-                          key={idx}
-                          cx={cx}
-                          cy={cy}
-                          r="4.5"
-                          fill="#FFFFFF"
-                          stroke="#233726"
-                          strokeWidth="2.5"
-                        />
-                      ))}
-                    </svg>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Right: Balanced Value Proposition + Studio Feature Checklist */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1.25rem' }}>
-            <div className="eloq-dot-label">
-              <span className="eloq-dot" />
-              <span>Platform Toko Online UMKM</span>
+                  <Layout size={13} />
+                  <span className="hidden sm:inline">Desktop</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPreviewDevice('mobile')}
+                  style={{
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.78rem',
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    backgroundColor: previewDevice === 'mobile' ? '#102B3F' : 'transparent',
+                    color: previewDevice === 'mobile' ? '#F8FAF7' : '#557184',
+                  }}
+                >
+                  <Smartphone size={13} />
+                  <span className="hidden sm:inline">Mobile</span>
+                </button>
+              </div>
             </div>
 
-            <h2
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontSize: 'clamp(1.75rem, 2.5vw, 2.3rem)',
-                fontWeight: 600,
-                lineHeight: 1.15,
-                letterSpacing: '-0.03em',
-                color: '#1c2d1f',
-                margin: 0,
-              }}
-            >
-              Website toko profesional, langsung terhubung ke WhatsApp.
-            </h2>
-
-            <p
-              style={{
-                fontSize: '0.96rem',
-                lineHeight: 1.5,
-                color: '#4b554c',
-                maxWidth: '480px',
-                margin: 0,
-              }}
-            >
-              Ubah katalog produk Anda menjadi website resmi siap pakai dalam 2 menit. Pembeli langsung memesan via WhatsApp tanpa potongan biaya.
-            </p>
-
-            {/* Clean Architectural Highlight List */}
+            {/* Mockup Main Workspace: Left AI Chat + Right Live Preview */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-                gap: '0.65rem',
-                width: '100%',
-                padding: '1rem 1.15rem',
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '16px',
-                boxShadow: '0 6px 18px rgba(35, 55, 38, 0.04)',
+                gridTemplateColumns: previewDevice === 'mobile' ? '1fr 360px' : '380px 1fr',
+                minHeight: '440px',
+                backgroundColor: '#FAFBF9',
               }}
+              className="mockup-grid"
             >
-              {[
-                'Katalog produk resmi & rapi',
-                'Order langsung ke WhatsApp',
-                'Asisten AI pembuat deskripsi',
-                '0% komisi penjualan',
-              ].map((pt, i) => (
+              {/* Left Panel: Conversational AI Builder */}
+              <div
+                style={{
+                  padding: '20px',
+                  borderRight: '1px solid rgba(85, 113, 132, 0.12)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  backgroundColor: '#FFFFFF',
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '16px',
+                      paddingBottom: '12px',
+                      borderBottom: '1px solid rgba(85, 113, 132, 0.1)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div
+                        style={{
+                          width: '28px',
+                          height: '28px',
+                          borderRadius: '8px',
+                          backgroundColor: '#102B3F',
+                          color: '#C6F36B',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <Sparkles size={15} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#102B3F' }}>
+                          UNI Agentic AI
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: '#10B981', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+                          Online &amp; Siap Bantu
+                        </div>
+                      </div>
+                    </div>
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        padding: '3px 8px',
+                        borderRadius: '6px',
+                        backgroundColor: '#F0F5EE',
+                        color: '#557184',
+                        fontWeight: 600,
+                      }}
+                    >
+                      v2.5
+                    </span>
+                  </div>
+
+                  {/* Simulated Chat Messages */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {/* User Message */}
+                    <div
+                      style={{
+                        alignSelf: 'flex-end',
+                        backgroundColor: '#102B3F',
+                        color: '#F8FAF7',
+                        padding: '10px 14px',
+                        borderRadius: '14px 14px 2px 14px',
+                        fontSize: '0.82rem',
+                        lineHeight: 1.45,
+                        maxWidth: '90%',
+                      }}
+                    >
+                      "Buatkan website portofolio UX designer modern, dengan showcase studi kasus dan kontak cepat."
+                    </div>
+
+                    {/* AI Response */}
+                    <div
+                      style={{
+                        alignSelf: 'flex-start',
+                        backgroundColor: '#F0F5EE',
+                        color: '#102B3F',
+                        padding: '12px 14px',
+                        borderRadius: '14px 14px 14px 2px',
+                        fontSize: '0.82rem',
+                        lineHeight: 1.45,
+                        maxWidth: '95%',
+                        border: '1px solid rgba(85, 113, 132, 0.12)',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px', fontWeight: 700, color: '#102B3F' }}>
+                        <CheckCircle2 size={14} color="#10B981" />
+                        <span>Website Mikro Berhasil Disusun:</span>
+                      </div>
+                      <div style={{ fontSize: '0.78rem', color: '#557184' }}>
+                        • Section Hero &amp; Headline personal<br />
+                        • Grid Portofolio (4 Studi Kasus)<br />
+                        • Integrasi Tautan Kontak Langsung
+                      </div>
+                    </div>
+
+                    {/* AI Proposal Action Chip */}
+                    <div
+                      style={{
+                        padding: '8px 12px',
+                        borderRadius: '10px',
+                        backgroundColor: '#EAF7D5',
+                        border: '1px solid rgba(198, 243, 107, 0.6)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        fontSize: '0.76rem',
+                        fontWeight: 600,
+                        color: '#102B3F',
+                      }}
+                    >
+                      <span>Perubahan telah diterapkan ke preview live</span>
+                      <span style={{ color: '#102B3F', fontWeight: 800 }}>Tersimpan ✓</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Input Prompt Box in Mockup */}
                 <div
-                  key={i}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.55rem',
-                    fontSize: '0.82rem',
-                    fontWeight: 600,
-                    color: '#233726',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    borderRadius: '12px',
+                    backgroundColor: '#F8FAF7',
+                    border: '1.5px solid rgba(85, 113, 132, 0.18)',
+                    marginTop: '16px',
                   }}
                 >
-                  <span
+                  <input
+                    type="text"
+                    value={promptInput}
+                    onChange={(e) => setPromptInput(e.target.value)}
+                    placeholder="Ketik instruksi revisi..."
                     style={{
-                      width: '18px',
-                      height: '18px',
-                      borderRadius: '50%',
-                      backgroundColor: '#e2ebdc',
-                      color: '#233726',
-                      display: 'inline-flex',
+                      border: 'none',
+                      background: 'transparent',
+                      outline: 'none',
+                      fontSize: '0.8rem',
+                      color: '#102B3F',
+                      flex: 1,
+                    }}
+                  />
+                  <button
+                    type="button"
+                    style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '8px',
+                      backgroundColor: '#C6F36B',
+                      border: 'none',
+                      display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '0.66rem',
-                      fontWeight: 800,
-                      flexShrink: 0,
+                      color: '#102B3F',
+                      cursor: 'pointer',
                     }}
                   >
-                    ✓
-                  </span>
-                  <span>{pt}</span>
+                    <Send size={13} />
+                  </button>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.35rem' }}>
-              <button onClick={() => onOpenAiWizard()} className="eloq-btn-black">
-                <span>Coba AI Builder</span>
-                <span>↗</span>
-              </button>
-              {!currentUser && (
-                <button onClick={() => onOpenAuth('register')} className="eloq-btn-outline">
-                  <span>Daftar Gratis</span>
-                </button>
-              )}
+              {/* Right Panel: Live Multi-Device Micro-Web Preview */}
+              <div
+                style={{
+                  padding: '24px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#F3F7F2',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: '100%',
+                    maxWidth: previewDevice === 'mobile' ? '300px' : '540px',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: '18px',
+                    border: '1px solid rgba(85, 113, 132, 0.16)',
+                    boxShadow: '0 12px 30px rgba(16, 43, 63, 0.08)',
+                    padding: '20px',
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  {/* Micro-Web Nav */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '18px',
+                      paddingBottom: '10px',
+                      borderBottom: '1px solid rgba(85, 113, 132, 0.1)',
+                    }}
+                  >
+                    <div style={{ fontWeight: 800, fontSize: '0.88rem', color: '#102B3F' }}>
+                      Alex Pratama
+                    </div>
+                    <div
+                      style={{
+                        padding: '4px 10px',
+                        borderRadius: '999px',
+                        backgroundColor: '#C6F36B',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#102B3F',
+                      }}
+                    >
+                      Hubungi Saya
+                    </div>
+                  </div>
+
+                  {/* Micro-Web Hero */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <div
+                      style={{
+                        fontSize: '0.74rem',
+                        fontWeight: 700,
+                        color: '#557184',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em',
+                        marginBottom: '4px',
+                      }}
+                    >
+                      Senior Product Designer
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: '1.25rem',
+                        fontWeight: 800,
+                        color: '#102B3F',
+                        lineHeight: 1.25,
+                        margin: '0 0 6px',
+                      }}
+                    >
+                      Mendesain Pengalaman Digital yang Berdampak.
+                    </h3>
+                    <p style={{ fontSize: '0.78rem', color: '#557184', margin: 0, lineHeight: 1.45 }}>
+                      Membantu startup &amp; enterprise menyederhanakan produk kompleks menjadi antarmuka yang elegan.
+                    </p>
+                  </div>
+
+                  {/* Portfolio Cards Grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '14px' }}>
+                    <div
+                      style={{
+                        padding: '10px',
+                        borderRadius: '10px',
+                        backgroundColor: '#F8FAF7',
+                        border: '1px solid rgba(85, 113, 132, 0.14)',
+                      }}
+                    >
+                      <div style={{ fontSize: '0.68rem', color: '#10B981', fontWeight: 700 }}>Fintech App</div>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#102B3F' }}>PayFlow Mobile</div>
+                    </div>
+                    <div
+                      style={{
+                        padding: '10px',
+                        borderRadius: '10px',
+                        backgroundColor: '#F8FAF7',
+                        border: '1px solid rgba(85, 113, 132, 0.14)',
+                      }}
+                    >
+                      <div style={{ fontSize: '0.68rem', color: '#3B82F6', fontWeight: 700 }}>SaaS Platform</div>
+                      <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#102B3F' }}>CloudSync UI</div>
+                    </div>
+                  </div>
+
+                  {/* Trust Footer */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontSize: '0.72rem',
+                      color: '#557184',
+                      paddingTop: '8px',
+                      borderTop: '1px dashed rgba(85, 113, 132, 0.2)',
+                    }}
+                  >
+                    <span>✓ Dikelola via UNI-LANDFARM</span>
+                    <span style={{ fontWeight: 600, color: '#102B3F' }}>Jakarta, ID</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ============================================================
-          4. REAL WEBSITE TEMPLATES SHOWCASE (`#template`)
+          5.3 PROBLEM SECTION (Master Requirement: Membangun Kehadiran Digital Seharusnya Tidak Rumit)
          ============================================================ */}
-      <section id="template" className="eloq-container">
-        <div className="eloq-section-header">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div className="eloq-dot-label">
-              <span className="eloq-dot" />
-              <span>Template Website Siap Pakai</span>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-              {['Semua', 'Perkebunan & Kopi', 'Kesehatan & Herbal', 'Pertanian Modern', 'Kuliner & F&B'].map(
-                (cat) => {
-                  const active = activeCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      style={{
-                        padding: '0.42rem 0.9rem',
-                        borderRadius: '999px',
-                        fontSize: '0.78rem',
-                        fontWeight: 600,
-                        border: active ? '1px solid #1d5634' : '1px solid rgba(20,60,35,0.16)',
-                        background: active
-                          ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                          : '#ffffff',
-                        color: active ? '#ffffff' : '#143823',
-                        boxShadow: active ? '0 6px 16px rgba(20, 68, 39, 0.28)' : 'none',
-                        cursor: 'pointer',
-                        transition: 'all 0.25s ease',
-                      }}
-                    >
-                      {cat}
-                    </button>
-                  );
-                }
-              )}
-            </div>
+      <section
+        id="problem-section"
+        style={{
+          padding: '6rem 0',
+          backgroundColor: '#FFFFFF',
+          borderBottom: '1px solid rgba(85, 113, 132, 0.12)',
+        }}
+      >
+        <div className="saas-container">
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 4rem' }}>
+            <span
+              style={{
+                fontSize: '0.84rem',
+                fontWeight: 700,
+                color: '#7B4B28',
+                backgroundColor: 'rgba(245, 158, 11, 0.12)',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                padding: '4px 14px',
+                borderRadius: '999px',
+                display: 'inline-block',
+                marginBottom: '1rem',
+              }}
+            >
+              Tantangan Saat Ini
+            </span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+                fontWeight: 800,
+                color: '#102B3F',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.15,
+                margin: '0 0 1rem',
+              }}
+            >
+              Membangun Kehadiran Digital Seharusnya Tidak Rumit.
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#557184', lineHeight: 1.6, margin: 0 }}>
+              Banyak individu, komunitas, dan penyedia layanan terhambat karena proses pembuatan website
+              tradisional yang mahal, lambat, dan penuh kendala teknis.
+            </p>
           </div>
 
-          <h2
+          {/* 4 Problem vs Solusi Cards */}
+          <div
             style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 'clamp(1.85rem, 3vw, 2.65rem)',
-              fontWeight: 500,
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              color: '#0a0c0a',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem',
             }}
           >
-            Pilih desain template nyata sesuai kategori usaha Anda.
-          </h2>
-        </div>
-
-        <div className="eloq-island">
-          <div className="eloq-works-list">
-            {filteredShowcase.map((item) => (
-              <div key={item.id} className="eloq-work-item">
-                {/* Left/Right Alternating Text Column (Enriched with Studio Feature Grid & Subdomain Pill) */}
-                <div
-                  style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                    gap: '0.9rem',
-                  }}
-                >
+            {[
+              {
+                num: '01',
+                problem: 'Informasi Tersebar Berantakan',
+                problemDesc: 'Portofolio, link sosial, jadwal, dan kontak berada di platform berbeda tanpa satu titik temu.',
+                solution: 'Satu Micro-Web Terpadu',
+                solutionDesc: 'Satukan seluruh eksistensi digital Anda dalam satu link ringkas dan representatif.',
+                icon: <Layers size={22} color="#102B3F" />,
+              },
+              {
+                num: '02',
+                problem: 'Tergantung pada Developer & Coding',
+                problemDesc: 'Membuat website membutuhkan HTML, CSS, atau sewa developer dengan biaya yang mahal.',
+                solution: 'Cukup Ceritakan ke AI',
+                solutionDesc: 'AI Agentic CMS menyusun struktur, copywriting, dan desain visual secara otomatis.',
+                icon: <MessageCircle size={22} color="#102B3F" />,
+              },
+              {
+                num: '03',
+                problem: 'Pembaruan Konten Makan Waktu',
+                problemDesc: 'Mengedit teks atau foto memakan waktu berjam-jam dan harus mengerti dashboard rumit.',
+                solution: 'Revisi Instan via Obrolan',
+                solutionDesc: 'Perbarui isi halaman hanya dengan mengetikkan instruksi bahasa Indonesia alami.',
+                icon: <RefreshCw size={22} color="#102B3F" />,
+              },
+              {
+                num: '04',
+                problem: 'Pengelolaan Teknis yang Pusing',
+                problemDesc: 'Hosting, domain, responsivitas ponsel, dan pemeliharaan server sering membingungkan.',
+                solution: 'One-Click Live Publishing',
+                solutionDesc: 'Langsung terbit dengan subdomain cepat, aman, dan adaptif di layar smartphone.',
+                icon: <Zap size={22} color="#102B3F" />,
+              },
+            ].map((card, i) => (
+              <div
+                key={i}
+                className="saas-card"
+                style={{
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div>
                   <div
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.6rem',
-                      flexWrap: 'wrap',
+                      justifyContent: 'space-between',
+                      marginBottom: '1.25rem',
                     }}
                   >
-                    <div className="eloq-dot-label" style={{ fontSize: '0.82rem', color: '#233726' }}>
-                      <span className="eloq-dot" />
-                      <span>{item.origin}</span>
+                    <div
+                      style={{
+                        width: '44px',
+                        height: '44px',
+                        borderRadius: '12px',
+                        backgroundColor: '#EAF7D5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {card.icon}
                     </div>
                     <span
                       style={{
-                        fontSize: '0.7rem',
-                        fontWeight: 600,
-                        color: '#3d5a37',
-                        backgroundColor: '#eef3eb',
-                        padding: '0.2rem 0.65rem',
-                        borderRadius: '999px',
+                        fontFamily: 'var(--font-heading)',
+                        fontWeight: 800,
+                        color: 'rgba(85, 113, 132, 0.35)',
+                        fontSize: '1.1rem',
                       }}
                     >
-                      Siap Pakai
+                      {card.num}
                     </span>
                   </div>
 
-                  <h3
-                    onClick={() => onOpenPublicView(item.slug)}
-                    style={{
-                      fontFamily: "'Plus Jakarta Sans', sans-serif",
-                      fontSize: 'clamp(1.7rem, 2.4vw, 2.25rem)',
-                      fontWeight: 600,
-                      lineHeight: 1.12,
-                      letterSpacing: '-0.03em',
-                      color: '#1c2d1f',
-                      cursor: 'pointer',
-                      margin: 0,
-                    }}
-                  >
-                    {item.brandName}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: '0.95rem',
-                      lineHeight: 1.55,
-                      color: '#4b554c',
-                      maxWidth: '420px',
-                      margin: 0,
-                    }}
-                  >
-                    {item.description}
-                  </p>
-
-                  {/* Lightweight Highlight Badges (Warm Gold, Coffee Brown & Forest Green) */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', maxWidth: '420px', margin: '0.2rem 0' }}>
-                    {(item.highlights || []).slice(0, 3).map((hl, hIdx) => {
-                      const badgeClass =
-                        hIdx === 0
-                          ? 'eloq-badge-forest'
-                          : hIdx === 1
-                          ? 'eloq-badge-gold'
-                          : 'eloq-badge-brown';
-                      return (
-                        <span key={hIdx} className={badgeClass}>
-                          ✓ {hl}
-                        </span>
-                      );
-                    })}
-                  </div>
-
-                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.65rem', marginTop: '0.15rem' }}>
-                    <button
-                      onClick={() => handleUseShowcaseTemplate(item)}
-                      className="eloq-btn-black"
-                      style={{ padding: '0.68rem 1.35rem', fontSize: '0.88rem' }}
+                  {/* Problem Callout */}
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <div
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: '#EF4444',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.04em',
+                        marginBottom: '4px',
+                      }}
                     >
-                      <span>Pakai Template</span>
-                      <span>↗</span>
-                    </button>
-                    <button
-                      onClick={() => onOpenPublicView(item.slug)}
-                      className="eloq-btn-outline"
-                      style={{ padding: '0.68rem 1.35rem', fontSize: '0.88rem' }}
+                      Kendala Klasik
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: '1.08rem',
+                        fontWeight: 700,
+                        color: '#102B3F',
+                        margin: '0 0 6px',
+                      }}
                     >
-                      <span>Lihat Demo Live</span>
-                    </button>
+                      {card.problem}
+                    </h3>
+                    <p style={{ fontSize: '0.86rem', color: '#557184', margin: 0, lineHeight: 1.45 }}>
+                      {card.problemDesc}
+                    </p>
                   </div>
                 </div>
 
-                {/* Right/Left Alternating STUDIO-GRADE REAL WEBSITE TEMPLATE BROWSER PREVIEW */}
+                {/* Solution Box */}
                 <div
-                  onClick={() => onOpenPublicView(item.slug)}
                   style={{
-                    flex: '0 0 58%',
-                    borderRadius: '22px',
-                    background: '#f3f6f1',
-                    padding: '12px',
-                    border: '1px solid rgba(35, 55, 38, 0.1)',
-                    cursor: 'pointer',
-                    transition: 'transform 0.35s ease, box-shadow 0.35s ease',
-                    boxShadow: '0 12px 32px rgba(24, 38, 26, 0.06)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 22px 48px rgba(24, 38, 26, 0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(24, 38, 26, 0.06)';
+                    backgroundColor: '#F8FAF7',
+                    padding: '12px 14px',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(198, 243, 107, 0.45)',
+                    marginTop: '12px',
                   }}
                 >
-                  {/* Browser Window Container */}
                   <div
                     style={{
-                      borderRadius: '16px',
-                      overflow: 'hidden',
-                      backgroundColor: '#FFFFFF',
-                      border: '1px solid rgba(35, 55, 38, 0.1)',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      color: '#102B3F',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      marginBottom: '3px',
                     }}
                   >
-                    {/* 1. Minimalist Browser Top Bar */}
-                    <div
-                      style={{
-                        backgroundColor: '#f8faf7',
-                        padding: '9px 14px',
-                        borderBottom: '1px solid rgba(35, 55, 38, 0.08)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '8px',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d5ddd1' }} />
-                      </div>
-                      <div
-                        style={{
-                          backgroundColor: '#eef2eb',
-                          borderRadius: '999px',
-                          padding: '3px 14px',
-                          fontSize: '0.68rem',
-                          color: '#3d5a37',
-                          fontWeight: 600,
-                        }}
-                      >
-                        {item.domain}
-                      </div>
-                      <span
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '5px',
-                          fontSize: '0.66rem',
-                          fontWeight: 600,
-                          color: '#3d5a37',
-                        }}
-                      >
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#6E8854' }} />
-                        Live Demo
-                      </span>
-                    </div>
-
-                    {/* 2. Storefront Header Bar */}
-                    <div
-                      style={{
-                        padding: '10px 18px',
-                        backgroundColor: '#FFFFFF',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        borderBottom: '1px solid rgba(35, 55, 38, 0.06)',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                        <span
-                          style={{
-                            width: '22px',
-                            height: '22px',
-                            borderRadius: '6px',
-                            background: 'linear-gradient(135deg, #233726 0%, #6E8854 100%)',
-                            color: '#FFFFFF',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '0.66rem',
-                            fontWeight: 700,
-                          }}
-                        >
-                          {item.brandName.charAt(0)}
-                        </span>
-                        <span style={{ fontWeight: 700, fontSize: '0.82rem', color: '#1c2d1f' }}>
-                          {item.brandName}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.7rem', color: '#5d6759', fontWeight: 500 }}>
-                        <span style={{ color: '#1c2d1f', fontWeight: 700 }}>
-                          Beranda
-                        </span>
-                        <span>Katalog</span>
-                        <span>Ulasan</span>
-                        <span
-                          style={{
-                            background: 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)',
-                            color: '#ffffff',
-                            padding: '4px 11px',
-                            borderRadius: '999px',
-                            fontWeight: 600,
-                            fontSize: '0.66rem',
-                          }}
-                        >
-                          Pesan Sekarang
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* 3. Full-Bleed Editorial Storefront Hero */}
-                    <div
-                      style={{
-                        position: 'relative',
-                        backgroundColor: item.themeBg,
-                        color: '#ffffff',
-                        padding: '20px 22px 18px',
-                        display: 'grid',
-                        gridTemplateColumns: item.id === 'tpl_kopi' ? '1fr' : '1.25fr 0.9fr',
-                        gap: '16px',
-                        alignItems: 'center',
-                        overflow: 'hidden',
-                        minHeight: '160px',
-                      }}
-                    >
-                      {item.id === 'tpl_kopi' && (
-                        <>
-                          <img
-                            src={item.heroImage}
-                            alt={item.brandName}
-                            style={{
-                              position: 'absolute',
-                              inset: 0,
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                              objectPosition: 'center',
-                              zIndex: 1,
-                            }}
-                          />
-                          <div
-                            style={{
-                              position: 'absolute',
-                              inset: 0,
-                              background:
-                                'linear-gradient(90deg, rgba(16, 28, 18, 0.78) 0%, rgba(20, 34, 23, 0.4) 55%, rgba(20, 34, 23, 0.0) 85%)',
-                              zIndex: 2,
-                            }}
-                          />
-                        </>
-                      )}
-
-                      {/* Left Hero Copy */}
-                      <div
-                        style={{
-                          position: 'relative',
-                          zIndex: 3,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '6px',
-                          maxWidth: item.id === 'tpl_kopi' ? '64%' : '100%',
-                        }}
-                      >
-                        <span
-                          style={{
-                            alignSelf: 'flex-start',
-                            fontSize: '0.6rem',
-                            fontWeight: 600,
-                            backgroundColor: 'rgba(255, 255, 255, 0.14)',
-                            border: '1px solid rgba(255, 255, 255, 0.22)',
-                            color: item.themeAccent,
-                            padding: '3px 10px',
-                            borderRadius: '999px',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.04em',
-                          }}
-                        >
-                          {item.heroBadge}
-                        </span>
-                        <div
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', sans-serif",
-                            fontSize: '1.14rem',
-                            fontWeight: 700,
-                            lineHeight: 1.18,
-                            letterSpacing: '-0.02em',
-                            color: '#FFFFFF',
-                          }}
-                        >
-                          {item.heroHeadline}
-                        </div>
-                        <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.82)', lineHeight: 1.42 }}>
-                          {item.heroSub}
-                        </div>
-                        <div style={{ marginTop: '4px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              backgroundColor: '#FFFFFF',
-                              color: '#1c2d1f',
-                              fontWeight: 700,
-                              fontSize: '0.68rem',
-                              padding: '5px 13px',
-                              borderRadius: '999px',
-                            }}
-                          >
-                            Beli via WhatsApp ↗
-                          </span>
-                          <span
-                            style={{
-                              fontSize: '0.68rem',
-                              color: 'rgba(255,255,255,0.88)',
-                              fontWeight: 600,
-                            }}
-                          >
-                            Mulai {item.products[0]?.price}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Right Framed Hero Showcase Image */}
-                      {item.id !== 'tpl_kopi' && (
-                        <div
-                          style={{
-                            position: 'relative',
-                            zIndex: 3,
-                            height: '126px',
-                            borderRadius: '12px',
-                            overflow: 'hidden',
-                            border: '1px solid rgba(255,255,255,0.2)',
-                            boxShadow: '0 10px 24px rgba(0,0,0,0.25)',
-                            backgroundColor: '#1f3325',
-                          }}
-                        >
-                          <img
-                            src={item.heroImage}
-                            alt={item.brandName}
-                            onError={(e) => {
-                              e.currentTarget.onerror = null;
-                              e.currentTarget.src = '/assets/products/greenora-hero.svg';
-                            }}
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                          />
-                        </div>
-                      )}
-                    </div>
-
-                    {/* 4. 3-Column Trust Bar (Clean Olive Dots, Zero Cartoon Emojis) */}
-                    <div
-                      style={{
-                        backgroundColor: '#f6f8f4',
-                        borderBottom: '1px solid rgba(35, 55, 38, 0.08)',
-                        padding: '8px 18px',
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(3, 1fr)',
-                        gap: '8px',
-                      }}
-                    >
-                      {(item.trustItems || []).map((tItem, tIdx) => (
-                        <div
-                          key={tIdx}
-                          style={{
-                            fontSize: '0.66rem',
-                            fontWeight: 600,
-                            color: '#233726',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#6E8854', flexShrink: 0 }} />
-                          <span>{tItem}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* 5. Storefront 3-Product Catalog Grid */}
-                    <div style={{ padding: '14px 16px 16px', backgroundColor: '#ffffff' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          marginBottom: '10px',
-                        }}
-                      >
-                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1c2d1f' }}>
-                          Katalog Produk Unggulan
-                        </span>
-                        <span
-                          style={{
-                            fontSize: '0.66rem',
-                            color: '#233726',
-                            backgroundColor: '#eef3eb',
-                            padding: '3px 10px',
-                            borderRadius: '999px',
-                            fontWeight: 600,
-                          }}
-                        >
-                          Lihat Demo Lengkap ↗
-                        </span>
-                      </div>
-
-                      <div
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(3, 1fr)',
-                          gap: '10px',
-                        }}
-                      >
-                        {item.products.map((prod, pIdx) => (
-                          <div
-                            key={pIdx}
-                            style={{
-                              backgroundColor: '#f8faf7',
-                              borderRadius: '12px',
-                              padding: '8px',
-                              border: '1px solid rgba(35, 55, 38, 0.08)',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              gap: '7px',
-                            }}
-                          >
-                            <div
-                              style={{
-                                height: '116px',
-                                borderRadius: '8px',
-                                overflow: 'hidden',
-                                position: 'relative',
-                                backgroundColor: '#eef2eb',
-                              }}
-                            >
-                              <img
-                                src={prod.img}
-                                alt={prod.name}
-                                onError={(e) => {
-                                  const fallbacks = [
-                                    '/assets/products/serum-wajah.svg',
-                                    '/assets/products/madu-hutan.svg',
-                                    '/assets/products/minyak-atsiri.svg',
-                                  ];
-                                  e.currentTarget.onerror = null;
-                                  e.currentTarget.src = fallbacks[pIdx % fallbacks.length];
-                                }}
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                              />
-                              <span
-                                style={{
-                                  position: 'absolute',
-                                  top: '6px',
-                                  left: '6px',
-                                  backgroundColor: 'rgba(28, 45, 31, 0.86)',
-                                  color: '#ffffff',
-                                  fontSize: '0.55rem',
-                                  padding: '2px 7px',
-                                  borderRadius: '999px',
-                                  fontWeight: 600,
-                                }}
-                              >
-                                {prod.tag}
-                              </span>
-                            </div>
-                            <div>
-                              <div
-                                style={{
-                                  fontSize: '0.7rem',
-                                  fontWeight: 700,
-                                  color: '#1c2d1f',
-                                  whiteSpace: 'nowrap',
-                                  overflow: 'hidden',
-                                  textOverflow: 'ellipsis',
-                                }}
-                              >
-                                {prod.name}
-                              </div>
-                              <div
-                                style={{
-                                  fontSize: '0.58rem',
-                                  color: '#5d6759',
-                                  marginTop: '1px',
-                                }}
-                              >
-                                ★ {prod.rating || '5.0 • Siap Kirim'}
-                              </div>
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  marginTop: '4px',
-                                }}
-                              >
-                                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#3d5a37' }}>
-                                  {prod.price}
-                                </span>
-                                <span
-                                  style={{
-                                    fontSize: '0.58rem',
-                                    backgroundColor: '#e5ebe1',
-                                    padding: '2px 7px',
-                                    borderRadius: '999px',
-                                    color: '#233726',
-                                    fontWeight: 700,
-                                  }}
-                                >
-                                  + WA
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <CheckCircle2 size={13} color="#10B981" />
+                    <span>Solusi UNI-LANDFARM</span>
+                  </div>
+                  <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#102B3F', marginBottom: '3px' }}>
+                    {card.solution}
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#557184', lineHeight: 1.4 }}>
+                    {card.solutionDesc}
                   </div>
                 </div>
               </div>
@@ -1877,1163 +1086,965 @@ export const PublicLandingPage: React.FC<PublicLandingPageProps> = ({
       </section>
 
       {/* ============================================================
-          5. CAPABILITIES ISLAND (`#fitur` — Short & Direct)
-         ============================================================ */}
-      <section id="fitur" className="eloq-container">
-        <div className="eloq-section-header">
-          <div className="eloq-dot-label">
-            <span className="eloq-dot" />
-            <span>Fitur Unggulan</span>
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 'clamp(1.85rem, 3vw, 2.65rem)',
-              fontWeight: 500,
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              color: '#0a0c0a',
-            }}
-          >
-            Semua fitur jualan online dalam satu platform.
-          </h2>
-        </div>
-
-        <div className="eloq-island" style={{ backgroundColor: 'linear-gradient(155deg, #eef4ea 0%, #e4ede0 52%, #dce7d6 100%)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.15rem' }}>
-            {/* 1. Katalog Toko Resmi */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef3eb',
-                      color: '#233726',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <ShoppingBag size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Katalog Toko Resmi
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Tampilan etalase rapi &amp; responsif
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: Product Preview Card */}
-              <div
-                style={{
-                  backgroundColor: '#f8faf7',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '8px',
-                    overflow: 'hidden',
-                    backgroundColor: '#eef2eb',
-                    flexShrink: 0,
-                  }}
-                >
-                  <img
-                    src="/assets/products/kopi-robusta.svg"
-                    alt="Kopi Robusta"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontSize: '0.74rem',
-                      fontWeight: 700,
-                      color: '#1c2d1f',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    Kopi Robusta Slamet
-                  </div>
-                  <div style={{ fontSize: '0.68rem', fontWeight: 600, color: '#3d5a37' }}>
-                    Rp 45.000 • Siap Kirim
-                  </div>
-                </div>
-                <span
-                  style={{
-                    fontSize: '0.64rem',
-                    fontWeight: 700,
-                    backgroundColor: '#233726',
-                    color: '#ffffff',
-                    padding: '4px 9px',
-                    borderRadius: '999px',
-                    flexShrink: 0,
-                  }}
-                >
-                  + WA
-                </span>
-              </div>
-            </div>
-
-            {/* 2. Asisten AI Penulis Promosi */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef3eb',
-                      color: '#233726',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Sparkles size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Asisten AI Promosi
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Deskripsi otomatis tanpa mikir kata
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: Prompt & Result Bubble */}
-              <div
-                style={{
-                  backgroundColor: '#f8faf7',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '5px',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    fontSize: '0.64rem',
-                    color: '#5a685c',
-                  }}
-                >
-                  <span>✨ Prompt: &quot;Kopi Robusta&quot;</span>
-                  <span
-                    style={{
-                      color: '#233726',
-                      fontWeight: 700,
-                      backgroundColor: '#e2ebdc',
-                      padding: '1px 7px',
-                      borderRadius: '999px',
-                    }}
-                  >
-                    2 Detik
-                  </span>
-                </div>
-                <div
-                  style={{
-                    fontSize: '0.7rem',
-                    color: '#233726',
-                    fontWeight: 600,
-                    lineHeight: 1.35,
-                    backgroundColor: '#ffffff',
-                    padding: '6px 9px',
-                    borderRadius: '8px',
-                    border: '1px solid rgba(35, 55, 38, 0.06)',
-                  }}
-                >
-                  &ldquo;Aroma cokelat karamel khas lereng gunung, disangrai segar setiap minggu.&rdquo;
-                </div>
-              </div>
-            </div>
-
-            {/* 3. Order Langsung ke WhatsApp */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef8f0',
-                      color: '#166534',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MessageCircle size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Order via WhatsApp
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Langsung chat, 0% komisi aplikasi
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: WA Message Bubble */}
-              <div
-                style={{
-                  backgroundColor: '#f0fdf4',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(34, 197, 94, 0.22)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '5px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#22c55e' }} />
-                  <span style={{ fontSize: '0.66rem', fontWeight: 700, color: '#166534' }}>Format Order Otomatis</span>
-                </div>
-                <div
-                  style={{
-                    fontSize: '0.7rem',
-                    color: '#14532d',
-                    backgroundColor: '#ffffff',
-                    padding: '6px 9px',
-                    borderRadius: '8px',
-                    border: '1px solid rgba(34, 197, 94, 0.18)',
-                    lineHeight: 1.35,
-                  }}
-                >
-                  &ldquo;Halo Admin, saya mau pesan 2 bks Kopi Slamet ke Jakarta 📦&rdquo;
-                </div>
-              </div>
-            </div>
-
-            {/* 4. Jadwal Promo Otomatis */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef3eb',
-                      color: '#233726',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Calendar size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Jadwal Promo Otomatis
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Diskon tayang &amp; selesai terjadwal
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: Scheduled Toggle */}
-              <div
-                style={{
-                  backgroundColor: '#f8faf7',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '8px',
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#1c2d1f' }}>
-                    Promo Diskon Gajian 15%
-                  </div>
-                  <div style={{ fontSize: '0.64rem', color: '#5a685c' }}>
-                    Jumat 18:00 — Minggu 23:59
-                  </div>
-                </div>
-                <span
-                  style={{
-                    fontSize: '0.62rem',
-                    fontWeight: 700,
-                    backgroundColor: '#233726',
-                    color: '#ffffff',
-                    padding: '3px 8px',
-                    borderRadius: '999px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    flexShrink: 0,
-                  }}
-                >
-                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#86efac' }} />
-                  AKTIF
-                </span>
-              </div>
-            </div>
-
-            {/* 5. Domain Sendiri & Google SEO */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef3eb',
-                      color: '#233726',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Globe size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Domain &amp; Google SEO
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Mudah dicari pembeli di internet
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: Google Search Result Snippet */}
-              <div
-                style={{
-                  backgroundColor: '#f8faf7',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '3px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.64rem', color: '#3d5a37', fontWeight: 600 }}>
-                  <span>🔒 https://kopislamet.id</span>
-                  <span style={{ fontSize: '0.55rem', backgroundColor: '#e2ebdc', color: '#233726', padding: '1px 5px', borderRadius: '4px' }}>SSL</span>
-                </div>
-                <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#1c2d1f', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  Kopi Lereng Slamet — Toko Resmi Online
-                </div>
-                <div style={{ fontSize: '0.62rem', color: '#5a685c' }}>
-                  ★★★★★ 4.9 • Peringkat #1 di Google
-                </div>
-              </div>
-            </div>
-
-            {/* 6. Laporan Trafik Harian */}
-            <div
-              onClick={() => onOpenAiWizard()}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid rgba(35, 55, 38, 0.1)',
-                borderRadius: '20px',
-                padding: '1.35rem 1.35rem 1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 4px 16px rgba(35, 55, 38, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(35, 55, 38, 0.1)';
-                e.currentTarget.style.borderColor = 'rgba(61, 90, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 16px rgba(35, 55, 38, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(35, 55, 38, 0.1)';
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '10px',
-                      backgroundColor: '#eef3eb',
-                      color: '#233726',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <TrendingUp size={17} />
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.02rem',
-                        fontWeight: 700,
-                        letterSpacing: '-0.02em',
-                        color: '#1c2d1f',
-                        margin: 0,
-                      }}
-                    >
-                      Laporan Trafik Real-time
-                    </h3>
-                    <div style={{ fontSize: '0.74rem', color: '#5a685c' }}>
-                      Pantau klik WA &amp; pengunjung
-                    </div>
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.9rem', color: '#3d5a37', fontWeight: 600 }}>↗</span>
-              </div>
-
-              {/* Visual Mini Mockup: Live Metrics with Sparkline */}
-              <div
-                style={{
-                  backgroundColor: '#f8faf7',
-                  borderRadius: '14px',
-                  padding: '9px 12px',
-                  border: '1px solid rgba(35, 55, 38, 0.08)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: '0.98rem', fontWeight: 800, color: '#1c2d1f' }}>
-                    418 Order
-                  </div>
-                  <div style={{ fontSize: '0.64rem', fontWeight: 600, color: '#2e7d32' }}>
-                    +28% minggu ini
-                  </div>
-                </div>
-                <div style={{ width: '80px', height: '28px' }}>
-                  <svg viewBox="0 0 80 28" style={{ width: '100%', height: '100%', display: 'block' }}>
-                    <defs>
-                      <linearGradient id="featureSparkGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#6E8854" stopOpacity="0.35" />
-                        <stop offset="100%" stopColor="#6E8854" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 0 22 Q 20 18 40 12 T 80 4 L 80 28 L 0 28 Z" fill="url(#featureSparkGrad)" />
-                    <path d="M 0 22 Q 20 18 40 12 T 80 4" fill="none" stroke="#233726" strokeWidth="2.2" strokeLinecap="round" />
-                    <circle cx="80" cy="4" r="3" fill="#6E8854" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-          6. PRICING SECTION (`#harga`)
-         ============================================================ */}
-      <section id="harga" className="eloq-container">
-        <div className="eloq-section-header">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div className="eloq-dot-label">
-              <span className="eloq-dot" />
-              <span>Paket Langganan</span>
-            </div>
-
-            <div
-              style={{
-                display: 'inline-flex',
-                backgroundColor: '#ffffff',
-                padding: '4px',
-                borderRadius: '999px',
-                alignSelf: 'flex-start',
-                border: '1px solid rgba(20,60,35,0.12)',
-              }}
-            >
-              <button
-                onClick={() => setBillingInterval('monthly')}
-                style={{
-                  padding: '0.42rem 0.95rem',
-                  borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  border: 'none',
-                  cursor: 'pointer',
-                  background:
-                    billingInterval === 'monthly'
-                      ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                      : 'transparent',
-                  color: billingInterval === 'monthly' ? '#ffffff' : '#233726',
-                }}
-              >
-                Bulanan
-              </button>
-              <button
-                onClick={() => setBillingInterval('yearly')}
-                style={{
-                  padding: '0.42rem 0.95rem',
-                  borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  border: 'none',
-                  cursor: 'pointer',
-                  background:
-                    billingInterval === 'yearly'
-                      ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                      : 'transparent',
-                  color: billingInterval === 'yearly' ? '#ffffff' : '#233726',
-                }}
-              >
-                Tahunan (Hemat 17%)
-              </button>
-            </div>
-          </div>
-
-          <h2
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: 'clamp(1.85rem, 3vw, 2.65rem)',
-              fontWeight: 500,
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              color: '#0a0c0a',
-            }}
-          >
-            Pilihan paket sesuai skala bisnis Anda.
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.25rem',
-          }}
-        >
-          {displayPlans.map((plan) => {
-            const isPopular = Boolean(plan.isPopular);
-            const rawPrice =
-              billingInterval === 'yearly' ? Math.round(plan.yearlyPrice / 12) : plan.monthlyPrice;
-
-            return (
-              <div
-                key={plan.id}
-                style={{
-                  background: isPopular
-                    ? 'linear-gradient(145deg, #18281a 0%, #293d2c 48%, #4a3422 100%)'
-                    : '#f7f4ec',
-                  color: isPopular ? '#ffffff' : '#1c2d1f',
-                  borderRadius: '26px',
-                  padding: '2.25rem 2rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  gap: '1.75rem',
-                  border: isPopular
-                    ? '1.5px solid rgba(229, 172, 50, 0.42)'
-                    : '1px solid rgba(123, 75, 40, 0.16)',
-                  boxShadow: isPopular
-                    ? '0 22px 48px -10px rgba(15, 52, 30, 0.45), 0 0 24px rgba(229, 172, 50, 0.14)'
-                    : '0 8px 24px rgba(35, 55, 38, 0.05)',
-                }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '0.5rem',
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontSize: '1.35rem',
-                        fontWeight: 600,
-                        letterSpacing: '-0.02em',
-                      }}
-                    >
-                      {plan.name}
-                    </h3>
-                    {isPopular && (
-                      <span
-                        style={{
-                          padding: '0.28rem 0.85rem',
-                          borderRadius: '999px',
-                          backgroundColor: '#F59E0B',
-                          color: '#1E2E20',
-                          fontSize: '0.74rem',
-                          fontWeight: 800,
-                          boxShadow: '0 2px 10px rgba(245, 158, 11, 0.4)',
-                          letterSpacing: '0.02em',
-                        }}
-                      >
-                        ★ Paling Populer
-                      </span>
-                    )}
-                  </div>
-
-                  <p
-                    style={{
-                      fontSize: '0.9rem',
-                      lineHeight: 1.45,
-                      color: isPopular ? 'rgba(255,255,255,0.78)' : '#5a625b',
-                    }}
-                  >
-                    {plan.description}
-                  </p>
-
-                  <div
-                    style={{
-                      padding: '1rem 0',
-                      borderTop: isPopular
-                        ? '1px solid rgba(255,255,255,0.14)'
-                        : '1px solid rgba(123, 75, 40, 0.12)',
-                      borderBottom: isPopular
-                        ? '1px solid rgba(255,255,255,0.14)'
-                        : '1px solid rgba(123, 75, 40, 0.12)',
-                    }}
-                  >
-                    {rawPrice === 0 ? (
-                      <div style={{ fontSize: '2.1rem', fontWeight: 600, letterSpacing: '-0.03em' }}>
-                        Gratis
-                      </div>
-                    ) : (
-                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem' }}>
-                        <span style={{ fontSize: '2.1rem', fontWeight: 600, letterSpacing: '-0.03em' }}>
-                          Rp {rawPrice.toLocaleString('id-ID')}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: '0.84rem',
-                            color: isPopular ? 'rgba(255,255,255,0.68)' : '#6c7275',
-                          }}
-                        >
-                          / bln
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  <ul
-                    style={{
-                      listStyle: 'none',
-                      padding: 0,
-                      margin: 0,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.65rem',
-                    }}
-                  >
-                    {plan.features.map((feat, i) => (
-                      <li
-                        key={i}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.6rem',
-                          fontSize: '0.88rem',
-                          color: isPopular ? 'rgba(255,255,255,0.92)' : '#2c3032',
-                        }}
-                      >
-                        <span
-                          style={{
-                            width: '6px',
-                            height: '6px',
-                            borderRadius: '50%',
-                            backgroundColor: isPopular ? '#F59E0B' : '#526941',
-                            flexShrink: 0,
-                          }}
-                        />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button
-                  onClick={() => onSelectPlan(plan, billingInterval)}
-                  className={isPopular ? 'eloq-btn-black' : 'eloq-btn-outline'}
-                  style={{
-                    width: '100%',
-                    padding: '0.82rem 1.4rem',
-                    fontSize: '0.94rem',
-                    ...(isPopular
-                      ? {
-                          background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%)',
-                          color: '#1E2E20',
-                          fontWeight: 800,
-                          border: 'none',
-                          boxShadow: '0 8px 24px rgba(245, 158, 11, 0.38)',
-                        }
-                      : {
-                          borderColor: 'rgba(123, 75, 40, 0.28)',
-                          color: '#342316',
-                        }),
-                  }}
-                >
-                  <span>{rawPrice === 0 ? 'Mulai Gratis' : 'Pilih Paket'}</span>
-                  <span>↗</span>
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ============================================================
-          8. FAQ ISLAND (`#faq`)
+          5.4 FEATURE SECTION (6 Fitur Unggulan Master Prompt)
          ============================================================ */}
       <section
-        id="faq"
-        className="eloq-container"
-        style={{ marginTop: '3.25rem', marginBottom: '3.25rem' }}
+        id="feature-section"
+        style={{
+          padding: '6rem 0',
+          backgroundColor: '#F8FAF7',
+          position: 'relative',
+        }}
       >
-        <div
-          className="eloq-island"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '3rem',
-            alignItems: 'flex-start',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div className="eloq-dot-label">
-              <span className="eloq-dot" />
-              <span>Tanya Jawab (FAQ)</span>
-            </div>
+        <div className="saas-container">
+          <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 4rem' }}>
+            <span className="badge-lime" style={{ marginBottom: '1rem' }}>
+              Fitur Platform
+            </span>
             <h2
               style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontSize: 'clamp(1.75rem, 2.6vw, 2.35rem)',
-                fontWeight: 500,
-                lineHeight: 1.12,
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+                fontWeight: 800,
+                color: '#102B3F',
                 letterSpacing: '-0.03em',
-                color: '#0a0c0a',
+                lineHeight: 1.15,
+                margin: '0 0 1rem',
               }}
             >
-              Pertanyaan yang sering diajukan.
+              Dirancang untuk Kecepatan, Kemudahan, dan Kualitas.
             </h2>
-            <p style={{ fontSize: '0.94rem', color: '#555b5e', lineHeight: 1.5, maxWidth: '360px' }}>
-              Langsung coba buat website toko Anda dengan asisten AI kami.
+            <p style={{ fontSize: '1.05rem', color: '#557184', lineHeight: 1.6, margin: 0 }}>
+              Semua kapabilitas yang Anda butuhkan untuk membangun, menyesuaikan, dan mempublikasikan
+              kehadiran digital yang profesional.
             </p>
-            <div style={{ marginTop: '0.25rem' }}>
-              <button onClick={() => onOpenAiWizard()} className="eloq-btn-grey">
-                <span>Buka AI Builder</span>
-                <span>↗</span>
-              </button>
-            </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaqIndex === idx;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(35, 55, 38, 0.1)',
-                    padding: '1.1rem 1.35rem',
-                    marginBottom: '0.75rem',
-                    boxShadow: '0 4px 12px rgba(35, 55, 38, 0.03)',
-                  }}
-                >
-                  <button
-                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+          {/* 6 Feature Cards (Section 5.4 Requirement) */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '1.75rem',
+            }}
+          >
+            {[
+              {
+                id: 'feat-1',
+                title: 'AI Website Generator',
+                desc: 'Generate struktur halaman, tata letak seksi, dan teks profesional secara otomatis dari instruksi bahasa alami.',
+                badge: 'Agentic AI Core',
+                icon: <Sparkles size={24} color="#102B3F" />,
+              },
+              {
+                id: 'feat-2',
+                title: 'Conversational Website Editor',
+                desc: 'Revisi teks, ubah skema warna, ganti susunan modul, atau tambahkan seksi baru semudah mengirim pesan obrolan.',
+                badge: 'Chat Revisions',
+                icon: <MessageCircle size={24} color="#102B3F" />,
+              },
+              {
+                id: 'feat-3',
+                title: 'Instant Multi-Device Preview',
+                desc: 'Simulasikan tampilan halaman website mikro secara langsung di layar desktop, tablet, dan smartphone sebelum dipublikasikan.',
+                badge: 'Live Sync',
+                icon: <Eye size={24} color="#102B3F" />,
+              },
+              {
+                id: 'feat-4',
+                title: 'One-Click Publishing',
+                desc: 'Publikasikan website Anda ke alamat unik dalam hitungan detik. Cepat diakses, aman, dan siap dibagikan ke mana saja.',
+                badge: 'Instant Live',
+                icon: <Globe size={24} color="#102B3F" />,
+              },
+              {
+                id: 'feat-5',
+                title: 'Micro-Web Management',
+                desc: 'Pantau status publikasi, kelola beberapa proyek website mikro, simpan riwayat versi, dan pulihkan draft sebelumnya kapan saja.',
+                badge: 'Version Control',
+                icon: <Layers size={24} color="#102B3F" />,
+              },
+              {
+                id: 'feat-6',
+                title: 'Responsive Website Templates',
+                desc: 'Koleksi rancangan layout modular yang telah dioptimalkan untuk portofolio, organisasi, profil layanan, dan acara.',
+                badge: 'Mobile Optimized',
+                icon: <Smartphone size={24} color="#102B3F" />,
+              },
+            ].map((feature) => (
+              <div
+                key={feature.id}
+                className="saas-card"
+                style={{
+                  padding: '2rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <div>
+                  <div
                     style={{
-                      width: '100%',
-                      background: 'none',
-                      border: 'none',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '1rem',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                      fontSize: '0.98rem',
-                      fontWeight: 600,
-                      color: '#1c2d1f',
-                      padding: 0,
+                      marginBottom: '1.5rem',
                     }}
                   >
-                    <span>{faq.q}</span>
-                    <span
+                    <div
                       style={{
-                        width: '26px',
-                        height: '26px',
-                        borderRadius: '50%',
-                        background: isOpen
-                          ? 'linear-gradient(135deg, #233726 0%, #3d5a37 50%, #6E8854 100%)'
-                          : '#eef3eb',
-                        color: isOpen ? '#ffffff' : '#233726',
-                        display: 'inline-flex',
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '14px',
+                        backgroundColor: '#EAF7D5',
+                        display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '0.95rem',
-                        flexShrink: 0,
                       }}
                     >
-                      {isOpen ? '−' : '+'}
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <p
+                      {feature.icon}
+                    </div>
+                    <span
                       style={{
-                        marginTop: '0.75rem',
-                        fontSize: '0.9rem',
-                        lineHeight: 1.55,
-                        color: '#4b554c',
-                        paddingTop: '0.65rem',
-                        borderTop: '1px solid rgba(35, 55, 38, 0.08)',
-                        margin: '0.75rem 0 0',
+                        fontSize: '0.74rem',
+                        fontWeight: 700,
+                        color: '#102B3F',
+                        backgroundColor: '#F0F5EE',
+                        padding: '4px 10px',
+                        borderRadius: '999px',
                       }}
                     >
-                      {faq.a}
-                    </p>
-                  )}
+                      {feature.badge}
+                    </span>
+                  </div>
+
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.25rem',
+                      fontWeight: 700,
+                      color: '#102B3F',
+                      margin: '0 0 0.65rem',
+                    }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '0.92rem',
+                      color: '#557184',
+                      lineHeight: 1.55,
+                      margin: 0,
+                    }}
+                  >
+                    {feature.desc}
+                  </p>
                 </div>
-              );
-            })}
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    marginTop: '1.5rem',
+                    fontSize: '0.86rem',
+                    fontWeight: 700,
+                    color: '#102B3F',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => onOpenAiWizard()}
+                >
+                  <span>Coba Fitur Ini</span>
+                  <ArrowRight size={15} />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ============================================================
-          9. FOOTER (Deep Forest Olive Architectural Footer)
+          5.5 HOW IT WORKS (3 Langkah: 01 Ceritakan, 02 Wujudkan, 03 Bagikan)
          ============================================================ */}
-      <footer
+      <section
+        id="how-it-works-section"
         style={{
-          background: 'linear-gradient(160deg, #1c2d1f 0%, #142217 60%, #0d170f 100%)',
-          color: '#ffffff',
-          borderRadius: '24px 24px 0 0',
-          paddingTop: '2.25rem',
-          paddingBottom: '1.5rem',
+          padding: '6rem 0',
+          backgroundColor: '#FFFFFF',
+          borderBottom: '1px solid rgba(85, 113, 132, 0.12)',
         }}
       >
-        <div className="eloq-container">
+        <div className="saas-container">
+          <div style={{ textAlign: 'center', maxWidth: '740px', margin: '0 auto 4.5rem' }}>
+            <span
+              style={{
+                fontSize: '0.84rem',
+                fontWeight: 700,
+                color: '#102B3F',
+                backgroundColor: '#EAF7D5',
+                padding: '4px 14px',
+                borderRadius: '999px',
+                display: 'inline-block',
+                marginBottom: '1rem',
+              }}
+            >
+              Alur Kerja Simpel
+            </span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+                fontWeight: 800,
+                color: '#102B3F',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.15,
+                margin: '0 0 1rem',
+              }}
+            >
+              Hanya Butuh Tiga Langkah Mudah.
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#557184', lineHeight: 1.6, margin: 0 }}>
+              Dari ide di kepala menjadi website mikro profesional yang siap dipublikasikan ke seluruh dunia.
+            </p>
+          </div>
+
+          {/* 3 Step Flow Grid */}
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.5rem',
-              alignItems: 'center',
-              paddingBottom: '1.75rem',
+              gap: '2rem',
+              position: 'relative',
+            }}
+          >
+            {[
+              {
+                step: '01',
+                title: 'Ceritakan',
+                subtitle: 'Jelaskan Kebutuhanmu',
+                desc: 'Pengguna menjelaskan kebutuhan website melalui percakapan bahasa alami. Sebutkan nama, profil, tujuan, dan konten yang ingin dimuat.',
+                tag: 'Input Natural Language',
+                highlight: 'Tanpa form rumit',
+              },
+              {
+                step: '02',
+                title: 'Wujudkan',
+                subtitle: 'AI Menyusun Website',
+                desc: 'AI membantu menghasilkan struktur halaman, susunan seksi, konten teks persuasif, dan desain visual yang harmonis seketika.',
+                tag: 'Agentic CMS Engine',
+                highlight: 'Struktur & Copy Otomatis',
+              },
+              {
+                step: '03',
+                title: 'Bagikan',
+                subtitle: 'Tinjau & Publikasikan',
+                desc: 'Pengguna meninjau preview, menyetujui perubahan, dan mempublikasikan website dengan satu klik untuk mendapatkan URL unik siap pakai.',
+                tag: 'One-Click Live',
+                highlight: 'Langsung Online & Responsif',
+              },
+            ].map((stepItem, i) => (
+              <div
+                key={i}
+                className="saas-card"
+                style={{
+                  padding: '2.5rem 2rem',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Big Step Number Watermark */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '12px',
+                    right: '16px',
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '4.5rem',
+                    fontWeight: 900,
+                    color: 'rgba(16, 43, 63, 0.05)',
+                    lineHeight: 1,
+                    userSelect: 'none',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  {stepItem.step}
+                </div>
+
+                <div style={{ position: 'relative', zIndex: 2 }}>
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '12px',
+                      backgroundColor: '#102B3F',
+                      color: '#C6F36B',
+                      fontFamily: 'var(--font-heading)',
+                      fontWeight: 800,
+                      fontSize: '1rem',
+                      marginBottom: '1.5rem',
+                    }}
+                  >
+                    {stepItem.step}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: '0.8rem',
+                      fontWeight: 700,
+                      color: '#7B4B28',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {stepItem.subtitle}
+                  </div>
+
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.6rem',
+                      fontWeight: 800,
+                      color: '#102B3F',
+                      margin: '0 0 0.85rem',
+                    }}
+                  >
+                    {stepItem.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      fontSize: '0.92rem',
+                      color: '#557184',
+                      lineHeight: 1.6,
+                      margin: '0 0 1.5rem',
+                    }}
+                  >
+                    {stepItem.desc}
+                  </p>
+
+                  <div
+                    style={{
+                      padding: '8px 12px',
+                      borderRadius: '8px',
+                      backgroundColor: '#F0F5EE',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      color: '#102B3F',
+                      display: 'inline-block',
+                    }}
+                  >
+                    ✓ {stepItem.highlight}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          5.6 SHOWCASE SECTION (Contoh Website Mikro: Portfolio, Org, Event, Service)
+         ============================================================ */}
+      <section
+        id="showcase-section"
+        style={{
+          padding: '6rem 0',
+          backgroundColor: '#F8FAF7',
+        }}
+      >
+        <div className="saas-container">
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3rem' }}>
+            <span className="badge-lime" style={{ marginBottom: '1rem' }}>
+              Inspirasi &amp; Contoh Nyata
+            </span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+                fontWeight: 800,
+                color: '#102B3F',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.15,
+                margin: '0 0 1rem',
+              }}
+            >
+              Website Mikro untuk Setiap Kebutuhan.
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#557184', lineHeight: 1.6, margin: 0 }}>
+              Dari profil personal hingga halaman konferensi, lihat bagaimana UNI-LANDFARM
+              membantu menghadirkan identitas digital yang berkelas.
+            </p>
+          </div>
+
+          {/* Category Filter Pills */}
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '8px',
+              marginBottom: '3rem',
+            }}
+          >
+            {[
+              { id: 'all', label: 'Semua Contoh' },
+              { id: 'portfolio', label: 'Personal Portfolio' },
+              { id: 'organization', label: 'Organization Profile' },
+              { id: 'event', label: 'Event Landing Page' },
+              { id: 'service', label: 'Professional Service' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setShowcaseCategory(tab.id as any)}
+                style={{
+                  padding: '8px 18px',
+                  borderRadius: '999px',
+                  border: '1px solid',
+                  borderColor: showcaseCategory === tab.id ? '#102B3F' : 'rgba(85, 113, 132, 0.2)',
+                  backgroundColor: showcaseCategory === tab.id ? '#102B3F' : '#FFFFFF',
+                  color: showcaseCategory === tab.id ? '#F8FAF7' : '#557184',
+                  fontSize: '0.86rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Showcase Cards Grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2rem',
+            }}
+          >
+            {filteredShowcases.map((item) => (
+              <div
+                key={item.id}
+                className="saas-card"
+                style={{
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
+              >
+                {/* Visual Top Preview Frame */}
+                <div
+                  style={{
+                    backgroundColor: '#102B3F',
+                    color: '#F8FAF7',
+                    padding: '24px',
+                    minHeight: '180px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '-20px',
+                      right: '-20px',
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      backgroundColor: item.accentColor,
+                      opacity: 0.15,
+                      filter: 'blur(30px)',
+                    }}
+                  />
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '4px 10px',
+                        borderRadius: '999px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                        fontSize: '0.74rem',
+                        fontWeight: 600,
+                        color: '#F8FAF7',
+                      }}
+                    >
+                      {item.icon}
+                      <span>{item.categoryLabel}</span>
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        color: '#C6F36B',
+                        fontFamily: 'monospace',
+                        fontWeight: 600,
+                      }}
+                    >
+                      /site/{item.slug}
+                    </span>
+                  </div>
+
+                  <div>
+                    <div style={{ fontSize: '0.78rem', color: '#7E97A7', marginBottom: '4px' }}>
+                      {item.stats}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '1.15rem',
+                        fontWeight: 700,
+                        color: '#FFFFFF',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      "{item.heroPreview}"
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Details */}
+                <div style={{ padding: '1.75rem' }}>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.25rem',
+                      fontWeight: 700,
+                      color: '#102B3F',
+                      margin: '0 0 0.5rem',
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '0.88rem',
+                      color: '#557184',
+                      lineHeight: 1.5,
+                      margin: '0 0 1.25rem',
+                    }}
+                  >
+                    {item.tagline}
+                  </p>
+
+                  {/* Chips */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '1.5rem' }}>
+                    {item.chips.map((chip, idx) => (
+                      <span
+                        key={idx}
+                        style={{
+                          fontSize: '0.74rem',
+                          backgroundColor: '#F0F5EE',
+                          color: '#102B3F',
+                          padding: '3px 9px',
+                          borderRadius: '6px',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Actions */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingTop: '1rem',
+                      borderTop: '1px solid rgba(85, 113, 132, 0.12)',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => onOpenPublicView(item.slug)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: '#102B3F',
+                        fontSize: '0.86rem',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        padding: 0,
+                      }}
+                    >
+                      <span>Lihat Demo</span>
+                      <ExternalLink size={14} />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => onOpenAiWizard(item.title)}
+                      className="btn-lime"
+                      style={{
+                        padding: '0.45rem 1.1rem',
+                        fontSize: '0.82rem',
+                      }}
+                    >
+                      <span>Gunakan Konsep Ini</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          5.7 FINAL CALL TO ACTION (Master Requirement)
+          Headline: Saatnya Hadir Secara Digital dengan Cara yang Lebih Mudah.
+          CTA: Mulai Bersama UNI-LANDFARM
+         ============================================================ */}
+      <section
+        style={{
+          padding: '6rem 0',
+          backgroundColor: '#FFFFFF',
+        }}
+      >
+        <div className="saas-container">
+          <div
+            style={{
+              backgroundColor: '#102B3F',
+              borderRadius: '36px',
+              padding: '4.5rem 2.5rem',
+              color: '#F8FAF7',
+              textAlign: 'center',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: '0 24px 60px -12px rgba(16, 43, 63, 0.25)',
+            }}
+          >
+            {/* Ambient Corner Glows */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-40%',
+                left: '-20%',
+                width: '500px',
+                height: '500px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(198, 243, 107, 0.16)',
+                filter: 'blur(70px)',
+                pointerEvents: 'none',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '-40%',
+                right: '-20%',
+                width: '500px',
+                height: '500px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(245, 158, 11, 0.14)',
+                filter: 'blur(70px)',
+                pointerEvents: 'none',
+              }}
+            />
+
+            <div style={{ position: 'relative', zIndex: 5, maxWidth: '720px', margin: '0 auto' }}>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span
+                  style={{
+                    backgroundColor: 'rgba(198, 243, 107, 0.15)',
+                    border: '1px solid rgba(198, 243, 107, 0.4)',
+                    color: '#C6F36B',
+                    padding: '5px 16px',
+                    borderRadius: '999px',
+                    fontSize: '0.84rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.02em',
+                    display: 'inline-block',
+                  }}
+                >
+                  Mulai Langkah Digital Anda Hari Ini
+                </span>
+              </div>
+
+              {/* Master Headline (Section 5.7 Requirement) */}
+              <h2
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'clamp(2.2rem, 4.4vw, 3.6rem)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.15,
+                  margin: '0 0 1.25rem',
+                  color: '#F8FAF7',
+                }}
+              >
+                Saatnya Hadir Secara Digital dengan Cara yang Lebih Mudah.
+              </h2>
+
+              <p
+                style={{
+                  fontSize: '1.1rem',
+                  lineHeight: 1.6,
+                  color: 'rgba(248, 250, 247, 0.75)',
+                  margin: '0 auto 2.5rem',
+                  maxWidth: '580px',
+                }}
+              >
+                Ceritakan ide dan identitas Anda. Biarkan AI menyusun website mikro yang siap
+                mewakili Anda atau organisasi Anda di internet.
+              </p>
+
+              {/* Master CTA (Section 5.7 Requirement) */}
+              <button
+                onClick={() => onOpenAiWizard()}
+                className="btn-lime"
+                style={{
+                  padding: '1.05rem 2.6rem',
+                  fontSize: '1.08rem',
+                }}
+              >
+                <Sparkles size={20} />
+                <span>Mulai Bersama UNI-LANDFARM</span>
+              </button>
+
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '1.5rem',
+                  marginTop: '2rem',
+                  fontSize: '0.82rem',
+                  color: 'rgba(248, 250, 247, 0.6)',
+                }}
+              >
+                <span>✓ Tanpa Kartu Kredit</span>
+                <span>✓ Gratis Akun Eksplorasi</span>
+                <span>✓ Live dalam 2 Menit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          5.8 FOOTER (Brand Logo, Tagline, Navigation, Platform, Legal)
+         ============================================================ */}
+      <footer
+        style={{
+          backgroundColor: '#0A1C2A',
+          color: '#F8FAF7',
+          padding: '4.5rem 0 2.5rem',
+          borderTop: '1px solid rgba(85, 113, 132, 0.2)',
+        }}
+      >
+        <div className="saas-container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '3rem',
+              paddingBottom: '3.5rem',
               borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
             }}
           >
-            <div>
-              <h2
+            {/* Brand Column */}
+            <div style={{ maxWidth: '340px' }}>
+              <UniLandLogo size="md" variant="dark" showTagline={true} style={{ marginBottom: '14px' }} />
+              <p
                 style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: 'clamp(1.45rem, 2.4vw, 2.1rem)',
-                  fontWeight: 500,
-                  lineHeight: 1.12,
-                  letterSpacing: '-0.03em',
-                  color: '#ffffff',
-                  margin: 0,
+                  fontSize: '0.88rem',
+                  lineHeight: 1.6,
+                  color: 'rgba(248, 250, 247, 0.65)',
+                  margin: '0 0 1.25rem',
                 }}
               >
-                Siap punya website toko resmi hari ini?
-              </h2>
+                Platform pembuatan dan pengelolaan website mikro berbasis AI dengan pendekatan
+                Agentic AI Content Management System.
+              </p>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  color: '#C6F36B',
+                  fontWeight: 600,
+                }}
+              >
+                Tagline: Ceritakan. Wujudkan. Bagikan.
+              </div>
             </div>
 
-            <div
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.14)',
-                borderRadius: '14px',
-                padding: '0.65rem 0.75rem',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-              }}
-            >
-              <input
-                type="text"
-                value={quickBrandName}
-                onChange={(e) => setQuickBrandName(e.target.value)}
-                placeholder="Ketik nama usaha Anda..."
+            {/* Product Navigation */}
+            <div>
+              <div
                 style={{
-                  flex: 1,
-                  minWidth: '170px',
-                  backgroundColor: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.16)',
-                  borderRadius: '999px',
-                  padding: '0.55rem 1rem',
-                  color: '#ffffff',
-                  fontSize: '0.84rem',
-                  outline: 'none',
-                }}
-              />
-              <button
-                onClick={() => onOpenAiWizard(quickBrandName || undefined)}
-                className="eloq-btn-grey"
-                style={{
-                  padding: '0.55rem 1.15rem',
-                  fontSize: '0.84rem',
-                  background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%)',
-                  color: '#1E2E20',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '0.9rem',
                   fontWeight: 800,
-                  border: 'none',
-                  boxShadow: '0 4px 14px rgba(245, 158, 11, 0.35)',
+                  color: '#F8FAF7',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  marginBottom: '1.25rem',
                 }}
               >
-                <span>Buat Website</span>
-                <span>↗</span>
-              </button>
+                Produk
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  { label: 'AI Website Generator', target: 'feature-section' },
+                  { label: 'Conversational Editor', target: 'feature-section' },
+                  { label: 'Multi-Device Preview', target: 'hero-section' },
+                  { label: 'One-Click Publishing', target: 'feature-section' },
+                  { label: 'Micro-Web Management', target: 'feature-section' },
+                ].map((item, idx) => (
+                  <li key={idx}>
+                    <button
+                      type="button"
+                      onClick={() => scrollTo(item.target, 'fitur')}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                        color: 'rgba(248, 250, 247, 0.7)',
+                        fontSize: '0.86rem',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Micro-Web Showcase */}
+            <div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '0.9rem',
+                  fontWeight: 800,
+                  color: '#F8FAF7',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                Contoh Halaman
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  { label: 'Personal Portfolio', cat: 'portfolio' },
+                  { label: 'Organization Profile', cat: 'organization' },
+                  { label: 'Event Landing Page', cat: 'event' },
+                  { label: 'Professional Service', cat: 'service' },
+                ].map((item, idx) => (
+                  <li key={idx}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowcaseCategory(item.cat as any);
+                        scrollTo('showcase-section', 'contoh');
+                      }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                        color: 'rgba(248, 250, 247, 0.7)',
+                        fontSize: '0.86rem',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Platform & Academic Info */}
+            <div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '0.9rem',
+                  fontWeight: 800,
+                  color: '#F8FAF7',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                Informasi Proyek
+              </div>
+              <p
+                style={{
+                  fontSize: '0.84rem',
+                  lineHeight: 1.55,
+                  color: 'rgba(248, 250, 247, 0.65)',
+                  margin: '0 0 10px',
+                }}
+              >
+                Tugas Akhir Mahasiswa Program Studi Sistem Informasi.
+                Fokus pada inovasi Agentic AI CMS untuk efisiensi digital presence.
+              </p>
+              <div style={{ fontSize: '0.82rem', color: '#7E97A7' }}>
+                Status Sistem: <span style={{ color: '#10B981', fontWeight: 600 }}>● Operasional</span>
+              </div>
             </div>
           </div>
 
+          {/* Bottom Copyright Row */}
           <div
             style={{
+              paddingTop: '2rem',
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '1rem',
-              paddingTop: '1.25rem',
+              fontSize: '0.8rem',
+              color: 'rgba(248, 250, 247, 0.5)',
             }}
           >
-            <UniLandLogo size="sm" variant="dark" />
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', fontSize: '0.82rem' }}>
-              <button
-                onClick={() => scrollToSection('top-hero', 'beranda')}
-                style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', padding: 0 }}
-              >
-                Beranda
-              </button>
-              <button
-                onClick={() => scrollToSection('tentang', 'tentang')}
-                style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', padding: 0 }}
-              >
-                Platform
-              </button>
-              <button
-                onClick={() => scrollToSection('template', 'karya')}
-                style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', padding: 0 }}
-              >
-                Template
-              </button>
-              <button
-                onClick={() => scrollToSection('fitur', 'layanan')}
-                style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', padding: 0 }}
-              >
-                Fitur AI
-              </button>
-              <button
-                onClick={() => scrollToSection('harga', 'harga')}
-                style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.75)', cursor: 'pointer', padding: 0 }}
-              >
-                Harga
-              </button>
+            <div>
+              &copy; {new Date().getFullYear()} UNI-LANDFARM. Hak Cipta Dilindungi Undang-Undang.
             </div>
 
-            <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)' }}>
-              © {new Date().getFullYear()} UNI-LANDFARM. All rights reserved.
+            <div style={{ display: 'flex', gap: '1.5rem' }}>
+              <button
+                type="button"
+                onClick={() => onOpenAuth('login')}
+                style={{ background: 'none', border: 'none', color: 'rgba(248,250,247,0.7)', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
+              >
+                Masuk Akun
+              </button>
+              <button
+                type="button"
+                onClick={() => onOpenAuth('register')}
+                style={{ background: 'none', border: 'none', color: 'rgba(248,250,247,0.7)', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
+              >
+                Daftar Baru
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTo('hero-section', 'beranda')}
+                style={{ background: 'none', border: 'none', color: '#C6F36B', cursor: 'pointer', fontSize: '0.8rem', padding: 0 }}
+              >
+                Kembali ke Atas ↑
+              </button>
             </div>
           </div>
         </div>

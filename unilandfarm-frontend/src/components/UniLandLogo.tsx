@@ -19,12 +19,11 @@ export const UniLandLogo: React.FC<UniLandLogoProps> = ({
   style = {},
   onClick,
 }) => {
-  // Dimension mapping
   const dimensions = {
-    sm: { iconSize: 30, fontSize: '1.05rem', subSize: '0.52rem', gap: '9px' },
-    md: { iconSize: 38, fontSize: '1.25rem', subSize: '0.62rem', gap: '11px' },
-    lg: { iconSize: 48, fontSize: '1.65rem', subSize: '0.72rem', gap: '14px' },
-    xl: { iconSize: 64, fontSize: '2.1rem', subSize: '0.82rem', gap: '16px' },
+    sm: { iconSize: 28, fontSize: '1.05rem', subSize: '0.55rem', gap: '8px' },
+    md: { iconSize: 36, fontSize: '1.25rem', subSize: '0.62rem', gap: '10px' },
+    lg: { iconSize: 46, fontSize: '1.6rem', subSize: '0.72rem', gap: '12px' },
+    xl: { iconSize: 58, fontSize: '2.05rem', subSize: '0.8rem', gap: '14px' },
   }[size];
 
   const isDarkSurface = variant === 'dark';
@@ -52,22 +51,36 @@ export const UniLandLogo: React.FC<UniLandLogoProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          borderRadius: '8px',
+          borderRadius: '10px',
           overflow: 'hidden',
+          background: isDarkSurface ? '#183C57' : '#102B3F',
+          boxShadow: isDarkSurface
+            ? '0 2px 10px rgba(198, 243, 107, 0.25)'
+            : '0 2px 8px rgba(16, 43, 63, 0.18)',
         }}
       >
-        <img
-          src="/assets/unilandfarm_monogram_transparent.png"
-          alt="UNI-LANDFARM Logo"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            filter: isDarkSurface
-              ? 'drop-shadow(0 2px 8px rgba(110, 136, 84, 0.45))'
-              : 'drop-shadow(0 2px 6px rgba(35, 55, 38, 0.2))',
-          }}
-        />
+        <svg
+          width={dimensions.iconSize * 0.72}
+          height={dimensions.iconSize * 0.72}
+          viewBox="0 0 32 32"
+          fill="none"
+        >
+          {/* Stylized Modern U & Leaf Spark */}
+          <path
+            d="M8 8V18C8 22.4183 11.5817 26 16 26C20.4183 26 24 22.4183 24 18V8"
+            stroke="#F8FAF7"
+            strokeWidth="3.2"
+            strokeLinecap="round"
+          />
+          <circle cx="24" cy="8" r="3.2" fill="#C6F36B" />
+          <path
+            d="M13 14L16 17L21 11"
+            stroke="#C6F36B"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
 
       {/* Brand Typography Block */}
@@ -75,45 +88,55 @@ export const UniLandLogo: React.FC<UniLandLogoProps> = ({
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
           <div
             style={{
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontWeight: 800,
               fontSize: dimensions.fontSize,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.025em',
               display: 'flex',
               alignItems: 'baseline',
             }}
           >
-            {/* UNI- in forest green (or white on dark) */}
+            {/* UNI- in Deep Navy (or white on dark) */}
             <span
               style={{
-                color: isDarkSurface ? '#F7F5EE' : '#233726',
+                color: isDarkSurface ? '#F8FAF7' : '#102B3F',
                 fontWeight: 800,
               }}
             >
               UNI-
             </span>
-            {/* LANDFARM in moss / olive green */}
+            {/* LANDFARM in Fresh Lime on dark, or Deep Navy with Lime accent */}
             <span
               style={{
-                color: isDarkSurface ? '#8EB571' : '#6E8854',
+                color: isDarkSurface ? '#C6F36B' : '#102B3F',
                 fontWeight: 800,
               }}
             >
               LANDFARM
             </span>
+            <span
+              style={{
+                display: 'inline-block',
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                backgroundColor: '#C6F36B',
+                marginLeft: '3px',
+              }}
+            />
           </div>
           {showTagline && (
             <span
               style={{
                 fontSize: dimensions.subSize,
+                fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: isDarkSurface ? 'rgba(247, 245, 238, 0.65)' : '#62685E',
+                letterSpacing: '0.04em',
+                color: isDarkSurface ? 'rgba(248, 250, 247, 0.72)' : '#557184',
                 marginTop: '3px',
               }}
             >
-              Digitalisasi UMKM &amp; Agrobisnis
+              Ceritakan. Wujudkan. Bagikan.
             </span>
           )}
         </div>
@@ -121,4 +144,3 @@ export const UniLandLogo: React.FC<UniLandLogoProps> = ({
     </div>
   );
 };
-

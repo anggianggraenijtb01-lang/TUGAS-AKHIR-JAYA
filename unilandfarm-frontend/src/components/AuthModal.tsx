@@ -83,20 +83,20 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
-        backgroundColor: 'rgba(16, 43, 34, 0.65)',
-        backdropFilter: 'blur(8px)',
+        backgroundColor: 'rgba(16, 43, 63, 0.65)',
+        backdropFilter: 'blur(10px)',
       }}
       onClick={onClose}
     >
       <div
         style={{
-          background: '#ffffff',
-          borderRadius: '20px',
+          background: '#FFFFFF',
+          borderRadius: '24px',
           padding: '36px 32px',
           maxWidth: '460px',
           width: '100%',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.2)',
-          border: '1px solid rgba(16, 43, 34, 0.1)',
+          boxShadow: '0 24px 60px rgba(16, 43, 63, 0.2)',
+          border: '1px solid rgba(85, 113, 132, 0.16)',
           position: 'relative',
         }}
         onClick={(e) => e.stopPropagation()}
@@ -109,13 +109,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             position: 'absolute',
             top: '20px',
             right: '20px',
-            background: '#F1F5F9',
+            background: '#F0F5EE',
             border: 'none',
             borderRadius: '50%',
             width: '32px',
             height: '32px',
             cursor: 'pointer',
-            color: '#64748B',
+            color: '#557184',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -130,86 +130,85 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </div>
           <h3
             style={{
+              fontFamily: 'var(--font-heading)',
               fontSize: '1.35rem',
               fontWeight: 800,
-              color: '#102B22',
+              color: '#102B3F',
               marginBottom: '6px',
             }}
           >
-            {mode === 'login' ? 'Masuk ke Akun Toko' : 'Daftar Akun Baru'}
+            {mode === 'login' ? 'Masuk ke Akun' : 'Daftar Akun Baru'}
           </h3>
-          <p style={{ fontSize: '0.86rem', color: '#64748B', margin: 0 }}>
+          <p style={{ fontSize: '0.86rem', color: '#557184', margin: 0 }}>
             {mode === 'login'
-              ? 'Kelola landing page dan gunakan Agentic AI untuk bisnis UMKM Anda.'
-              : 'Daftar gratis untuk mulai mengelola website bisnis Anda.'}
+              ? 'Kelola website mikro Anda dengan bantuan Agentic AI.'
+              : 'Daftar gratis untuk mulai membuat website mikro Anda.'}
           </p>
         </div>
 
         <div
           style={{
             display: 'flex',
-            background: '#F5F2EA',
-            borderRadius: '10px',
+            backgroundColor: '#F0F5EE',
             padding: '4px',
+            borderRadius: '12px',
             marginBottom: '20px',
-            border: '1px solid rgba(123, 75, 40, 0.12)',
           }}
         >
           <button
+            type="button"
             onClick={() => {
               setMode('login');
               setErrorMsg('');
             }}
-            type="button"
             style={{
               flex: 1,
-              padding: '8px 16px',
-              borderRadius: '8px',
+              padding: '8px 12px',
+              borderRadius: '9px',
               border: 'none',
-              background: mode === 'login' ? '#ffffff' : 'transparent',
-              color: mode === 'login' ? '#1c2d1f' : '#6b7266',
-              fontWeight: 700,
-              fontSize: '0.88rem',
               cursor: 'pointer',
-              boxShadow: mode === 'login' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              background: mode === 'login' ? '#102B3F' : 'transparent',
+              color: mode === 'login' ? '#F8FAF7' : '#557184',
+              transition: 'all 0.2s',
             }}
           >
             Masuk
           </button>
           <button
+            type="button"
             onClick={() => {
               setMode('register');
               setErrorMsg('');
             }}
-            type="button"
             style={{
               flex: 1,
-              padding: '8px 16px',
-              borderRadius: '8px',
+              padding: '8px 12px',
+              borderRadius: '9px',
               border: 'none',
-              background: mode === 'register' ? '#ffffff' : 'transparent',
-              color: mode === 'register' ? '#1c2d1f' : '#6b7266',
-              fontWeight: 700,
-              fontSize: '0.88rem',
               cursor: 'pointer',
-              boxShadow: mode === 'register' ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              background: mode === 'register' ? '#102B3F' : 'transparent',
+              color: mode === 'register' ? '#F8FAF7' : '#557184',
+              transition: 'all 0.2s',
             }}
           >
-            Daftar Baru
+            Daftar
           </button>
         </div>
 
         {errorMsg && (
           <div
             style={{
-              padding: '9px 14px',
-              borderRadius: '8px',
               background: 'rgba(239, 68, 68, 0.08)',
               border: '1px solid rgba(239, 68, 68, 0.25)',
-              color: '#DC2626',
-              fontSize: '0.82rem',
+              borderRadius: '10px',
+              padding: '10px 12px',
               marginBottom: '16px',
-              fontWeight: 600,
+              fontSize: '0.82rem',
+              color: '#DC2626',
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
@@ -220,180 +219,168 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           </div>
         )}
 
-        {mode === 'login' && (
-          <form onSubmit={handleLoginSubmit}>
-            <div style={{ marginBottom: '14px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
-                Alamat Email
+        {mode === 'login' ? (
+          <form onSubmit={handleLoginSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
+                Email
               </label>
               <input
                 type="email"
-                required
-                placeholder="nama@bisnis.com"
+                placeholder="nama@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
-            <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
                 Kata Sandi
               </label>
               <input
                 type="password"
-                required
-                placeholder="Minimal 6 karakter"
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
             <button
               type="submit"
+              className="btn-lime"
               style={{
                 width: '100%',
                 padding: '12px',
-                fontSize: '0.92rem',
-                fontWeight: 700,
-                borderRadius: '10px',
-                border: 'none',
-                background: 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 80%, #c98a2c 100%)',
-                color: '#FFFFFF',
-                boxShadow: '0 4px 14px rgba(35, 55, 38, 0.3), 0 0 12px rgba(229, 172, 50, 0.2)',
-                cursor: 'pointer',
+                marginTop: '6px',
               }}
             >
               Masuk ke Akun
             </button>
           </form>
-        )}
-
-        {mode === 'register' && (
-          <form onSubmit={handleRegisterSubmit}>
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
+        ) : (
+          <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
                 Nama Lengkap
               </label>
               <input
                 type="text"
-                required
                 placeholder="Nama Anda"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
-                Nama Usaha / Toko
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
+                Nama Website / Usaha
               </label>
               <input
                 type="text"
-                placeholder="Nama Usaha Anda"
+                placeholder="Contoh: Alex Design Studio"
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
-            <div style={{ marginBottom: '12px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
-                Alamat Email
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
+                Email
               </label>
               <input
                 type="email"
-                required
-                placeholder="nama@bisnis.com"
+                placeholder="nama@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
-            <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
+            <div>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: '#102B3F',
+                  marginBottom: '6px',
+                }}
+              >
                 Kata Sandi
               </label>
               <input
                 type="password"
-                required
                 placeholder="Minimal 6 karakter"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid #E2E8F0',
-                  fontSize: '0.88rem',
-                  outline: 'none',
-                  boxSizing: 'border-box',
-                }}
+                className="eloq-auth-input"
               />
             </div>
-
             <button
               type="submit"
+              className="btn-lime"
               style={{
                 width: '100%',
                 padding: '12px',
-                fontSize: '0.92rem',
-                fontWeight: 700,
-                borderRadius: '10px',
-                border: 'none',
-                background: 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 80%, #c98a2c 100%)',
-                color: '#FFFFFF',
-                boxShadow: '0 4px 14px rgba(35, 55, 38, 0.3), 0 0 12px rgba(229, 172, 50, 0.2)',
-                cursor: 'pointer',
+                marginTop: '6px',
               }}
             >
               Daftar Sekarang
             </button>
           </form>
         )}
+
+        <div
+          style={{
+            marginTop: '20px',
+            paddingTop: '16px',
+            borderTop: '1px solid rgba(85, 113, 132, 0.14)',
+            textAlign: 'center',
+            fontSize: '0.78rem',
+            color: '#7E97A7',
+          }}
+        >
+          &copy; {new Date().getFullYear()} UNI-LANDFARM. All rights reserved.
+        </div>
       </div>
     </div>
   );

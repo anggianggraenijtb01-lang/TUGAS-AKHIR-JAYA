@@ -1,102 +1,89 @@
 /* ============================================================
-   UNI-LANDFARM Design System
-   Inspired by Organic Agro-Creative & Modern Studio Aesthetics:
-   - Deep Forest Pine (#233726), Fresh Moss Olive (#6E8854), Harvest Gold (#E5AC32)
-   - Organic Cream Canvas (#FAF8F2) & Deep Pine Obsidian (#0C150E)
-   - Layout: Arched Hero, Bento Services, Star Sparkles, Forest Curved Footer
+   UNI-LANDFARM — MASTER DESIGN SYSTEM
+   AI-Powered Micro-Web & Digital Presence Management Platform
+   Official Palette:
+   - Deep Navy: #102B3F (Main Identity, Headings, High Contrast)
+   - Fresh Lime: #C6F36B (Primary CTA & Modern SaaS Accent)
+   - Soft White: #F8FAF7 (Clean Surface Canvas)
+   - Slate Blue: #557184 (Secondary Text, Borders, Subtle Accents)
+   - Mint: #EAF7D5 (Card Tints & Subtle Ambient Highlights)
    ============================================================ */
 
 :root {
-  /* Master Prompt Brand Color Direction */
-  --brand-forest: #304432;
-  --brand-forest-dark: #1E2E20;
-  --brand-olive: #687A4D;
-  --brand-olive-light: #8FA66E;
-  --brand-mustard: #F4C744;
-  --brand-mustard-hover: #E5B832;
-  --brand-mustard-glow: rgba(244, 199, 68, 0.35);
-  --brand-cream: #F5F2E8;
-  --brand-cream-card: #ECE7D8;
+  /* Brand Master Palette */
+  --color-navy: #102B3F;
+  --color-navy-dark: #0A1C2A;
+  --color-navy-light: #183C57;
+  --color-navy-soft: #1E4663;
+  --color-lime: #C6F36B;
+  --color-lime-hover: #B5E857;
+  --color-lime-active: #A4D946;
+  --color-lime-glow: rgba(198, 243, 107, 0.45);
+  --color-soft-white: #F8FAF7;
+  --color-slate-blue: #557184;
+  --color-slate-light: #7E97A7;
+  --color-slate-border: rgba(85, 113, 132, 0.18);
+  --color-mint: #EAF7D5;
+  --color-mint-soft: #F2F9EA;
+  --color-mint-border: rgba(198, 243, 107, 0.35);
 
-  /* Primary Accent & CTAs */
-  --accent-yellow: #F4C744;
-  --accent-yellow-hover: #E5B832;
-  --accent-yellow-glow: rgba(244, 199, 68, 0.35);
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
 
-  /* Deep Canvas */
-  --bg-canvas: #0E1610;
-  --bg-dark: #141F16;
-  --bg-card: #1B291D;
-  --bg-card-hover: #223425;
-  --bg-card-border: rgba(104, 122, 77, 0.22);
-
-  /* Surfaces */
+  /* Surfaces & Canvas */
+  --bg-canvas: #F8FAF7;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #F3F7F2;
   --surface-white: #FFFFFF;
-  --surface-cream: #F5F2E8;
-  --border-light: rgba(48, 68, 50, 0.12);
+  --surface-navy: #102B3F;
 
-  /* Refined Light Surfaces */
-  --bg-cream: #FAF7F2;
-  --bg-cream-alt: #F5F2E8;
-  --bg-cream-warm: #F7F4EB;
-  --border-cream: #ECE7D9;
-  --border-cream-light: rgba(48, 68, 50, 0.08);
+  /* Text Colors */
+  --text-primary: #102B3F;
+  --text-secondary: #557184;
+  --text-muted: #7E97A7;
+  --text-white: #F8FAF7;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(32, 39, 32, 0.04);
-  --shadow-md: 0 4px 18px rgba(32, 39, 32, 0.06);
-  --shadow-lg: 0 8px 30px rgba(32, 39, 32, 0.08);
-  --shadow-xl: 0 16px 48px rgba(32, 39, 32, 0.12);
-  --shadow-gold: 0 4px 18px rgba(244, 199, 68, 0.35);
-  --shadow-gold-hover: 0 8px 28px rgba(244, 199, 68, 0.45);
+  --shadow-subtle: 0 2px 8px rgba(16, 43, 63, 0.04);
+  --shadow-card: 0 8px 24px -4px rgba(16, 43, 63, 0.06), 0 2px 6px -1px rgba(16, 43, 63, 0.03);
+  --shadow-elevated: 0 16px 40px -8px rgba(16, 43, 63, 0.12), 0 4px 12px -2px rgba(16, 43, 63, 0.04);
+  --shadow-lime: 0 10px 26px -6px rgba(198, 243, 107, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  --shadow-navy: 0 12px 28px -6px rgba(16, 43, 63, 0.45);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
 
   /* Transitions */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-base: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* Typography Colors */
-  --text-primary: #202720;
-  --text-secondary: #62685E;
-  --text-white: #F8FAF8;
-  --text-dark: #202720;
-  --text-muted: #8E9F90;
-  --text-muted-light: #62685E;
-
-  /* Fonts: Poppins (Ramah & Hangat) + Plus Jakarta Sans (Jernih & Nyaman) */
-  --font-display: 'Poppins', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-xl: 36px;
-  --radius-arch: 56px;
-  --radius-pill: 9999px;
 }
 
-/* ============================================================
-   SELECTION & SCROLLBAR POLISH
-   ============================================================ */
+/* Selection & Scrollbar */
 ::selection {
-  background: rgba(244, 199, 68, 0.3);
-  color: #202720;
+  background: var(--color-lime);
+  color: var(--color-navy);
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-cream, #FAF7F2);
+  background: var(--color-soft-white);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C8C1B0;
+  background: #C4D3DC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8A298;
+  background: #A6BCC9;
 }
 
 /* ============================================================
@@ -1002,44 +989,37 @@ button, input, select, textarea {
 }
 
 /* ============================================================
-   ELOQWNT STUDIO ARCHITECTURE + UNI-LANDFARM LOGO PALETTE
-   (Infused with Warm Harvest Gold & Roasted Coffee Earth Accents)
+   MODERN SAAS DESIGN SYSTEM — DEEP NAVY & FRESH LIME
    ============================================================ */
-.eloq-page {
-  --eloq-grey: #edebe4;
-  --eloq-lightgray: #f6f3eb;
-  --eloq-white: #ffffff;
-  --eloq-black: #1c2d1f;
-  --eloq-muted: #5d6759;
-  --eloq-accent: #6E8854;
-  --eloq-gold: #E5AC32;
-  --eloq-gold-warm: #F59E0B;
-  --eloq-gold-glow: rgba(229, 172, 50, 0.28);
-  --eloq-brown: #7B4B28;
-  --eloq-brown-deep: #4A2E1B;
-  --eloq-brown-soft: #8C5332;
-  --eloq-green-grad: linear-gradient(135deg, #233726 0%, #3d5a37 40%, #6E8854 75%, #a8843c 100%);
-  --eloq-green-grad-hover: linear-gradient(135deg, #2b442f 0%, #496b42 40%, #7d9960 75%, #bfa04a 100%);
-  --eloq-green-bright: linear-gradient(135deg, #233726 0%, #4f6d3f 50%, #6E8854 100%);
-  --eloq-warm-grad: linear-gradient(135deg, #233726 0%, #3e3223 42%, #7B4B28 72%, #E5AC32 100%);
-  --eloq-radius: 32px;
-  background: radial-gradient(circle at 15% 10%, #ede8de 0%, #ebe7de 48%, #e3ddd1 100%);
-  color: var(--eloq-black);
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  letter-spacing: -0.02em;
+.eloq-page,
+.saas-page {
+  --saas-navy: #102B3F;
+  --saas-navy-dark: #0A1C2A;
+  --saas-navy-light: #183C57;
+  --saas-lime: #C6F36B;
+  --saas-lime-hover: #B5E857;
+  --saas-soft-white: #F8FAF7;
+  --saas-slate-blue: #557184;
+  --saas-mint: #EAF7D5;
+  background-color: var(--color-soft-white);
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  letter-spacing: -0.015em;
   min-height: 100vh;
   overflow-x: clip;
 }
 
-.eloq-container {
-  max-width: 1340px;
+.eloq-container,
+.saas-container {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 3.25rem;
+  padding: 0 2.5rem;
 }
 
 @media (max-width: 991px) {
-  .eloq-container {
-    padding: 0 1.5rem;
+  .eloq-container,
+  .saas-container {
+    padding: 0 1.25rem;
   }
 }
 
@@ -1120,87 +1100,87 @@ button, input, select, textarea {
 
 .eloq-hero-surface {
   background:
-    radial-gradient(65% 55% at 50% 42%, rgba(244, 248, 240, 0.78) 0%, rgba(230, 239, 224, 0) 100%),
-    linear-gradient(165deg, #ecf2e6 0%, #e0ebd8 50%, #d2e0c8 100%);
-  border-radius: 0 0 40px 40px;
-  min-height: calc(94svh - 76px);
+    radial-gradient(70% 60% at 50% 30%, rgba(234, 247, 213, 0.45) 0%, rgba(248, 250, 247, 0) 100%),
+    linear-gradient(180deg, #F8FAF7 0%, #F0F5EE 60%, #E8F0E5 100%);
+  border-radius: 0 0 44px 44px;
+  min-height: calc(92svh - 76px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 6rem;
+  padding-bottom: 5.5rem;
   box-shadow:
-    0 26px 68px -16px rgba(24, 38, 26, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 0 rgba(61, 90, 55, 0.22);
-  border-bottom: 1px solid rgba(35, 55, 38, 0.16);
+    0 24px 60px -16px rgba(16, 43, 63, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(85, 113, 132, 0.15);
+  border-bottom: 1px solid rgba(85, 113, 132, 0.14);
 }
 
-/* Precision architectural studio grid + fine sub-grid overlay inside Hero */
+/* Precision architectural SaaS grid overlay inside Hero */
 .eloq-hero-grid-bg {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(35, 55, 38, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(35, 55, 38, 0.08) 1px, transparent 1px),
-    linear-gradient(to right, rgba(61, 90, 55, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(61, 90, 55, 0.035) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    linear-gradient(to right, rgba(16, 43, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 43, 63, 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgba(198, 243, 107, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(198, 243, 107, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
   background-position: center center;
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 46%, black 30%, transparent 90%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 46%, black 30%, transparent 90%);
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, black 40%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, black 40%, transparent 92%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Architectural Studio Glows: Organic Pine, Warm Golden Amber, & Roast Coffee Earth */
+/* Modern SaaS Ambient Glows: Mint, Navy Light, & Warm Amber */
 .eloq-aurora-orb-1 {
   position: absolute;
-  top: -18%;
-  left: -6%;
-  width: 640px;
-  height: 640px;
+  top: -15%;
+  left: -8%;
+  width: 620px;
+  height: 620px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(110, 136, 84, 0.22) 0%, rgba(61, 90, 55, 0.06) 52%, transparent 72%);
-  filter: blur(55px);
+  background: radial-gradient(circle, rgba(198, 243, 107, 0.32) 0%, rgba(234, 247, 213, 0.18) 45%, transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
   z-index: 0;
-  animation: eloqOrbFloat1 16s ease-in-out infinite;
+  animation: eloqOrbFloat1 18s ease-in-out infinite;
 }
 
 .eloq-aurora-orb-2 {
   position: absolute;
-  top: -14%;
-  right: -6%;
-  width: 640px;
-  height: 640px;
+  top: -12%;
+  right: -8%;
+  width: 580px;
+  height: 580px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(229, 172, 50, 0.20) 0%, rgba(123, 75, 40, 0.08) 52%, transparent 72%);
+  background: radial-gradient(circle, rgba(229, 172, 50, 0.18) 0%, rgba(123, 75, 40, 0.08) 48%, transparent 70%);
   filter: blur(55px);
   pointer-events: none;
   z-index: 0;
-  animation: eloqOrbFloat2 18s ease-in-out infinite;
+  animation: eloqOrbFloat2 16s ease-in-out infinite;
 }
 
 .eloq-aurora-orb-3 {
   position: absolute;
-  bottom: -24%;
+  bottom: -20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 820px;
-  height: 440px;
+  width: 780px;
+  height: 420px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(123, 75, 40, 0.16) 0%, rgba(229, 172, 50, 0.08) 40%, rgba(35, 55, 38, 0.05) 65%, transparent 80%);
-  filter: blur(52px);
+  background: radial-gradient(ellipse, rgba(16, 43, 63, 0.08) 0%, rgba(198, 243, 107, 0.15) 45%, transparent 75%);
+  filter: blur(55px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Animated Gradient Text Highlight (Pine Forest -> Coffee Brown -> Harvest Gold Flow) */
+/* Animated Gradient Text Highlight (Deep Navy -> Warm Amber -> Fresh Lime) */
 .eloq-gradient-text {
-  background: linear-gradient(120deg, #233726 0%, #5a3825 35%, #b87a26 68%, #3d5a37 92%, #233726 100%);
+  background: linear-gradient(120deg, #102B3F 0%, #7B4B28 35%, #C6F36B 68%, #102B3F 100%);
   background-size: 240% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1213,12 +1193,12 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(229, 172, 50, 0.16);
-  color: #8c5715;
-  border: 1px solid rgba(229, 172, 50, 0.38);
-  font-size: 0.74rem;
+  background: rgba(229, 172, 50, 0.14);
+  color: #7B4B28;
+  border: 1px solid rgba(229, 172, 50, 0.35);
+  font-size: 0.76rem;
   font-weight: 700;
-  padding: 4px 11px;
+  padding: 5px 13px;
   border-radius: 999px;
   letter-spacing: 0.02em;
 }
@@ -1227,28 +1207,125 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(123, 75, 40, 0.12);
-  color: #5d3618;
-  border: 1px solid rgba(123, 75, 40, 0.28);
-  font-size: 0.74rem;
+  background: rgba(123, 75, 40, 0.1);
+  color: #5D3618;
+  border: 1px solid rgba(123, 75, 40, 0.25);
+  font-size: 0.76rem;
   font-weight: 700;
-  padding: 4px 11px;
+  padding: 5px 13px;
   border-radius: 999px;
   letter-spacing: 0.02em;
 }
 
-.eloq-badge-forest {
+.eloq-badge-forest,
+.badge-lime {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(35, 55, 38, 0.1);
-  color: #233726;
-  border: 1px solid rgba(35, 55, 38, 0.22);
-  font-size: 0.74rem;
+  background: #EAF7D5;
+  color: #102B3F;
+  border: 1px solid rgba(198, 243, 107, 0.5);
+  font-size: 0.76rem;
   font-weight: 700;
-  padding: 4px 11px;
+  padding: 5px 13px;
   border-radius: 999px;
   letter-spacing: 0.02em;
+}
+
+.badge-navy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #102B3F;
+  color: #C6F36B;
+  border: 1px solid rgba(198, 243, 107, 0.3);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+/* Modern Primary Buttons */
+.btn-lime {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #C6F36B;
+  color: #102B3F;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.82rem 1.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 43, 63, 0.12);
+  cursor: pointer;
+  box-shadow: 0 10px 24px -6px rgba(198, 243, 107, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.btn-lime:hover {
+  background: #B5E857;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -6px rgba(198, 243, 107, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+.btn-lime:active {
+  transform: translateY(0);
+}
+
+.btn-navy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #102B3F;
+  color: #F8FAF7;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.82rem 1.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  box-shadow: 0 10px 24px -6px rgba(16, 43, 63, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.btn-navy:hover {
+  background: #183C57;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -6px rgba(16, 43, 63, 0.55);
+}
+.btn-navy:active {
+  transform: translateY(0);
+}
+
+.btn-outline-navy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #102B3F;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.82rem 1.65rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(16, 43, 63, 0.18);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.btn-outline-navy:hover {
+  border-color: #102B3F;
+  background: #F0F5EE;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 43, 63, 0.08);
 }
 
 /* Floating Interactive Pills in Hero */
@@ -1332,7 +1409,7 @@ button, input, select, textarea {
 }
 
 /* ============================================================
-   PREMIUM EMERALD GRADIENT BUTTONS (With Shimmer & Glow)
+   PREMIUM MODERN SAAS BUTTONS (Deep Navy & Fresh Lime)
    ============================================================ */
 .eloq-btn-grey,
 .eloq-btn-black {
@@ -1341,17 +1418,18 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: var(--eloq-green-grad);
-  color: #ffffff;
+  background: linear-gradient(135deg, #102B3F 0%, #183C57 55%, #102B3F 100%);
+  color: #F8FAF7;
   border-radius: 999px;
-  padding: 0.92rem 1.75rem;
-  font-size: 0.98rem;
-  font-weight: 600;
+  padding: 0.88rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
+  font-weight: 700;
   letter-spacing: -0.015em;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(198, 243, 107, 0.28);
   box-shadow:
-    0 10px 26px -6px rgba(35, 55, 38, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.32);
+    0 10px 24px -6px rgba(16, 43, 63, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
   cursor: pointer;
   overflow: hidden;
   transition:
@@ -1372,7 +1450,7 @@ button, input, select, textarea {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.24),
+    rgba(198, 243, 107, 0.22),
     transparent
   );
   transform: translateX(-140%) skewX(-20deg);
@@ -1383,12 +1461,13 @@ button, input, select, textarea {
 
 .eloq-btn-grey:hover,
 .eloq-btn-black:hover {
-  background: var(--eloq-green-grad-hover);
-  color: #ffffff;
+  background: linear-gradient(135deg, #183C57 0%, #224E6F 55%, #183C57 100%);
+  color: #C6F36B;
   transform: translateY(-2.5px) scale(1.015);
   box-shadow:
-    0 16px 34px -6px rgba(35, 55, 38, 0.58),
-    inset 0 1px 2px rgba(255, 255, 255, 0.42);
+    0 16px 32px -6px rgba(16, 43, 63, 0.52),
+    0 0 20px rgba(198, 243, 107, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .eloq-btn-grey:active,
@@ -1402,43 +1481,44 @@ button, input, select, textarea {
   z-index: 2;
 }
 
-/* Secondary Outline Pill Button with Emerald Tint Hover */
+/* Secondary Outline Pill Button with Navy/Lime Tint Hover */
 .eloq-btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  color: #133922;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  color: #102B3F;
   border-radius: 999px;
-  padding: 0.92rem 1.75rem;
-  font-size: 0.98rem;
+  padding: 0.88rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.96rem;
   font-weight: 600;
   letter-spacing: -0.015em;
-  border: 1.5px solid rgba(27, 77, 46, 0.24);
-  box-shadow: 0 4px 14px rgba(17, 51, 31, 0.05);
+  border: 1.5px solid rgba(85, 113, 132, 0.24);
+  box-shadow: 0 4px 14px rgba(16, 43, 63, 0.04);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .eloq-btn-outline:hover {
-  border-color: #1f5c38;
-  background: linear-gradient(135deg, rgba(27, 77, 46, 0.06) 0%, rgba(46, 125, 77, 0.12) 100%);
-  color: #0f301c;
+  border-color: #102B3F;
+  background: #FFFFFF;
+  color: #102B3F;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(20, 68, 39, 0.12);
+  box-shadow: 0 10px 24px rgba(16, 43, 63, 0.1);
 }
 
-/* Rounded Botanical Sage-Olive Architectural Islands (Non-Stark-White) */
+/* Modern SaaS Card Islands (Subtle Depth & Soft Elevation) */
 .eloq-island {
-  background: linear-gradient(155deg, #eef4ea 0%, #e4ede0 52%, #dce7d6 100%);
-  border-radius: var(--eloq-radius);
-  padding: 3.25rem;
-  border: 1px solid rgba(61, 90, 55, 0.18);
+  background: linear-gradient(160deg, #FFFFFF 0%, #F8FAF7 60%, #F1F6F0 100%);
+  border-radius: 28px;
+  padding: 3rem;
+  border: 1px solid rgba(85, 113, 132, 0.15);
   box-shadow:
-    0 18px 48px rgba(24, 38, 26, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    0 16px 40px rgba(16, 43, 63, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 991px) {
@@ -1600,22 +1680,22 @@ button, input, select, textarea {
 }
 
 /* ============================================================
-   ESTHETIC AUTH PAGE (ELOQWNT STUDIO + EMERALD GLASS)
+   ESTHETIC AUTH PAGE (MODERN SAAS STUDIO)
    ============================================================ */
 .eloq-auth-card {
   max-width: 1040px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(24px);
   border-radius: 32px;
-  padding: 14px;
-  border: 1px solid rgba(27, 77, 46, 0.1);
+  padding: 16px;
+  border: 1px solid rgba(85, 113, 132, 0.16);
   box-shadow:
-    0 28px 70px -12px rgba(12, 38, 22, 0.12),
-    0 4px 16px rgba(12, 38, 22, 0.04);
+    0 28px 70px -12px rgba(16, 43, 63, 0.14),
+    0 6px 20px rgba(16, 43, 63, 0.05);
   display: grid;
-  grid-template-columns: 1.02fr 1.15fr;
-  gap: 14px;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 16px;
   position: relative;
   z-index: 5;
 }
@@ -1623,18 +1703,19 @@ button, input, select, textarea {
 @media (max-width: 900px) {
   .eloq-auth-card {
     grid-template-columns: 1fr;
-    padding: 12px;
+    padding: 14px;
     border-radius: 26px;
   }
 }
 
 .eloq-auth-input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 13px 18px;
   border-radius: 14px;
-  background-color: #f6f9f7;
-  border: 1.5px solid rgba(20, 60, 35, 0.12);
-  color: #0b1710;
+  background-color: #F8FAF7;
+  border: 1.5px solid rgba(85, 113, 132, 0.2);
+  color: #102B3F;
+  font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 500;
   outline: none;
@@ -1643,22 +1724,43 @@ button, input, select, textarea {
 }
 
 .eloq-auth-input::placeholder {
-  color: #8a9990;
+  color: #7E97A7;
   font-weight: 400;
 }
 
 .eloq-auth-input:focus {
-  background-color: #ffffff;
-  border-color: #1f633b;
-  box-shadow: 0 0 0 4px rgba(34, 139, 84, 0.12);
+  background-color: #FFFFFF;
+  border-color: #102B3F;
+  box-shadow: 0 0 0 4px rgba(198, 243, 107, 0.35);
+}
+
+/* Section styling with subtle depth so sections are not stark plain white */
+.saas-section-alt {
+  background: linear-gradient(180deg, #F8FAF7 0%, #F1F6F0 50%, #F8FAF7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.saas-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(85, 113, 132, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px -4px rgba(16, 43, 63, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saas-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16, 43, 63, 0.25);
+  box-shadow: 0 18px 40px -6px rgba(16, 43, 63, 0.1), 0 0 20px rgba(198, 243, 107, 0.2);
 }
 
 /* Override ugly Chrome pale-blue autofill background */
 .eloq-auth-input:-webkit-autofill,
 .eloq-auth-input:-webkit-autofill:hover,
 .eloq-auth-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #0b1710;
-  -webkit-box-shadow: 0 0 0px 1000px #f4f8f5 inset !important;
+  -webkit-text-fill-color: #102B3F;
+  -webkit-box-shadow: 0 0 0px 1000px #F8FAF7 inset !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 

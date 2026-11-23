@@ -1,5 +1,6 @@
 // ============================================================
-// UniLandFarm — Frontend Type Definitions
+// UNI-LANDFARM — Type Definitions
+// AI-Powered Micro-Web & Digital Presence Management Platform
 // ============================================================
 
 export type UserRole = 'CLIENT' | 'ADMIN';
@@ -89,6 +90,42 @@ export interface LandingPage {
   createdAt: string;
   updatedAt: string;
   sections?: Section[];
+}
+
+export type MicroWeb = LandingPage;
+
+export interface MicroWebVersion {
+  id: string;
+  microWebId: string;
+  versionNumber: number;
+  snapshot: LandingPage;
+  createdAt: string;
+  commitMessage?: string;
+}
+
+export interface AIProposal {
+  id: string;
+  microWebId: string;
+  summary: string;
+  proposedChanges: {
+    sectionId?: string;
+    sectionType?: SectionType;
+    action: 'ADD' | 'MODIFY' | 'DELETE' | 'REORDER';
+    field?: string;
+    oldValue?: any;
+    newValue?: any;
+  }[];
+  status: 'PENDING' | 'ACCEPTED' | 'REJECTED';
+  createdAt: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+  proposalId?: string;
+  proposal?: AIProposal;
 }
 
 export interface Template {
@@ -208,4 +245,3 @@ export interface Order {
   expiredAt?: string;
   proofImageUrl?: string;
 }
-

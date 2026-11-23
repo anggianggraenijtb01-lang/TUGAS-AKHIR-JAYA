@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { User } from '../types';
 import { initialCurrentUser, adminUser } from '../services/mockData';
 import { UniLandLogo } from './UniLandLogo';
-import { Eye, EyeOff, ArrowLeft, CheckCircle2, AlertTriangle, Loader2 } from './icons/LucideIcons';
+import { Eye, EyeOff, ArrowLeft, CheckCircle2, AlertTriangle, Loader2, Sparkles } from './icons/LucideIcons';
 
 interface AuthPageProps {
   onLoginSuccess: (user: User) => void;
@@ -27,7 +27,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Google OAuth Social Login
+  // Google OAuth Social Login simulation
   const handleGoogleLogin = () => {
     setErrorMsg('');
     setIsSubmitting(true);
@@ -37,9 +37,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({
       setTimeout(() => {
         const googleUser: User = {
           id: 'usr_google_' + Date.now(),
-          name: name || 'Mitra UMKM UniLand',
-          email: email || 'mitra.umkm@gmail.com',
-          businessName: businessName || 'Toko Digital UMKM',
+          name: name || 'Pengguna UNI-LANDFARM',
+          email: email || 'user@gmail.com',
+          businessName: businessName || 'Proyek Website Mikro',
           role: 'CLIENT',
           status: 'ACTIVE',
           tokenBalance: 250,
@@ -81,7 +81,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
         return;
       }
       if (!businessName.trim()) {
-        setErrorMsg('Silakan masukkan nama usaha atau toko Anda.');
+        setErrorMsg('Silakan masukkan nama website atau identitas Anda.');
         return;
       }
     }
@@ -93,7 +93,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
       setSuccessMsg(
         mode === 'login'
           ? 'Masuk berhasil! Membuka sesi kerja...'
-          : 'Pendaftaran berhasil! Menyiapkan dashboard toko...'
+          : 'Pendaftaran berhasil! Menyiapkan dashboard...'
       );
 
       setTimeout(() => {
@@ -115,28 +115,27 @@ export const AuthPage: React.FC<AuthPageProps> = ({
 
   return (
     <div
-      className="eloq-page"
+      className="saas-page"
       style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        overflow: 'hidden',
+        backgroundColor: '#F8FAF7',
       }}
     >
-      {/* Living Background Aurora Orbs & Architectural Grid */}
       <div className="eloq-hero-grid-bg" />
       <div className="eloq-aurora-orb-1" />
       <div className="eloq-aurora-orb-2" />
 
-      {/* Top Minimal Header */}
+      {/* Top Header */}
       <header
-        className="eloq-container"
+        className="saas-container"
         style={{
           position: 'relative',
           zIndex: 10,
-          paddingTop: '22px',
-          paddingBottom: '12px',
+          paddingTop: '20px',
+          paddingBottom: '14px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -150,10 +149,10 @@ export const AuthPage: React.FC<AuthPageProps> = ({
         <button
           type="button"
           onClick={onBackToHome}
-          className="eloq-btn-outline"
+          className="btn-outline-navy"
           style={{
-            padding: '0.58rem 1.25rem',
-            fontSize: '0.86rem',
+            padding: '0.52rem 1.2rem',
+            fontSize: '0.84rem',
           }}
         >
           <ArrowLeft size={15} />
@@ -168,47 +167,109 @@ export const AuthPage: React.FC<AuthPageProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '16px 20px 44px',
+          padding: '20px 20px 48px',
           position: 'relative',
           zIndex: 5,
         }}
       >
-        <div className="eloq-auth-card eloq-reveal-1">
+        <div className="eloq-auth-card">
           {/* ============================================================
-              LEFT INSET ISLAND: PROFESSIONAL UMKM PRODUCT SHOWCASE IMAGE
+              LEFT INSET ISLAND: CLEAN VISUAL SHOWCASE (NO EXCESSIVE TEXT)
              ============================================================ */}
           <div
             style={{
               borderRadius: '24px',
-              background: 'linear-gradient(150deg, #18261a 0%, #233726 52%, #3d5a37 100%)',
+              backgroundColor: '#102B3F',
               position: 'relative',
               overflow: 'hidden',
-              minHeight: '520px',
+              minHeight: '480px',
               display: 'flex',
-              alignItems: 'stretch',
-              justifyContent: 'center',
-              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.18)',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)',
             }}
           >
+            {/* Background Professional Showcase Image */}
             <img
               src="/assets/auth_umkm_products.jpg"
-              alt="Produk Pangan & Alami Mitra UMKM Nusantara"
+              alt="UNI-LANDFARM Showcase"
               style={{
+                position: 'absolute',
+                inset: 0,
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'center',
-                display: 'block',
+                opacity: 0.88,
               }}
             />
+
+            {/* Gradient Overlay for Sleek Contrast */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'linear-gradient(180deg, rgba(16, 43, 63, 0.4) 0%, rgba(16, 43, 63, 0.2) 40%, rgba(16, 43, 63, 0.88) 100%)',
+              }}
+            />
+
+            {/* Top Badge */}
+            <div style={{ position: 'relative', zIndex: 2, padding: '24px' }}>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '6px 14px',
+                  borderRadius: '999px',
+                  backgroundColor: 'rgba(16, 43, 63, 0.85)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(198, 243, 107, 0.45)',
+                  color: '#C6F36B',
+                  fontSize: '0.76rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.02em',
+                }}
+              >
+                <Sparkles size={13} color="#C6F36B" />
+                <span>UNI-LANDFARM Studio</span>
+              </span>
+            </div>
+
+            {/* Bottom Minimalist Tagline Overlay (No Wall of Text) */}
+            <div style={{ position: 'relative', zIndex: 2, padding: '24px', color: '#F8FAF7' }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.35rem',
+                  fontWeight: 800,
+                  color: '#FFFFFF',
+                  lineHeight: 1.25,
+                  marginBottom: '6px',
+                }}
+              >
+                Ceritakan. Wujudkan. Bagikan.
+              </div>
+              <p
+                style={{
+                  fontSize: '0.84rem',
+                  color: 'rgba(248, 250, 247, 0.82)',
+                  margin: 0,
+                  lineHeight: 1.45,
+                }}
+              >
+                Platform pembuatan website mikro profesional berbasis AI untuk portofolio, organisasi, dan identitas digital.
+              </p>
+            </div>
           </div>
 
           {/* ============================================================
-              RIGHT FORM PANEL: CLEAN ELOQWNT FORM + GREEN GRADIENT CTA
+              RIGHT FORM PANEL: CLEAN SAAS FORM
              ============================================================ */}
           <div
             style={{
-              padding: '32px 34px',
+              padding: '24px 28px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -218,12 +279,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({
             <div
               style={{
                 display: 'inline-flex',
-                backgroundColor: '#eef3eb',
+                backgroundColor: '#F0F5EE',
                 padding: '4px',
                 borderRadius: '999px',
                 alignSelf: 'flex-start',
-                marginBottom: '20px',
-                border: '1px solid rgba(61, 90, 55, 0.14)',
+                marginBottom: '18px',
+                border: '1px solid rgba(85, 113, 132, 0.16)',
               }}
             >
               <button
@@ -236,15 +297,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 style={{
                   padding: '6px 18px',
                   borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
                   border: 'none',
                   cursor: 'pointer',
-                  background:
-                    mode === 'login'
-                      ? 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 78%, #a87f2e 100%)'
-                      : 'transparent',
-                  color: mode === 'login' ? '#ffffff' : '#4a554c',
+                  background: mode === 'login' ? '#102B3F' : 'transparent',
+                  color: mode === 'login' ? '#F8FAF7' : '#557184',
                   transition: 'all 0.25s ease',
                 }}
               >
@@ -260,15 +318,12 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 style={{
                   padding: '6px 18px',
                   borderRadius: '999px',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
                   border: 'none',
                   cursor: 'pointer',
-                  background:
-                    mode === 'register'
-                      ? 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 78%, #a87f2e 100%)'
-                      : 'transparent',
-                  color: mode === 'register' ? '#ffffff' : '#4a554c',
+                  background: mode === 'register' ? '#102B3F' : 'transparent',
+                  color: mode === 'register' ? '#F8FAF7' : '#557184',
                   transition: 'all 0.25s ease',
                 }}
               >
@@ -280,27 +335,27 @@ export const AuthPage: React.FC<AuthPageProps> = ({
             <div style={{ marginBottom: '18px' }}>
               <h2
                 style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: '1.75rem',
-                  fontWeight: 600,
-                  color: '#0b1710',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.65rem',
+                  fontWeight: 800,
+                  color: '#102B3F',
                   margin: 0,
-                  letterSpacing: '-0.03em',
+                  letterSpacing: '-0.025em',
                 }}
               >
-                {mode === 'login' ? 'Selamat Datang Kembali' : 'Buat Akun Toko Baru'}
+                {mode === 'login' ? 'Selamat Datang Kembali' : 'Daftar Akun Baru'}
               </h2>
               <p
                 style={{
-                  fontSize: '0.88rem',
-                  color: '#5b6960',
+                  fontSize: '0.86rem',
+                  color: '#557184',
                   margin: '4px 0 0',
                   lineHeight: 1.45,
                 }}
               >
                 {mode === 'login'
-                  ? 'Masuk untuk mengelola katalog produk dan asisten AI toko Anda.'
-                  : 'Lengkapi data singkat di bawah untuk langsung membuat website UMKM.'}
+                  ? 'Masuk untuk mengelola website mikro dan asisten AI Anda.'
+                  : 'Daftar gratis untuk mulai mewujudkan website mikro profesional.'}
               </p>
             </div>
 
@@ -313,9 +368,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 width: '100%',
                 padding: '11px 16px',
                 borderRadius: '14px',
-                border: '1.5px solid rgba(20, 60, 35, 0.14)',
-                background: '#ffffff',
-                color: '#0b1710',
+                border: '1.5px solid rgba(85, 113, 132, 0.2)',
+                background: '#FFFFFF',
+                color: '#102B3F',
                 fontSize: '0.88rem',
                 fontWeight: 600,
                 display: 'flex',
@@ -324,20 +379,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 gap: '10px',
                 cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 transition: 'all 0.25s ease',
-                boxShadow: '0 2px 8px rgba(15, 42, 25, 0.04)',
+                boxShadow: '0 2px 8px rgba(16, 43, 63, 0.04)',
                 marginBottom: '16px',
-              }}
-              onMouseEnter={(e) => {
-                if (!isSubmitting) {
-                  e.currentTarget.style.borderColor = '#1d5634';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isSubmitting) {
-                  e.currentTarget.style.borderColor = 'rgba(20, 60, 35, 0.14)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24">
@@ -370,11 +413,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 gap: '12px',
               }}
             >
-              <div style={{ flex: 1, height: '1px', background: 'rgba(20, 60, 35, 0.1)' }} />
-              <span style={{ fontSize: '0.76rem', color: '#6c7c72', fontWeight: 500 }}>
+              <div style={{ flex: 1, height: '1px', background: 'rgba(85, 113, 132, 0.16)' }} />
+              <span style={{ fontSize: '0.76rem', color: '#7E97A7', fontWeight: 500 }}>
                 atau gunakan email
               </span>
-              <div style={{ flex: 1, height: '1px', background: 'rgba(20, 60, 35, 0.1)' }} />
+              <div style={{ flex: 1, height: '1px', background: 'rgba(85, 113, 132, 0.16)' }} />
             </div>
 
             {/* Error Message */}
@@ -427,15 +470,15 @@ export const AuthPage: React.FC<AuthPageProps> = ({
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '13px',
+                gap: '12px',
               }}
             >
               {mode === 'register' && (
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                    gap: '12px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
+                    gap: '10px',
                   }}
                 >
                   <div>
@@ -445,8 +488,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                         display: 'block',
                         fontSize: '0.78rem',
                         fontWeight: 600,
-                        color: '#1e3326',
-                        marginBottom: '5px',
+                        color: '#102B3F',
+                        marginBottom: '4px',
                       }}
                     >
                       Nama Lengkap
@@ -454,7 +497,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     <input
                       id="auth-fullname"
                       type="text"
-                      placeholder="Budi Prasetyo"
+                      placeholder="Nama Anda"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       disabled={isSubmitting}
@@ -469,16 +512,16 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                         display: 'block',
                         fontSize: '0.78rem',
                         fontWeight: 600,
-                        color: '#1e3326',
-                        marginBottom: '5px',
+                        color: '#102B3F',
+                        marginBottom: '4px',
                       }}
                     >
-                      Nama Usaha / Toko
+                      Nama Website / Proyek
                     </label>
                     <input
                       id="auth-bizname"
                       type="text"
-                      placeholder="Kopi Robusta Slamet"
+                      placeholder="Contoh: Alex Studio"
                       value={businessName}
                       onChange={(e) => setBusinessName(e.target.value)}
                       disabled={isSubmitting}
@@ -495,8 +538,8 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     display: 'block',
                     fontSize: '0.78rem',
                     fontWeight: 600,
-                    color: '#1e3326',
-                    marginBottom: '5px',
+                    color: '#102B3F',
+                    marginBottom: '4px',
                   }}
                 >
                   Alamat Email
@@ -504,7 +547,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 <input
                   id="auth-email"
                   type="email"
-                  placeholder="nama@bisnis.com"
+                  placeholder="nama@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
@@ -518,7 +561,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    marginBottom: '5px',
+                    marginBottom: '4px',
                   }}
                 >
                   <label
@@ -526,7 +569,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     style={{
                       fontSize: '0.78rem',
                       fontWeight: 600,
-                      color: '#1e3326',
+                      color: '#102B3F',
                     }}
                   >
                     Kata Sandi
@@ -535,15 +578,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     <span
                       style={{
                         fontSize: '0.75rem',
-                        color: '#3d5a37',
+                        color: '#557184',
                         fontWeight: 600,
                         cursor: 'pointer',
                       }}
-                      onClick={() =>
-                        alert(
-                          'Untuk keamanan akun UMKM Anda, reset kata sandi dapat dilakukan melalui email terdaftar.'
-                        )
-                      }
+                      onClick={() => alert('Instruksi reset sandi dapat dikirimkan ke email terdaftar.')}
                     >
                       Lupa sandi?
                     </span>
@@ -571,7 +610,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       transform: 'translateY(-50%)',
                       background: 'none',
                       border: 'none',
-                      color: '#6c7c72',
+                      color: '#7E97A7',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
@@ -584,7 +623,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 </div>
               </div>
 
-              {/* Quick Demo Credentials Helper */}
+              {/* Quick Demo Credentials */}
               {mode === 'login' && (
                 <div
                   style={{
@@ -595,7 +634,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     paddingTop: '2px',
                   }}
                 >
-                  <span style={{ fontSize: '0.74rem', color: '#6c7c72' }}>Akses Cepat:</span>
+                  <span style={{ fontSize: '0.74rem', color: '#7E97A7' }}>Akses Cepat:</span>
                   <button
                     type="button"
                     onClick={() => handleQuickDemoFill('umkm')}
@@ -604,13 +643,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       fontWeight: 600,
                       padding: '3px 10px',
                       borderRadius: '999px',
-                      border: '1px solid rgba(123, 75, 40, 0.25)',
-                      backgroundColor: '#f7f4ed',
-                      color: '#422a18',
+                      border: '1px solid rgba(85, 113, 132, 0.25)',
+                      backgroundColor: '#F0F5EE',
+                      color: '#102B3F',
                       cursor: 'pointer',
                     }}
                   >
-                    Akun Mitra UMKM
+                    Akun Pengguna
                   </button>
                   <button
                     type="button"
@@ -620,30 +659,27 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       fontWeight: 600,
                       padding: '3px 10px',
                       borderRadius: '999px',
-                      border: '1px solid rgba(123, 75, 40, 0.25)',
-                      backgroundColor: '#f7f4ed',
-                      color: '#422a18',
+                      border: '1px solid rgba(85, 113, 132, 0.25)',
+                      backgroundColor: '#F0F5EE',
+                      color: '#102B3F',
                       cursor: 'pointer',
                     }}
                   >
-                    Akun Super Admin
+                    Akun Admin
                   </button>
                 </div>
               )}
 
-              {/* Submit Button with Warm Gold + Deep Pine Gradient */}
+              {/* Submit CTA */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="eloq-btn-grey"
+                className="btn-lime"
                 style={{
                   width: '100%',
-                  marginTop: '6px',
-                  padding: '13px 20px',
-                  fontSize: '0.95rem',
-                  background: 'linear-gradient(135deg, #1f3021 0%, #354a32 45%, #6E8854 80%, #c98a2c 100%)',
-                  boxShadow:
-                    '0 10px 24px -4px rgba(35, 55, 38, 0.42), 0 0 16px rgba(229, 172, 50, 0.22)',
+                  marginTop: '8px',
+                  padding: '12px 20px',
+                  fontSize: '0.96rem',
                 }}
               >
                 {isSubmitting ? (
@@ -652,15 +688,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     <span>Memproses...</span>
                   </>
                 ) : mode === 'login' ? (
-                  <>
-                    <span>Masuk ke Dashboard</span>
-                    <span>↗</span>
-                  </>
+                  <span>Masuk ke Dashboard ↗</span>
                 ) : (
-                  <>
-                    <span>Daftar Sekarang</span>
-                    <span>↗</span>
-                  </>
+                  <span>Daftar Akun Baru ↗</span>
                 )}
               </button>
             </form>
@@ -669,41 +699,39 @@ export const AuthPage: React.FC<AuthPageProps> = ({
       </main>
 
       {/* ============================================================
-          BOTTOM FOOTER: UNIFIED WITH ADMIN & LANDING PAGE DESIGN
+          FOOTER ON AUTH PAGE (Requested explicitly by user)
          ============================================================ */}
       <footer
         style={{
           marginTop: 'auto',
-          background: 'linear-gradient(160deg, #1c2d1f 0%, #142217 60%, #0d170f 100%)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          padding: '18px 28px',
-          color: '#FFFFFF',
+          backgroundColor: '#0A1C2A',
+          borderTop: '1px solid rgba(85, 113, 132, 0.2)',
+          padding: '18px 24px',
+          color: '#F8FAF7',
           position: 'relative',
           zIndex: 10,
         }}
       >
         <div
+          className="saas-container"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '16px',
-            maxWidth: '1240px',
-            margin: '0 auto',
-            width: '100%',
+            gap: '14px',
           }}
         >
           <UniLandLogo size="sm" variant="dark" />
 
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', fontSize: '0.8rem' }}>
+          <div style={{ display: 'flex', gap: '18px', flexWrap: 'wrap', fontSize: '0.8rem' }}>
             <button
               type="button"
               onClick={onBackToHome}
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: 'rgba(255,255,255,0.75)',
+                color: 'rgba(248, 250, 247, 0.7)',
                 cursor: 'pointer',
                 fontSize: '0.8rem',
                 padding: 0,
@@ -721,7 +749,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: mode === 'login' ? '#ffffff' : 'rgba(255,255,255,0.75)',
+                color: mode === 'login' ? '#C6F36B' : 'rgba(248, 250, 247, 0.7)',
                 fontWeight: mode === 'login' ? 700 : 400,
                 cursor: 'pointer',
                 fontSize: '0.8rem',
@@ -740,7 +768,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: mode === 'register' ? '#ffffff' : 'rgba(255,255,255,0.75)',
+                color: mode === 'register' ? '#C6F36B' : 'rgba(248, 250, 247, 0.7)',
                 fontWeight: mode === 'register' ? 700 : 400,
                 cursor: 'pointer',
                 fontSize: '0.8rem',
@@ -751,7 +779,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
             </button>
           </div>
 
-          <div style={{ fontSize: '0.76rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+          <div style={{ fontSize: '0.78rem', color: 'rgba(248, 250, 247, 0.5)' }}>
             &copy; {new Date().getFullYear()} UNI-LANDFARM. All rights reserved.
           </div>
         </div>
